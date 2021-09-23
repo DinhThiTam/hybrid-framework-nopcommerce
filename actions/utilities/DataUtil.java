@@ -11,7 +11,7 @@ public class DataUtil {
 	}
 	
 	public DataUtil() {
-		Faker faker = new Faker();
+		faker = new Faker();
 	}
 	
 	public String getFirstName() {

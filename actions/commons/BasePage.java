@@ -547,10 +547,6 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_BY_NAME, buttonName);
 	}
 	
-	public boolean isMessageRegisterDisplayed(WebDriver driver, String messageID, String messageText) {
-		waitForElementVisible(driver, BasePageUI.MESSAGE_BY_ID_AND_TEXT, messageID, messageText);
-		return isElementDisplayed(driver, BasePageUI.MESSAGE_BY_ID_AND_TEXT, messageID, messageText);
-	}
 	
 
 	
