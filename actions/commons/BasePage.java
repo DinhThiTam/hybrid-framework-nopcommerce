@@ -578,6 +578,20 @@ public class BasePage {
 		waitForElementVisible(driver, BasePageUI.MENU_HEADER_BY_CLASS, headerClass);
 		return isElementDisplayed(driver, BasePageUI.MENU_HEADER_BY_CLASS, headerClass);
 	}
+	
+	public void openMenuPage(WebDriver driver, String menuPosition, String menuName) {
+		waitForElementClickable(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, menuName);
+		clickToElement(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, menuName);
+	}
+	
+	public void openSubMenuPage(WebDriver driver, String menuPosition, String menuName, String subMenuName) {
+		waitForElementVisible(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, menuName);
+		hoverToElement(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME,menuPosition, menuName);
+		
+		waitForElementClickable(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, subMenuName);
+		clickToElement(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, subMenuName);
+	}
+	
 
 	
 	private Alert alert;

@@ -16,7 +16,7 @@ import pageObject.nopCommerce.RegisterPO;
 import utilities.DataUtil;
 
 
-public class TC_01_My_Account extends BaseTest {
+public class TC_01_Customer_Info extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, validEmailAddress, invalidEmailAddress,validPassword, invalidPassword, birthDay, birthMonth, birthYear, companyName;
 	
@@ -44,25 +44,25 @@ public class TC_01_My_Account extends BaseTest {
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
 		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
 		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
 		
-		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
 		registerPage.enterToTextboxByID(driver,"LastName", lastName);
 		
-		log.info("Register_03 - Step 03: Enter valid info to 'Email' textbox");
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
 		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
 		
-		log.info("Register_03 - Step 04: Enter valid info to 'Password' textbox");
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
 		registerPage.enterToTextboxByID(driver,"Password", validPassword);
 		
-		log.info("Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox");
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
 		registerPage.enterToTextboxByID(driver,"ConfirmPassword", validPassword);
 		
-		log.info("Register_03 - Step 06: Click to 'Register' button");
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Pre-Condition - Step 04: Verify success messages is displayed in mandantory fields");
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isSuccessMessageDisplayed());
 	
 	}
@@ -119,7 +119,6 @@ public class TC_01_My_Account extends BaseTest {
 		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Company"), companyName);
 	}
 	
-
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun=true)
 	public void cleanBrowser(String browserName) {

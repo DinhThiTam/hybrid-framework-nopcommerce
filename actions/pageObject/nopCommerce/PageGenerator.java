@@ -28,4 +28,14 @@ public class PageGenerator {
 
 		return new MyAccountPO(driver);
 	}
+	
+	public static DesktopsPO getDesktopsPage(WebDriver driver) {
+
+		return new DesktopsPO(driver);
+	}
+	
+	public static ProductReviewPO getReviewProductPage(WebDriver driver) {
+
+		return new ProductReviewPO(driver);
+	}
 }

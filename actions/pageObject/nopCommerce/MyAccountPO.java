@@ -7,6 +7,8 @@ import pageUIs.nopCommerce.HomePageUI;
 import pageUIs.nopCommerce.MyAccountUI;
 
 
+
+
 public class MyAccountPO extends BasePage{
 	private WebDriver driver;
 
@@ -20,7 +22,27 @@ public class MyAccountPO extends BasePage{
 		
 	}
 
+	public String getTextboxValueByClass(String textClass) {
+		waitForElementVisible(driver, MyAccountUI.VALUE_TEXT_BY_CLASS, textClass);
+		return getElementText(driver, MyAccountUI.VALUE_TEXT_BY_CLASS, textClass);
+	}
 	
+	public boolean isChangePasswordSuccessMessageDisplayed() {
+		waitForElementVisible(driver, MyAccountUI.CHANGE_PASSWORD_SUCCESS_MESSAGE);
+		return isElementDisplayed(driver, MyAccountUI.CHANGE_PASSWORD_SUCCESS_MESSAGE);
+	}
+	
+	public void clickToCloseMessageButton() {
+		waitForElementClickable(driver, MyAccountUI.CLOSE_MESSAGE_BUTTON);
+		clickToElement(driver, MyAccountUI.CLOSE_MESSAGE_BUTTON);
+	}
+
+	public String getReviewTextByClass(String reviewClass) {
+		waitForElementVisible(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass);
+		return getElementText(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass);
+	}
+
+
 
 
 

@@ -9,9 +9,12 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.register.TC_01_Register" />
-			<class name="com.nopcommerce.login.TC_01_Login" />
-			<class name="com.nopcommerce.myaccount.TC_01_My_Account" />
+<!-- 			<class name="com.nopcommerce.register.TC_01_Register" /> -->
+<!-- 			<class name="com.nopcommerce.login.TC_01_Login" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_01_Customer_Info" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_02_Add_Addresses" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_03_Change_Password" /> -->
+			<class name="com.nopcommerce.myaccount.TC_04_My_Product_Review" />
 		
 		</classes>
 	</test>
