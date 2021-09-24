@@ -42,8 +42,23 @@ public class TC_01_Register extends BaseTest {
 	}
 	@Test
 	public void Register_01_Empty_Data() {
-		log.info("Register_01 - Step 01: Register to system with all empty info");
-		registerPage.registerToSystem("", "", "", "", "");
+		log.info("Register_01 - Step 01: Enter empty info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", "");
+		
+		log.info("Register_01 - Step 02: Enter empty info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", "");
+		
+		log.info("Register_01 - Step 03: Enter empty info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", "");
+		
+		log.info("Register_01 - Step 04: Enter empty info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", "");
+		
+		log.info("Register_01 - Step 05: Enter empty info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", "");
+		
+		log.info("Register_01 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_01 - Step 02: Verify all error messages are displayed in mandantory fields");
 		verifyTrue(registerPage.isFirstnameEmptyInvalidMessageDisplayed());
@@ -55,8 +70,23 @@ public class TC_01_Register extends BaseTest {
 	
 	@Test
 	public void Register_02_Invalid_Email() {
-		log.info("Register_01 - Step 01: Register to system with invalid email");
-		registerPage.registerToSystem(invalidEmailAddress, validPassword, validPassword, firstName, lastName);	
+		log.info("Register_02 - Step 01: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		
+		log.info("Register_02 - Step 02: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		
+		log.info("Register_02 - Step 03: Enter invalid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", invalidEmailAddress);
+		
+		log.info("Register_02 - Step 04: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", validPassword);
+		
+		log.info("Register_02 - Step 05: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", validPassword);
+		
+		log.info("Register_02 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_02 - Step 02: Verify email error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isEmailInvalidMessageDisplayed());
@@ -64,8 +94,23 @@ public class TC_01_Register extends BaseTest {
 	
 	@Test
 	public void Register_03_Valid_Infomation() {
-		log.info("Register_03 - Step 01: Register to system with all valid the info");
-		registerPage.registerToSystem(validEmailAddress, validPassword, validPassword, firstName, lastName);
+		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		
+		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		
+		log.info("Register_03 - Step 03: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
+		
+		log.info("Register_03 - Step 04: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", validPassword);
+		
+		log.info("Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", validPassword);
+		
+		log.info("Register_03 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_03 - Step 02: Verify success messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isSuccessMessageDisplayed());
@@ -81,8 +126,23 @@ public class TC_01_Register extends BaseTest {
 	
 	@Test
 	public void Register_04_Exist_Email() {
-		log.info("Register_04 - Step 01: Register to system with exist email");
-		registerPage.registerToSystem(validEmailAddress, validPassword, validPassword, firstName, lastName);
+		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		
+		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		
+		log.info("Register_03 - Step 03: Enter an already existing email to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
+		
+		log.info("Register_03 - Step 04: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", validPassword);
+		
+		log.info("Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", validPassword);
+		
+		log.info("Register_03 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_04 - Step 02: Verify email error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isEmailExistMessageDisplayed());
@@ -90,8 +150,23 @@ public class TC_01_Register extends BaseTest {
 	
 	@Test(description = "Password less than 6 chars")
 	public void Register_05_InValid_Password() {
-		log.info("Register_05 - Step 01: Register to system with invalid password");
-		registerPage.registerToSystem(validEmailAddress, invalidPassword, "", firstName, lastName);	
+		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		
+		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		
+		log.info("Register_03 - Step 03: Enter an already existing email to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
+		
+		log.info("Register_03 - Step 04: Enter invalid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", invalidPassword);
+		
+		log.info("Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", invalidPassword);
+		
+		log.info("Register_03 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_05 - Step 02: Verify password error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isPasswordInvalidMessageDisplayed());
@@ -99,8 +174,23 @@ public class TC_01_Register extends BaseTest {
 	
 	@Test
 	public void Register_06_Not_Match_Password() {
-		log.info("Register_06 - Step 01: Register to system with not match password");
-		registerPage.registerToSystem(validEmailAddress, validPassword, invalidPassword, firstName, lastName);
+		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		
+		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		
+		log.info("Register_03 - Step 03: Enter an already existing email to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
+		
+		log.info("Register_03 - Step 04: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", validPassword);
+		
+		log.info("Register_03 - Step 05: Enter invalid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", invalidPassword);
+		
+		log.info("Register_03 - Step 06: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_06 - Step 02: Verify confirm password error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isConfirmPasswordInvalidMessageDisplayed());

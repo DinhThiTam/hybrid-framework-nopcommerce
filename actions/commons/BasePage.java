@@ -21,6 +21,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObject.nopCommerce.RegisterPO;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.HomePageUI;
+
 
 
 /**
@@ -547,7 +549,35 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_BY_NAME, buttonName);
 	}
 	
+	public String getTextboxValueByID(WebDriver driver, String textboxID) {
+		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, "value", textboxID);
+	}
 	
+	public void clickToRadioByLabel(WebDriver driver, String radioLabel) {
+		waitForElementClickable(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+	}
+	
+	public void selectItemInDropdownByName(WebDriver driver, String value, String dropdownID) {
+		waitForElementClickable(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
+		selectDropdownByText(driver, BasePageUI.DROPDOWN_BY_NAME, value, dropdownID);
+	}
+	
+	public String getSelectItemInDropdownByName(WebDriver driver, String dropdownID) {
+		waitForElementVisible(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
+		return getSelectedItemDropdown(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
+	}
+
+	public boolean isSelectedItemInRadio(WebDriver driver, String radioLabel) {
+		waitForElementVisible(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+		return isElementSelected(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+	}
+	
+	public boolean isLogoutLinkDisplay(WebDriver driver, String headerClass) {
+		waitForElementVisible(driver, BasePageUI.MENU_HEADER_BY_CLASS, headerClass);
+		return isElementDisplayed(driver, BasePageUI.MENU_HEADER_BY_CLASS, headerClass);
+	}
 
 	
 	private Alert alert;

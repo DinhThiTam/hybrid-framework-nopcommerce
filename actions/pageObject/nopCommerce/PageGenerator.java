@@ -23,4 +23,9 @@ public class PageGenerator {
 
 		return new RegisterPO(driver);
 	}
+	
+	public static MyAccountPO getMyAccountPage(WebDriver driver) {
+
+		return new MyAccountPO(driver);
+	}
 }
