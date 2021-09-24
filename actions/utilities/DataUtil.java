@@ -29,5 +29,13 @@ public class DataUtil {
 	public String getPassword() {
 		return faker.internet().password();
 	}
+	
+	public String getString() {
+		return faker.name().toString();
+	}
+	
+	public String getTitle() {
+		return faker.name().title();
+	}
 
 }

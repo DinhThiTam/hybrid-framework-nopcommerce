@@ -1,14 +1,11 @@
 package com.nopcommerce.myaccount;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Sleeper;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
 import pageObject.nopCommerce.DesktopsPO;
 import pageObject.nopCommerce.HomePO;
@@ -39,8 +36,8 @@ public class TC_04_My_Product_Review extends BaseTest {
 		emailAddress = fakeData.getEmailAddress();
 		password = fakeData.getPassword();
 		newPassword = fakeData.getPassword();
-		titleReview = "Automation";
-		textReview = "Very good";
+		titleReview = fakeData.getTitle();
+		textReview = fakeData.getString();
 		
 		
 		log.info("Pre-Condition - Step 02: Open Register page on header");
@@ -71,24 +68,39 @@ public class TC_04_My_Product_Review extends BaseTest {
 	}
 	@Test
 	public void My_Product_Review_01() {
-		log.info("My_Account_01 - Step 01: Open sub menu 'Desktops'");
+		log.info("My_Product_Review_01 - Step 01: Open sub menu 'Desktops'");
 		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
+		
+		log.info("My_Product_Review_01 - Step 02: Click to the product title link");
 		desktopsPage.clickToLinkByText(driver,"Build your own computer");
+		
+		log.info("My_Product_Review_01 - Step 03: Click to 'Add your review' link");
 		desktopsPage.clickToLinkByText(driver,"Add your review");
 		productReviewPage = PageGenerator.getReviewProductPage(driver);
+		
+		log.info("My_Product_Review_01 - Step 04: Enter the review title in the textbox ");
 		productReviewPage.enterToTextboxByID(driver, "AddProductReview_Title", titleReview);
+		
+		log.info("My_Product_Review_01 - Step 05: Enter the review text in the textarea ");
 		productReviewPage.enterToReviewTextInTextArea(textReview);
+		
+		log.info("My_Product_Review_01 - Step 05: Click to 'Submit review' button ");
 		productReviewPage.clickToButtonByName(driver, "Submit review");
+		
+		log.info("My_Product_Review_01 - Step 06: Verify success message is displayed");
 		verifyEquals(productReviewPage.getAddReviewSuccessMessage(),"Product review is successfully added.");
+		
+		log.info("My_Product_Review_01 - Step 07: Open My account page on header");
 		productReviewPage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
+		
+		log.info("My_Product_Review_01 - Step 08: Open tab menu 'My product reviews'");
 		myAccountPage.openTabMenuByName("My product reviews");
+		
+		log.info("My_Product_Review_01 - Step 09: Verify review is displayed");
 		verifyEquals(myAccountPage.getReviewTextByClass("review-title"), titleReview);
 		verifyEquals(myAccountPage.getReviewTextByClass("review-text"), textReview);
-
-		
-		
 	}
 	
 	@Parameters({"browser"})

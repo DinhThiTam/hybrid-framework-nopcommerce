@@ -78,44 +78,44 @@ public class TC_01_Customer_Info extends BaseTest {
 		log.info("My_Account_01 - Step 03: Update Gender information 'Female' to radio button");
 		myAccountPage.clickToRadioByLabel(driver, "Female");
 		
-		log.info("My_Account_01 - Step 03: Update First name information to textbox");
+		log.info("My_Account_01 - Step 04: Update First name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "FirstName", firstName);
 		
-		log.info("My_Account_01 - Step 03: Update Last name information to textbox");
+		log.info("My_Account_01 - Step 06: Update Last name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "LastName", lastName);
 		
-		log.info("My_Account_01 - Step 03: Update Date of birthday information to dropdown");
+		log.info("My_Account_01 - Step 06: Update Date of birthday information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver, birthDay, "DateOfBirthDay");
 		myAccountPage.selectItemInDropdownByName(driver, birthMonth, "DateOfBirthMonth");
 		myAccountPage.selectItemInDropdownByName(driver, birthYear, "DateOfBirthYear");
 		
-		log.info("My_Account_01 - Step 03: Update Email information to textbox");
+		log.info("My_Account_01 - Step 07: Update Email information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Email", validEmailAddress);
 		
-		log.info("My_Account_01 - Step 03: Update Company name information to textbox");
+		log.info("My_Account_01 - Step 08: Update Company name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Company", companyName);
 		
-		log.info("My_Account_01 - Step 03: Click to 'Save' button");
+		log.info("My_Account_01 - Step 09: Click to 'Save' button");
 		myAccountPage.clickToButtonByName(driver, "Save");
 		
-		log.info("My_Account_01 - Step 03: Verify gender infomation is updated successfully");
+		log.info("My_Account_01 - Step 10: Verify gender infomation is updated successfully");
 		verifyTrue(myAccountPage.isSelectedItemInRadio(driver, "Female"));
 		
-		log.info("My_Account_01 - Step 03: Verify firstname infomation is updated successfully");
+		log.info("My_Account_01 - Step 11: Verify firstname infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByID(driver, "FirstName"), firstName);
 		
-		log.info("My_Account_01 - Step 03: Verify lastname infomation is updated successfully");
+		log.info("My_Account_01 - Step 12: Verify lastname infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByID(driver, "LastName"), lastName);
 		
-		log.info("My_Account_01 - Step 03: Verify date of birth infomation is updated successfully");
+		log.info("My_Account_01 - Step 13: Verify date of birth infomation is updated successfully");
 		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "DateOfBirthDay"), birthDay);
 		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "DateOfBirthMonth"), birthMonth);
 		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "DateOfBirthYear"), birthYear);
 		
-		log.info("My_Account_01 - Step 03: Verify email infomation is updated successfully");
+		log.info("My_Account_01 - Step 14: Verify email infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Email"), validEmailAddress);
 		
-		log.info("My_Account_01 - Step 03: Verify company name infomation is updated successfully");
+		log.info("My_Account_01 - Step 15: Verify company name infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Company"), companyName);
 	}
 	

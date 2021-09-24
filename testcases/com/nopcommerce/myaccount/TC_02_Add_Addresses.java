@@ -85,16 +85,16 @@ public class TC_02_Add_Addresses extends BaseTest {
 		log.info("My_Account_01 - Step 03: Click to 'Add new' button");
 		myAccountPage.clickToButtonByName(driver, "Add new");
 		
-		log.info("My_Account_01 - Step 03: Update First name information to textbox");
+		log.info("My_Account_01 - Step 04: Update First name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_FirstName", firstName);
 		
-		log.info("My_Account_01 - Step 03: Update Last name information to textbox");
+		log.info("My_Account_01 - Step 05: Update Last name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_LastName", lastName);
 		
-		log.info("My_Account_01 - Step 03: Update Email information to textbox");
+		log.info("My_Account_01 - Step 06: Update Email information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Email", emailAddress);
 		
-		log.info("My_Account_01 - Step 03: Update Company name information to textbox");
+		log.info("My_Account_01 - Step 07: Update Company name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Company", companyName);
 		
 		log.info("My_Account_01 - Step 03: Update Country name information to dropdown");
