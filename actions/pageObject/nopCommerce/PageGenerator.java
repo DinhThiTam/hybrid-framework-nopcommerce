@@ -38,4 +38,14 @@ public class PageGenerator {
 
 		return new ProductReviewPO(driver);
 	}
+	
+	public static SearchPO getSearchPage(WebDriver driver) {
+
+		return new SearchPO(driver);
+	}
+	
+	public static NotebooksPO getNotebooksPage(WebDriver driver) {
+
+		return new NotebooksPO(driver);
+	}
 }

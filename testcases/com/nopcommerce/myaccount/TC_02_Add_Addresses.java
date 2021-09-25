@@ -73,76 +73,76 @@ public class TC_02_Add_Addresses extends BaseTest {
 	}
 	
 	@Test
-	public void My_Account_02_Add_Address() {
-		log.info("My_Account_01 - Step 01: Open 'My account' page on header");
+	public void Add_Address_01() {
+		log.info("Add_Address_01 - Step 01: Open 'My account' page on header");
 		registerPage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
-		log.info("My_Account_01 - Step 02: Open 'Addresses' form");
+		log.info("Add_Address_01 - Step 02: Open 'Addresses' form");
 		myAccountPage.openTabMenuByName("Addresses");
 		myAccountPage.sleepInsecond(2);
 		
-		log.info("My_Account_01 - Step 03: Click to 'Add new' button");
+		log.info("Add_Address_01 - Step 03: Click to 'Add new' button");
 		myAccountPage.clickToButtonByName(driver, "Add new");
 		
-		log.info("My_Account_01 - Step 04: Update First name information to textbox");
+		log.info("Add_Address_01 - Step 04: Update First name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_FirstName", firstName);
 		
-		log.info("My_Account_01 - Step 05: Update Last name information to textbox");
+		log.info("Add_Address_01 - Step 05: Update Last name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_LastName", lastName);
 		
-		log.info("My_Account_01 - Step 06: Update Email information to textbox");
+		log.info("Add_Address_01 - Step 06: Update Email information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Email", emailAddress);
 		
-		log.info("My_Account_01 - Step 07: Update Company name information to textbox");
+		log.info("Add_Address_01 - Step 07: Update Company name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Company", companyName);
 		
-		log.info("My_Account_01 - Step 03: Update Country name information to dropdown");
+		log.info("Add_Address_01 - Step 03: Update Country name information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver,countryName , "Address_CountryId");
 	
-		log.info("My_Account_01 - Step 03: Update State province information to dropdown");
+		log.info("Add_Address_01 - Step 03: Update State province information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver, stateProvince, "Address_StateProvinceId");
 		
-		log.info("My_Account_01 - Step 03: Update Company City name information to textbox");
+		log.info("Add_Address_01 - Step 03: Update Company City name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_City", cityName);
 		
-		log.info("My_Account_01 - Step 03: Update Address 1 information to textbox");
+		log.info("Add_Address_01 - Step 03: Update Address 1 information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Address1", address1);
 		
-		log.info("My_Account_01 - Step 03: Update Address 2 information to textbox");
+		log.info("Add_Address_01 - Step 03: Update Address 2 information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Address2", address2);
 		
-		log.info("My_Account_01 - Step 03: Update Zip code information to textbox");
+		log.info("Add_Address_01 - Step 03: Update Zip code information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_ZipPostalCode", zipCode);
 		
-		log.info("My_Account_01 - Step 03: Update Phone number information to textbox");
+		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_PhoneNumber", phoneNumber);
 		
-		log.info("My_Account_01 - Step 03: Click to 'Save' button");
+		log.info("Add_Address_01 - Step 03: Click to 'Save' button");
 		myAccountPage.clickToButtonByName(driver, "Save");
 		
-		log.info("My_Account_01 - Step 03: Verify full name infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify full name infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("name"), fullName);
 		
-		log.info("My_Account_01 - Step 03: Verify email infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("email"), "Email: " + emailAddress);
 		
-		log.info("My_Account_01 - Step 03: Verify phone number infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify phone number infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("Address_PhoneNumber"), "Phone number: " + phoneNumber);
 		
-		log.info("My_Account_01 - Step 03: Verify company name infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify company name infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("company"), companyName);
 		
-		log.info("My_Account_01 - Step 03: Verify adress 1 infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify adress 1 infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("address1"), address1);
 		
-		log.info("My_Account_01 - Step 03: Verify adress 2 infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify adress 2 infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass( "address2"), address2);
 		
-		log.info("My_Account_01 - Step 03: Verify country name infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify country name infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("country"), countryName);
 		
-		log.info("My_Account_01 - Step 03: Verify city state zip infomation is updated successfully");
+		log.info("Add_Address_01 - Step 03: Verify city state zip infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("city-state-zip"), citySateZip);
 	}
 	

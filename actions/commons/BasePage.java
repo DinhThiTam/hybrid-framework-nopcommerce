@@ -18,10 +18,10 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import pageObject.nopCommerce.RegisterPO;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.HomePageUI;
+import pageUIs.nopCommerce.SearchPageUI;
 
 
 
@@ -554,9 +554,14 @@ public class BasePage {
 		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, "value", textboxID);
 	}
 	
-	public void clickToRadioByLabel(WebDriver driver, String radioLabel) {
-		waitForElementClickable(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
-		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+	public void clickToRadioAndCheckboxByLabel(WebDriver driver, String radioLabel) {
+		waitForElementClickable(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
+		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
+	}
+	
+
+	public boolean isSelectedItemByLable(WebDriver driver, String itemLabel) {
+		return isElementSelected(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, itemLabel);
 	}
 	
 	public void selectItemInDropdownByName(WebDriver driver, String value, String dropdownID) {
@@ -570,8 +575,8 @@ public class BasePage {
 	}
 
 	public boolean isSelectedItemInRadio(WebDriver driver, String radioLabel) {
-		waitForElementVisible(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
-		return isElementSelected(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, radioLabel);
+		waitForElementVisible(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
+		return isElementSelected(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
 	}
 	
 	public boolean isLogoutLinkDisplay(WebDriver driver, String headerClass) {
@@ -592,7 +597,42 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.MENU_BY_MENU_POSITION_AND_MENU_NAME, menuPosition, subMenuName);
 	}
 	
-
+	public void openMenuFooterPageByName(WebDriver driver, String footerMenuName) {
+		waitForElementClickable(driver, BasePageUI.MENU_FOOTER_BY_NAME, footerMenuName);
+		clickToElement(driver, BasePageUI.MENU_FOOTER_BY_NAME, footerMenuName);
+	}
+	
+	public int getProductSize(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.PRODUCT_TITLE_SIZE);
+		return getSizeElements(driver, BasePageUI.PRODUCT_TITLE_SIZE );
+	}
+	
+	public boolean isProductSizeLessThanOrEqualToThree(WebDriver driver) {
+		int size = getSizeElements(driver, BasePageUI.PRODUCT_TITLE_SIZE);
+		System.out.println("Size = " + size);
+		if (size<=3) {
+			return true;	
+		}
+		return false;
+	}
+	
+	public boolean isProductSizeLessThanOrEqualToNine(WebDriver driver) {
+		int size = getSizeElements(driver, BasePageUI.PRODUCT_TITLE_SIZE);
+		System.out.println("Size = " + size);
+		if (size<=9) {
+			return true;	
+		}
+		return false;
+	}
+	
+	public boolean isProductSizeLessThanOrEqualToSix(WebDriver driver) {
+		int size = getSizeElements(driver, BasePageUI.PRODUCT_TITLE_SIZE);
+		System.out.println("Size = " + size);
+		if (size<=6) {
+			return true;	
+		}
+		return false;
+	}
 	
 	private Alert alert;
 	private WebDriverWait explicitWait;
