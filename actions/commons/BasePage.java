@@ -647,6 +647,12 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
 	}
 	
+	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
+		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_ID_AND_NAME, tableID,headerName) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+	}
+	
 
 	
 	
