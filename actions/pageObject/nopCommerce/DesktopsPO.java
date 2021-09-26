@@ -14,10 +14,6 @@ public class DesktopsPO extends BasePage{
 		this.driver = driver;
 	}
 
-	public void clickToLinkByText(WebDriver driver, String linkText) {
-		waitForElementClickable(driver, DesktopsPageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-		clickToElement(driver, DesktopsPageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-		
-	}
+	
 
 }

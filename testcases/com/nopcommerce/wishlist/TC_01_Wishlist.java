@@ -1,6 +1,7 @@
-package com.nopcommerce.myaccount;
+package com.nopcommerce.wishlist;
 
 import org.openqa.selenium.WebDriver;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -11,17 +12,17 @@ import pageObject.nopCommerce.DesktopsPO;
 import pageObject.nopCommerce.HomePO;
 import pageObject.nopCommerce.LoginPO;
 import pageObject.nopCommerce.MyAccountPO;
+import pageObject.nopCommerce.NotebooksPO;
 import pageObject.nopCommerce.PageGenerator;
 import pageObject.nopCommerce.ProductDetailsPO;
-import pageObject.nopCommerce.ProductReviewPO;
 import pageObject.nopCommerce.RegisterPO;
+import pageObject.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
-public class TC_04_My_Product_Review extends BaseTest {
+public class TC_01_Wishlist extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
-	String firstName, lastName, emailAddress,password, newPassword, birthDay, birthMonth, birthYear, companyName,titleReview, textReview;
-;
+	String firstName, lastName, emailAddress,password, birthDay, birthMonth, birthYear, companyName;
 	
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -36,10 +37,6 @@ public class TC_04_My_Product_Review extends BaseTest {
 		lastName = fakeData.getLastName();
 		emailAddress = fakeData.getEmailAddress();
 		password = fakeData.getPassword();
-		newPassword = fakeData.getPassword();
-		titleReview = fakeData.getTitle();
-		textReview = fakeData.getString();
-		
 		
 		log.info("Pre-Condition - Step 02: Open Register page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
@@ -68,42 +65,24 @@ public class TC_04_My_Product_Review extends BaseTest {
 	
 	}
 	@Test
-	public void My_Product_Review_01() {
-		log.info("My_Product_Review_01 - Step 01: Open sub menu 'Desktops'");
-		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
-		desktopsPage = PageGenerator.getDesktopsPage(driver);
+	public void Wishlist_01_Add_To_Wishlist() {
+		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops'");
+		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("My_Product_Review_01 - Step 02: Click to the product title link");
-		desktopsPage.clickToLinkByText(driver,"Build your own computer");
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToLinkByText(driver,"Apple MacBook Pro 13-inch");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
-		log.info("My_Product_Review_01 - Step 03: Click to 'Add your review' link");
-		productDetailsPage.clickToLinkByText(driver,"Add your review");
-		productReviewPage = PageGenerator.getReviewProductPage(driver);
 		
+		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
+		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
+		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText("The product has been added to your "), "The product has been added to your wishlist");	
+		productDetailsPage.clickToCloseIconInMessage();
 		
-		log.info("My_Product_Review_01 - Step 04: Enter the review title in the textbox ");
-		productReviewPage.enterToTextboxByID(driver, "AddProductReview_Title", titleReview);
-		
-		log.info("My_Product_Review_01 - Step 05: Enter the review text in the textarea ");
-		productReviewPage.enterToReviewTextInTextArea(textReview);
-		
-		log.info("My_Product_Review_01 - Step 05: Click to 'Submit review' button ");
-		productReviewPage.clickToButtonByName(driver, "Submit review");
-		
-		log.info("My_Product_Review_01 - Step 06: Verify success message is displayed");
-		verifyEquals(productReviewPage.getAddReviewSuccessMessage(),"Product review is successfully added.");
-		
-		log.info("My_Product_Review_01 - Step 07: Open My account page on header");
-		productReviewPage.openMenuHeaderPageByClass(driver, "ico-account");
-		myAccountPage = PageGenerator.getMyAccountPage(driver);
-		
-		log.info("My_Product_Review_01 - Step 08: Open tab menu 'My product reviews'");
-		myAccountPage.openTabMenuByName("My product reviews");
-		
-		log.info("My_Product_Review_01 - Step 09: Verify review is displayed");
-		verifyEquals(myAccountPage.getReviewTextByClass("review-title"), titleReview);
-		verifyEquals(myAccountPage.getReviewTextByClass("review-text"), textReview);
+		log.info("Pre-Condition - Step 02: Open 'Wishlist' page on header");
+		productDetailsPage.openMenuHeaderPageByClass(driver, "ico-wishlist");
+		wishlistPage = PageGenerator.getWishlistPage(driver);
 	}
 	
 	@Parameters({"browser"})
@@ -118,8 +97,9 @@ public class TC_04_My_Product_Review extends BaseTest {
 	LoginPO loginPage;
 	DataUtil fakeData;
 	MyAccountPO myAccountPage;
+	NotebooksPO notebooksPage;
 	DesktopsPO desktopsPage;
-	ProductReviewPO productReviewPage;
 	ProductDetailsPO productDetailsPage;
+	WishlistPO wishlistPage;
 
 }

@@ -1,26 +1,18 @@
 package com.nopcommerce.sort;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import commons.BasePage;
 import commons.BaseTest;
 import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
 import pageObject.nopCommerce.NotebooksPO;
 import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.SearchPO;
-import pageUIs.nopCommerce.HomePageUI;
-import utilities.DataUtil;
 
-public class TC_01_Sort extends BaseTest {
+
+public class TC_01_Sort_Display_Paging extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
-	String firstName, lastName, validEmailAddress, emailAddress,password,dataNotExist, dataRelative, dataAbsolute, dataAdvanceSearch;
 	
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -29,7 +21,6 @@ public class TC_01_Sort extends BaseTest {
 		driver = getBrowserDriver(browserName, appURL);
 		homePage = PageGenerator.getHomePage(driver);
 		verifyTrue(homePage.isHomePageSliderDisplayed());
-		fakeData = DataUtil.getData();
 		
 		log.info("Pre-Condition - Step 02: Open sub menu on top-menu");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
@@ -76,29 +67,53 @@ public class TC_01_Sort extends BaseTest {
 	
 	@Test
 	public void TC_05_Display_Three_Per_Page() {
-		log.info("TC_05 - Step 04:Select item in dropdown");
+		log.info("TC_05 - Step 01:Select item in dropdown");
 		notebooksPage.selectItemInDropdownByName(driver, "3", "products-pagesize");
 		
-		log.info("TC_05 - Step 05: Verify item is selected");
+		log.info("TC_05 - Step 02: Verify item is selected");
 		verifyEquals(notebooksPage.getSelectItemInDropdownByName(driver, "products-pagesize"), "3");
 		notebooksPage.sleepInsecond(3);
 		
-		log.info("TC_05 - Step 05: Verify product size is only 3 or less than 3 products");
+		log.info("TC_05 - Step 03: Verify product size is only 3 or less than 3 products");
 		verifyTrue(notebooksPage.isProductSizeLessThanOrEqualToThree(driver));
 		
-//		notebooksPage.openPageByNumber("1");
-//		notebooksPage.sleepInsecond(3 );
-//		Assert.assertTrue(homePage.isPageActiveByNumber("1"));
+		log.info("TC_05 - Step 04: Verify the current page is '1'");
+		verifyTrue(notebooksPage.isCurrenPageDisplayed("1"));
+		
+		log.info("TC_05 - Step 05: Verify next icon is displayed");
+		verifyTrue(notebooksPage.isNextOrPreviousPageIconDisplayed("next-page", "Next"));
 	}
 	
 	@Test
 	public void TC_06_Display_Six_Per_Page() {
+		log.info("TC_06 - Step 01:Select item in dropdown");
+		notebooksPage.selectItemInDropdownByName(driver, "6", "products-pagesize");
 		
+		log.info("TC_06 - Step 02: Verify item is selected");
+		verifyEquals(notebooksPage.getSelectItemInDropdownByName(driver, "products-pagesize"), "6");
+		notebooksPage.sleepInsecond(3);
+		
+		log.info("TC_06 - Step 03: Verify product size is only 6 or less than 6 products");
+		verifyTrue(notebooksPage.isProductSizeLessThanOrEqualToSix(driver));
+		
+		log.info("TC_06 - Step 04: Verify Page undispayed");
+		verifyTrue(notebooksPage.isPagerUndisplayed());
 	}
 	
 	@Test
 	public void TC_07_Display_Nine_Per_Page() {
+		log.info("TC_07 - Step 01:Select item in dropdown");
+		notebooksPage.selectItemInDropdownByName(driver, "9", "products-pagesize");
 		
+		log.info("TC_07 - Step 02: Verify item is selected");
+		verifyEquals(notebooksPage.getSelectItemInDropdownByName(driver, "products-pagesize"), "9");
+		notebooksPage.sleepInsecond(3);
+		
+		log.info("TC_07 - Step 03: Verify product size is only 9 or less than 9 products");
+		verifyTrue(notebooksPage.isProductSizeLessThanOrEqualToNine(driver));
+		
+		log.info("TC_07 - Step 04: Verify Page undispayed");
+		verifyTrue(notebooksPage.isPagerUndisplayed());
 	}
 	
 	
@@ -110,9 +125,5 @@ public class TC_01_Sort extends BaseTest {
 }
 	WebDriver driver;
 	HomePO homePage;
-	LoginPO loginPage;
-	RegisterPO registerPage;
-	DataUtil fakeData;
-	SearchPO searchPage;
 	NotebooksPO notebooksPage;
 }

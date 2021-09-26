@@ -16,7 +16,9 @@
 <!-- 			<class name="com.nopcommerce.myaccount.TC_03_Change_Password" /> -->
 <!-- 			<class name="com.nopcommerce.myaccount.TC_04_My_Product_Review" /> -->
 <!-- 			<class name="com.nopcommerce.search.TC_01_Search_Advanced_Search" /> -->
-			<class name="com.nopcommerce.sort.TC_01_Sort" />
+<!-- 			<class name="com.nopcommerce.sort.TC_01_Sort" /> -->
+		<class name="com.nopcommerce.wishlist.TC_01_Wishlist" />
+			
 		
 		</classes>
 	</test>

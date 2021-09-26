@@ -22,7 +22,6 @@ public class HomePO extends BasePage{
 		waitForElementVisible(driver, HomePageUI.LOGOUT_LINK);
 		return isElementDisplayed(driver, HomePageUI.LOGOUT_LINK);
 	}
-
 	
 
 

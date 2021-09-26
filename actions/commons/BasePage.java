@@ -20,7 +20,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.nopCommerce.RegisterPO;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.DesktopsPageUI;
 import pageUIs.nopCommerce.HomePageUI;
+import pageUIs.nopCommerce.ProductDetailsPageUI;
 import pageUIs.nopCommerce.SearchPageUI;
 
 
@@ -435,6 +437,12 @@ public class BasePage {
 		jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getElement(driver, locator));
 	}
+	
+	public void scrollToElement(WebDriver driver, String locator, String...params) {
+		locator = getDynamicLocator(locator, params);
+		jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getElement(driver, locator));
+	}
 
 	public void sendkeyToElementByJS(WebDriver driver, String locator, String value) {
 		jsExecutor = (JavascriptExecutor) driver;
@@ -633,6 +641,15 @@ public class BasePage {
 		}
 		return false;
 	}
+	
+	public void clickToLinkByText(WebDriver driver, String linkText) {
+		waitForElementClickable(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+	}
+	
+
+	
+	
 	
 	private Alert alert;
 	private WebDriverWait explicitWait;

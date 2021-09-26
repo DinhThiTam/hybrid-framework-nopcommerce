@@ -22,12 +22,6 @@ public class NotebooksPO extends BasePage{
 		this.driver = driver;
 	}
 
-	public void clickToLinkByText(WebDriver driver, String linkText) {
-		waitForElementClickable(driver, DesktopsPageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-		clickToElement(driver, DesktopsPageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-		
-	}
-
 	public boolean isProductNameSortAscending() {
 		List<WebElement> productNameElements = getElements(driver, NoteBooksPageUI.PRODUCT_NAME);
 		List<String> productNameText = new ArrayList<String>();
@@ -94,10 +88,25 @@ public class NotebooksPO extends BasePage{
 		return productNamePrice.equals(productNamePriceClone);
 	}
 
-//	public void openPageByNumber(String pageNumber) {
-//		waitForElementClickable(driver,HomePageUI.PAGING_BY_NUMBER, pageNumber);
-//		clickToElement(driver,HomePageUI.PAGING_BY_NUMBER, pageNumber);	
-//	}
+	public boolean isCurrenPageDisplayed(String pageNumber) {
+			waitForElementClickable(driver, NoteBooksPageUI.PAGING_NUMBER_CURRENT_PAGE, pageNumber);
+		return isElementDisplayed(driver, NoteBooksPageUI.PAGING_NUMBER_CURRENT_PAGE, pageNumber);
+	}
+
+	public void openPageByNumber(String pageNumber) {
+		waitForElementClickable(driver,NoteBooksPageUI.PAGING_BY_NUMBER, pageNumber);
+		clickToElement(driver,NoteBooksPageUI.PAGING_BY_NUMBER, pageNumber);	
+	}
+	
+	public boolean isNextOrPreviousPageIconDisplayed(String pageNextOrPrevious, String pageText) {
+		waitForElementClickable(driver, NoteBooksPageUI.PAGING_ICON_BY_NEXT_PREVIOUS_PAGE_AND_TEXT, pageNextOrPrevious, pageText);
+		return isElementDisplayed(driver, NoteBooksPageUI.PAGING_ICON_BY_NEXT_PREVIOUS_PAGE_AND_TEXT, pageNextOrPrevious, pageText);
+}
+
+	public boolean isPagerUndisplayed() {
+		waitForElementInvisible(driver, NoteBooksPageUI.PAGER_DISPLAY);
+		return isElementUnDisplayed(driver, NoteBooksPageUI.PAGER_DISPLAY);
+	}
 	
 
 }
