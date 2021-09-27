@@ -10,6 +10,6 @@ public class BasePageUI {
 	public static final String MENU_FOOTER_BY_NAME = "//div[@class='footer']//a[text()='%s']";
 	public static final String PRODUCT_TITLE_SIZE= "//h2[@class='product-title']";
 	public static final String PRODUCT_TITLE_BY_TEXT = "//a[text()='%s']";
-	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//a[text()='%s']";
-	public static final String TABLE_HEADER_BY_ID_AND_NAME = "//table[@id='%s']//th[string()='%s']//preceding-sibling::th";
+	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//table[@class='%s']//tbody/tr[%s]/td[%s]";
+	public static final String TABLE_HEADER_BY_CLASS_AND_NAME = "//table[@class='%s']//tr/th[text()='%s']/preceding-sibling::th";
 }

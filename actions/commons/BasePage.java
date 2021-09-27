@@ -18,12 +18,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.nopCommerce.RegisterPO;
 import pageUIs.nopCommerce.BasePageUI;
-import pageUIs.nopCommerce.DesktopsPageUI;
-import pageUIs.nopCommerce.HomePageUI;
-import pageUIs.nopCommerce.ProductDetailsPageUI;
-import pageUIs.nopCommerce.SearchPageUI;
+
 
 
 
@@ -304,6 +300,28 @@ public class BasePage {
 	}
 	
 	public boolean isElementUnDisplayed(WebDriver driver, String locator) {
+		System.out.println("Start time = " + new Date().toString());
+		overrideGlobalTimeout(driver, shortTimeout);
+		List<WebElement> elements = getElements(driver, locator);
+		overrideGlobalTimeout(driver, longTimeout);
+		
+		if (elements.size() == 0) {
+			System.out.println("Element not in DOM and not visible on UI");
+			System.out.println("End time " + new Date().toString());
+			return true;		
+		}else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			System.out.println("Element in DOM but not visible/dislpayed on UI");
+			System.out.println("End time " + new Date().toString());
+			return true;
+		}else {
+			System.out.println("Element in DOM and visible on UI");
+			return false;
+		}
+		
+	}
+	
+	public boolean isElementUnDisplayed(WebDriver driver, String locator, String...params) {
+		locator = getDynamicLocator(locator, params);
 		System.out.println("Start time = " + new Date().toString());
 		overrideGlobalTimeout(driver, shortTimeout);
 		List<WebElement> elements = getElements(driver, locator);
@@ -648,9 +666,15 @@ public class BasePage {
 	}
 	
 	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
-		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_ID_AND_NAME, tableID,headerName) + 1;
+		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_CLASS_AND_NAME, tableID,headerName) + 1;
 		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
 		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+	}
+	
+	public boolean isValueInTableUnDisplayed(WebDriver driver, String tableID, String rowIndex, String headerName) {
+		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_CLASS_AND_NAME, tableID,headerName) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+		return isElementDisplayed(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
 	}
 	
 

@@ -20,7 +20,7 @@ import pageObject.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
-public class TC_01_Wishlist extends BaseTest {
+public class TC_01_Add_To_Wishlist extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress,password, birthDay, birthMonth, birthYear, companyName;
 	
@@ -66,7 +66,7 @@ public class TC_01_Wishlist extends BaseTest {
 	}
 	@Test
 	public void Wishlist_01_Add_To_Wishlist() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops'");
+		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
 		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
@@ -77,12 +77,26 @@ public class TC_01_Wishlist extends BaseTest {
 		
 		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
 		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
-		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText("The product has been added to your "), "The product has been added to your wishlist");	
-		productDetailsPage.clickToCloseIconInMessage();
 		
-		log.info("Pre-Condition - Step 02: Open 'Wishlist' page on header");
+		log.info("Wishlist_01 - Step 04: Verify message is displayed");
+		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(), "The product has been added to your wishlist");
+		
+		log.info("Wishlist_01 - Step 05: Click to Close icon");
+		productDetailsPage.clickToCloseIconInMessage();
+		productDetailsPage.sleepInsecond(2);
+		
+		log.info("Wishlist_01 - Step 06: Open 'Wishlist' page on header");
 		productDetailsPage.openMenuHeaderPageByClass(driver, "ico-wishlist");
 		wishlistPage = PageGenerator.getWishlistPage(driver);
+		
+		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
+		verifyEquals(wishlistPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		
+		log.info("Wishlist_01 - Step 08: Click to 'Your wishlist URL for sharing' link");
+		wishlistPage.clickToLinkForShare();
+		
+		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
+		verifyTrue(wishlistPage.isPageTitleDisplayedByText(firstName,lastName));
 	}
 	
 	@Parameters({"browser"})
