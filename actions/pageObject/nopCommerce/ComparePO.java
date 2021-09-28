@@ -6,13 +6,14 @@ import commons.BasePage;
 //import pageObjects.user.nopCommerce.HomePageObject;
 //import pageObjects.user.nopCommerce.SearchPageObject;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.ComparePageUI;
 import pageUIs.nopCommerce.RegisterPageUI;
 import pageUIs.nopCommerce.WishlistPageUI;
 
-public class WishlistPO extends BasePage{
+public class ComparePO extends BasePage{
 	private WebDriver driver;
 
-	public WishlistPO(WebDriver driver) {
+	public ComparePO(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -46,6 +47,12 @@ public class WishlistPO extends BasePage{
 	public boolean isValueInTableUnDisplayed(String rowNumber,String addToCartClass, String skuClass, String imageClass,String productClass, String priceClass, String qtyClass, String totalClass, String removeClass) {
 		waitForElementInvisible(driver, WishlistPageUI.VALUE_IN_ROW_BY_CLASS, rowNumber,addToCartClass,skuClass,imageClass,productClass,priceClass,qtyClass,totalClass,removeClass);
 		return isElementUnDisplayed(driver, WishlistPageUI.VALUE_IN_ROW_BY_CLASS, rowNumber,addToCartClass,skuClass,imageClass,productClass,priceClass,qtyClass,totalClass,removeClass);
+	}
+
+	public void clickToClearListButton() {
+		waitForElementClickable(driver, ComparePageUI.CLEAR_LIST_BUTTON);
+		clickToElement(driver, ComparePageUI.CLEAR_LIST_BUTTON);
+		
 	}
 
 

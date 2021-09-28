@@ -79,10 +79,10 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
 		
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
-		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(), "The product has been added to your wishlist");
+		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver), "The product has been added to your wishlist");
 		
 		log.info("Wishlist_01 - Step 05: Click to Close icon");
-		productDetailsPage.clickToCloseIconInMessage();
+		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.sleepInsecond(2);
 		
 		log.info("Wishlist_01 - Step 06: Open 'Wishlist' page on header");
@@ -90,7 +90,7 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		wishlistPage = PageGenerator.getWishlistPage(driver);
 		
 		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
 		log.info("Wishlist_01 - Step 05: Click to Checkbox at line '1' ");
 		wishlistPage.clickToPageActionByRowAndClass("1","add-to-cart");
@@ -99,7 +99,7 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		wishlistPage.clickToButtonByName(driver, "Add to cart");
 		
 		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
 		log.info("Wishlist_01 - Step 07: Verify shopping cart title is displayed");
 		verifyTrue(wishlistPage.isPageTitleShoppingCartDisplayed());
@@ -125,5 +125,4 @@ public class TC_02_Add_To_Cart extends BaseTest {
 	DesktopsPO desktopsPage;
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
-
 }

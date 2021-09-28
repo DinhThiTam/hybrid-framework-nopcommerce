@@ -79,10 +79,10 @@ public class TC_03_Remove_Product extends BaseTest {
 		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
 		
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
-		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(), "The product has been added to your wishlist");
+		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver), "The product has been added to your wishlist");
 		
 		log.info("Wishlist_01 - Step 05: Click to Close icon");
-		productDetailsPage.clickToCloseIconInMessage();
+		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.sleepInsecond(2);
 		
 		log.info("Wishlist_01 - Step 06: Open 'Wishlist' page on header");
@@ -90,7 +90,7 @@ public class TC_03_Remove_Product extends BaseTest {
 		wishlistPage = PageGenerator.getWishlistPage(driver);
 		
 		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
 		log.info("Wishlist_01 - Step 05: Click to Remove icon at line '1' ");
 		wishlistPage.clickToPageActionByRowAndClass("1","remove-from-cart");

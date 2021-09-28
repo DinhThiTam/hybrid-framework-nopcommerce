@@ -58,5 +58,11 @@ public class PageGenerator {
 
 		return new WishlistPO(driver);
 	}
+	
+	public static ComparePO getComparePage(WebDriver driver) {
+
+		return new ComparePO(driver);
+	}
+
 
 }

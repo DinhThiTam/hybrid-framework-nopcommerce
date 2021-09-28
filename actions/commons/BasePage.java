@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.ProductDetailsPageUI;
 
 
 
@@ -665,19 +666,34 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
 	}
 	
-	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
-		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_CLASS_AND_NAME, tableID,headerName) + 1;
+	public String getValueInTableIDAtColumnHorizontalNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
+		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME, tableID,headerName) + 1;
 		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
 		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
 	}
 	
-	public boolean isValueInTableUnDisplayed(WebDriver driver, String tableID, String rowIndex, String headerName) {
-		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_BY_CLASS_AND_NAME, tableID,headerName) + 1;
-		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
-		return isElementDisplayed(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+	public String getValueInTableIDAtColumnVerticalByClassAndRowIndex(WebDriver driver, String tableID, String columnIndex, String headerClass) {
+		int rowIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_VERTICAL_BY_CLASS_AND_NAME, tableID,headerClass) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,String.valueOf(rowIndex),columnIndex);
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, String.valueOf(rowIndex),columnIndex);
 	}
 	
-
+	
+	
+	public String getMessageInProductDetailsDisplayedByText(WebDriver driver) {
+		waitForElementVisible(driver, BasePageUI.MESSAGE_BY_TEXT);
+		return getElementText(driver, BasePageUI.MESSAGE_BY_TEXT);
+	}
+	
+	public void clickToCloseIconInMessage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.CLOSE_ICON_IN_MESSAGE);
+		clickToElement(driver, BasePageUI.CLOSE_ICON_IN_MESSAGE);
+	}
+	
+	public void clickToButtonAddToSomethingByProductTitleAndButtonTitle(WebDriver driver, String productTitle,String buttonTitle) {
+		waitForElementClickable(driver, BasePageUI.BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE, productTitle,buttonTitle);
+		clickToElement(driver, BasePageUI.BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE, productTitle,buttonTitle);
+	}
 	
 	
 	

@@ -12,21 +12,13 @@ public class ProductDetailsPO extends BasePage{
 		this.driver = driver;
 	}
 
-	public String getMessageInProductDetailsDisplayedByText() {
-		waitForElementVisible(driver, ProductDetailsPageUI.MESSAGE_BY_TEXT);
-		return getElementText(driver, ProductDetailsPageUI.MESSAGE_BY_TEXT);
-	}
-	
 
 	public void clickButtonByID(String buttonID) {
 		scrollToElement(driver, ProductDetailsPageUI.BUTTON_BY_ID, buttonID);
 		clickToElement(driver, ProductDetailsPageUI.BUTTON_BY_ID, buttonID);
 		
 	}
-	public void clickToCloseIconInMessage() {
-		waitForElementClickable(driver, ProductDetailsPageUI.CLOSE_ICON_IN_MESSAGE);
-		clickToElement(driver, ProductDetailsPageUI.CLOSE_ICON_IN_MESSAGE);
-	}
+
 
 
 	
