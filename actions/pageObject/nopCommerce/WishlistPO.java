@@ -38,10 +38,6 @@ public class WishlistPO extends BasePage{
 		return isElementDisplayed(driver, WishlistPageUI.PAGE_TITLE_SHOPPING_CART);
 	}
 
-	public boolean isPageMessageNoDataDisplayedByText(String messageText) {
-		waitForElementVisible(driver, WishlistPageUI.NO_DATA_PAGE_BY_TEXT, messageText);
-		return isElementDisplayed(driver, WishlistPageUI.NO_DATA_PAGE_BY_TEXT, messageText);
-	}
 
 	public boolean isValueInTableUnDisplayed(String rowNumber,String addToCartClass, String skuClass, String imageClass,String productClass, String priceClass, String qtyClass, String totalClass, String removeClass) {
 		waitForElementInvisible(driver, WishlistPageUI.VALUE_IN_ROW_BY_CLASS, rowNumber,addToCartClass,skuClass,imageClass,productClass,priceClass,qtyClass,totalClass,removeClass);

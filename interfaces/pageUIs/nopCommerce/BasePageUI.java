@@ -16,4 +16,5 @@ public class BasePageUI {
 	public static final String BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE = "//a[text()='%s']/parent::h2[@class='product-title']//following-sibling::div[@class='add-info']//button[@title='%s']";
 	public static final String MESSAGE_BY_TEXT = "//p[@class='content']";
 	public static final String CLOSE_ICON_IN_MESSAGE = "//span[@title='Close']";
+	public static final String NO_DATA_PAGE_BY_TEXT = "//div[@class='page-body']/div[contains(string(),'%s')]";
 }

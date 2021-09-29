@@ -96,7 +96,7 @@ public class TC_03_Remove_Product extends BaseTest {
 		wishlistPage.clickToPageActionByRowAndClass("1","remove-from-cart");
 		
 		log.info("Wishlist_01 - Step 07: Verify message no data in page");
-		verifyTrue(wishlistPage.isPageMessageNoDataDisplayedByText("The wishlist is empty!"));
+		verifyTrue(wishlistPage.isPageMessageNoDataDisplayedByText(driver, "The wishlist is empty!"));
 		
 		log.info("Wishlist_01 - Step 07: Verify shopping cart title is displayed");
 		verifyTrue(wishlistPage.isValueInTableUnDisplayed("1", "add-to-cart", "sku","product-picture","product","unit-price","quantity","subtotal","remove-from-cart"));
@@ -118,5 +118,6 @@ public class TC_03_Remove_Product extends BaseTest {
 	DesktopsPO desktopsPage;
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
+
 
 }

@@ -15,14 +15,15 @@ import pageObject.nopCommerce.MyAccountPO;
 import pageObject.nopCommerce.NotebooksPO;
 import pageObject.nopCommerce.PageGenerator;
 import pageObject.nopCommerce.ProductDetailsPO;
+import pageObject.nopCommerce.RecentlyViewrdProductsPO;
 import pageObject.nopCommerce.RegisterPO;
 import pageObject.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
-public class TC_02_Add_To_Cart extends BaseTest {
+public class TC_05_Recently_Viewed_Product extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
-	String firstName, lastName, emailAddress,password, birthDay, birthMonth, birthYear, companyName;
+	String firstName, lastName, emailAddress,password ;
 	
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -71,42 +72,43 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("Wishlist_01 - Step 02: Click to the product title link");
-		notebooksPage.clickToLinkByText(driver,"Apple MacBook Pro 13-inch");
+		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
-		
 		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
-		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
+		productDetailsPage.backPage(driver);
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 04: Verify message is displayed");
-		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver), "The product has been added to your wishlist");
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToProductLinkByText(driver,"Asus N551JK-XO076H Laptop");
+		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
+		productDetailsPage.backPage(driver);
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 05: Click to Close icon");
-		productDetailsPage.clickToCloseIconInMessage(driver);
-		productDetailsPage.sleepInsecond(2);
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToProductLinkByText(driver,"Samsung Series 9 NP900X4C Premium Ultrabook");
+		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
+		productDetailsPage.backPage(driver);
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 06: Open 'Wishlist' page on header");
-		productDetailsPage.openMenuHeaderPageByClass(driver, "ico-wishlist");
-		wishlistPage = PageGenerator.getWishlistPage(driver);
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToProductLinkByText(driver,"HP Spectre XT Pro UltraBook");
+		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
+		productDetailsPage.backPage(driver);
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToProductLinkByText(driver,"HP Envy 6-1180ca 15.6-Inch Sleekbook");
+		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
-		log.info("Wishlist_01 - Step 05: Click to Checkbox at line '1' ");
-		wishlistPage.clickToPageActionByRowAndClass("1","add-to-cart");
+		productDetailsPage.openMenuFooterPageByName(driver, "Recently viewed products");
+		recentlyViewPage = PageGenerator.getRecentlyViewedProductsPage(driver);
+		recentlyViewPage.isProductDisplayedByTitle(driver, "Samsung Series 9 NP900X4C Premium Ultrabook");
+		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Spectre XT Pro UltraBook");
+		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook");
 		
-		log.info("Wishlist_01 - Step 05: Click to 'Add to cart' button");
-		wishlistPage.clickToButtonByName(driver, "Add to cart");
 		
-		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
-		log.info("Wishlist_01 - Step 07: Verify shopping cart title is displayed");
-		verifyTrue(wishlistPage.isPageTitleShoppingCartDisplayed());
-		wishlistPage.backPage(driver);
-		
-		log.info("Wishlist_01 - Step 07: Verify message no data in page");
-		verifyTrue(wishlistPage.isPageMessageNoDataDisplayedByText(driver, "The wishlist is empty!"));
 	}
 	
 	@Parameters({"browser"})
@@ -125,4 +127,5 @@ public class TC_02_Add_To_Cart extends BaseTest {
 	DesktopsPO desktopsPage;
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
+	RecentlyViewrdProductsPO recentlyViewPage;
 }

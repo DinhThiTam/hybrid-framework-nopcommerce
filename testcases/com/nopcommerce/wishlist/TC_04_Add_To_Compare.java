@@ -104,7 +104,11 @@ import pageObject.nopCommerce.DesktopsPO;
 			verifyEquals(comparePage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "compare-products-table", "3", "product-price"),"$1,200.00");
 			
 			comparePage.clickToClearListButton();
-			comparePage.isPageMessageNoDataDisplayedByText("You have no items to compare.");
+			comparePage.isPageMessageNoDataDisplayedByText(driver, "You have no items to compare.");
+			
+			verifyTrue(comparePage.isRowProductItemDisplayedByText(" ","Remove","Remove"));
+			verifyTrue(comparePage.isRowProductItemDisplayedByText("Name","Digital Storm VANQUISH 3 Custom Performance PC","Build your own computer"));
+			verifyTrue(comparePage.isRowProductItemDisplayedByText("Price","$1,259.00","$1,200.00"));
 			
 		}
 		

@@ -63,6 +63,11 @@ public class PageGenerator {
 
 		return new ComparePO(driver);
 	}
+	
+	public static RecentlyViewrdProductsPO getRecentlyViewedProductsPage(WebDriver driver) {
+
+		return new RecentlyViewrdProductsPO(driver);
+	}
 
 
 }

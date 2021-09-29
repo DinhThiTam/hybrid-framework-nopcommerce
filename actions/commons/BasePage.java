@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.ProductDetailsPageUI;
+import pageUIs.nopCommerce.WishlistPageUI;
 
 
 
@@ -666,6 +667,16 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
 	}
 	
+	public boolean isProductDisplayedByTitle(WebDriver driver, String productTitle) {
+		waitForElementVisible(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, productTitle);
+		return isElementDisplayed(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, productTitle);
+	}
+	
+	public void clickToProductLinkByText(WebDriver driver, String linkText) {
+		waitForElementClickable(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+	}
+	
 	public String getValueInTableIDAtColumnHorizontalNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
 		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME, tableID,headerName) + 1;
 		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
@@ -695,7 +706,10 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE, productTitle,buttonTitle);
 	}
 	
-	
+	public boolean isPageMessageNoDataDisplayedByText(WebDriver driver, String messageText) {
+		waitForElementVisible(driver, BasePageUI.NO_DATA_PAGE_BY_TEXT, messageText);
+		return isElementDisplayed(driver, BasePageUI.NO_DATA_PAGE_BY_TEXT, messageText);
+	}
 	
 	private Alert alert;
 	private WebDriverWait explicitWait;
