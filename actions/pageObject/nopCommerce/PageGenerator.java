@@ -65,8 +65,13 @@ public class PageGenerator {
 	}
 	
 	public static RecentlyViewrdProductsPO getRecentlyViewedProductsPage(WebDriver driver) {
-
+		
 		return new RecentlyViewrdProductsPO(driver);
+	}
+	
+	public static ShoppingCartPO getShoppingCartPage(WebDriver driver) {
+
+		return new ShoppingCartPO(driver);
 	}
 
 

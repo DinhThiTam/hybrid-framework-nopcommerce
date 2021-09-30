@@ -1,6 +1,7 @@
 
 package com.nopcommerce.order;
 
+import org.apache.commons.collections4.sequence.ReplacementsFinder;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.AfterClass;
@@ -18,13 +19,16 @@ import pageObject.nopCommerce.NotebooksPO;
 import pageObject.nopCommerce.PageGenerator;
 import pageObject.nopCommerce.ProductDetailsPO;
 import pageObject.nopCommerce.RegisterPO;
+import pageObject.nopCommerce.ShoppingCartPO;
 import pageObject.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 public class TC_01_Add_Product_To_Cart extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, processorProduct, ramProduct, hddProduct, sProduct,
-			softwareMicrosoft, softwareAcrobat, softwareTotal;
+			softwareMicrosoft, softwareAcrobat, softwareTotal, rightUnitPrice ;
+	int quantity;
+	float totalPrice, unitPrice, replaceUnitPrice;
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
@@ -47,7 +51,11 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		softwareMicrosoft = "Microsoft Office [+$50.00]";
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
-
+		
+		
+		quantity = 1;
+		
+		totalPrice = unitPrice*quantity;
 		log.info("Pre-Condition - Step 02: Open Register page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
 		registerPage = PageGenerator.getRegisterPage(driver);
@@ -76,7 +84,7 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 	}
 
 	@Test
-	public void Add_Product_To_Cart() {
+	public void Add_Product_To_Cart_01() {
 		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops '");
 		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
@@ -104,19 +112,26 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 
 		productDetailsPage.hoverToShoppingCartHeaderMenu();
-
+		replaceUnitPrice = productDetailsPage.getPriceUnit();
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("There are 1 item(s) in your cart."));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(" Processor: " + processorProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("RAM: " + ramProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("HDD: " + hddProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
-//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Unit price: $1,475.00"));
-//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: 1"));
-//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Sub-Total: $1,475.00"));
-		
-
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Unit price: " + String.valueOf(replaceUnitPrice)));
+//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + quantity));
+//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Sub-Total: " + totalPrice));
 	}
+	
+	@Test
+	public void Edit_Product_To_Cart_02() {
+		productDetailsPage.clickToButtonByName(driver, "Go to cart");
+		shoppingCartPO = PageGenerator.getShoppingCartPage(driver);
+		
+		
+	}
+
 
 	@Parameters({ "browser" })
 	@AfterClass(alwaysRun = true)
@@ -136,5 +151,6 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
 	ComparePO comparePage;
+	ShoppingCartPO shoppingCartPO;
 
 }

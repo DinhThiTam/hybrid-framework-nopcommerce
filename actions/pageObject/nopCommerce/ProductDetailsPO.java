@@ -32,6 +32,14 @@ public class ProductDetailsPO extends BasePage{
 	}
 
 
+	public float getPriceUnit() {
+		String unitPrice = getElementText(driver, ProductDetailsPageUI.UNIT_PRICE).replaceAll(",", "");
+		float unitPriceCast = Float.parseFloat(unitPrice);
+		System.out.println(unitPriceCast);
+		return unitPriceCast;
+	}
+
+
 
 
 	
