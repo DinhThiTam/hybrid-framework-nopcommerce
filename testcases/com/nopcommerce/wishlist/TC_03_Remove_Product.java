@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.nopcommerce.common.Common_01_Login;
+
 import commons.BaseTest;
 import pageObject.nopCommerce.DesktopsPO;
 import pageObject.nopCommerce.HomePO;
@@ -31,43 +33,27 @@ public class TC_03_Remove_Product extends BaseTest {
 		driver = getBrowserDriver(browserName, appURL);
 		homePage = PageGenerator.getHomePage(driver);
 		verifyTrue(homePage.isHomePageSliderDisplayed());
-		fakeData = DataUtil.getData();
 		
-		firstName = fakeData.getFirstName();
-		lastName = fakeData.getLastName();
-		emailAddress = fakeData.getEmailAddress();
-		password = fakeData.getPassword();
+		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-login");
+		loginPage = PageGenerator.getLoginPage(driver);
 		
-		log.info("Pre-Condition - Step 02: Open Register page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-register");
-		registerPage = PageGenerator.getRegisterPage(driver);
+		log.info("Pre-Condition - Step 03: Set login page cookie");
+		loginPage.setAllCookies(driver, Common_01_Login.loginPageCookie);
+		loginPage.sleepInsecond(5);
+		loginPage.refreshPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		log.info("Pre-Condition - Step 04: Open homepage");
+		homePage =  loginPage.openHomePage();
 		
-		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", lastName);
-		
-		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
-		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
-		
-		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
-		registerPage.enterToTextboxByID(driver,"Password", password);
-		
-		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
-		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
-		
-		log.info("Pre-Condition - Step 08: Click to 'Register' button");
-		registerPage.clickToButtonByName(driver, "Register");
-		
-		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
-		verifyTrue(registerPage.isSuccessMessageDisplayed());
+		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
+		verifyTrue(homePage.isHomePageSliderDisplayed());
 	
 	}
 	@Test
-	public void Add_To_Cart_01() {
+	public void Remove_Product_01() {
 		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
-		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
+		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("Wishlist_01 - Step 02: Click to the product title link");
