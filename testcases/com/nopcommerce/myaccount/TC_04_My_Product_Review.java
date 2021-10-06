@@ -74,11 +74,11 @@ public class TC_04_My_Product_Review extends BaseTest {
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
 		
 		log.info("My_Product_Review_01 - Step 02: Click to the product title link");
-		desktopsPage.clickToLinkByText(driver,"Build your own computer");
+		desktopsPage.clickToProductLinkByText(driver,"Build your own computer");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		log.info("My_Product_Review_01 - Step 03: Click to 'Add your review' link");
-		productDetailsPage.clickToLinkByText(driver,"Add your review");
+		productDetailsPage.clickToProductLinkByText(driver,"Add your review");
 		productReviewPage = PageGenerator.getReviewProductPage(driver);
 		
 		

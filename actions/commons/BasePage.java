@@ -662,10 +662,10 @@ public class BasePage {
 		return false;
 	}
 	
-	public void clickToLinkByText(WebDriver driver, String linkText) {
-		waitForElementClickable(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
-	}
+//	public void clickToLinkByText(WebDriver driver, String linkText) {
+//		waitForElementClickable(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+//		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
+//	}
 	
 	public boolean isProductDisplayedByTitle(WebDriver driver, String productTitle) {
 		waitForElementVisible(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, productTitle);

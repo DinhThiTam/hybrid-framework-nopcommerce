@@ -57,7 +57,7 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("Wishlist_01 - Step 02: Click to the product title link");
-		notebooksPage.clickToLinkByText(driver,"Apple MacBook Pro 13-inch");
+		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		

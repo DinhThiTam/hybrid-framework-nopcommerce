@@ -57,7 +57,7 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("Wishlist_01 - Step 02: Click to the product title link");
-		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
+		notebooksPage.clickToProductLinkByText(driver,"Asus N551JK-XO076H Laptop");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");

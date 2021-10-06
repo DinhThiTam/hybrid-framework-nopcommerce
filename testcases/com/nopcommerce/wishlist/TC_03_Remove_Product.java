@@ -57,12 +57,12 @@ public class TC_03_Remove_Product extends BaseTest {
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("Wishlist_01 - Step 02: Click to the product title link");
-		notebooksPage.clickToLinkByText(driver,"Apple MacBook Pro 13-inch");
+		notebooksPage.clickToProductLinkByText(driver,"Asus N551JK-XO076H Laptop");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		
 		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
-		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
+		productDetailsPage.clickButtonByID("add-to-wishlist-button-5");
 		
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
 		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver), "The product has been added to your wishlist");
@@ -76,7 +76,7 @@ public class TC_03_Remove_Product extends BaseTest {
 		wishlistPage = PageGenerator.getWishlistPage(driver);
 		
 		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
+		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Asus N551JK-XO076H Laptop");
 		
 		log.info("Wishlist_01 - Step 05: Click to Remove icon at line '1' ");
 		wishlistPage.clickToPageActionByRowAndClass("1","remove-from-cart");
