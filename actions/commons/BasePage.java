@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.hc.client5.http.cookie.SetCookie;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
@@ -18,7 +19,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import pageUIs.admin.nopCommerce.AdminBasePageUI;
+
 import pageUIs.nopCommerce.BasePageUI;
+
 import pageUIs.nopCommerce.ProductDetailsPageUI;
 import pageUIs.nopCommerce.WishlistPageUI;
 
@@ -711,6 +716,29 @@ public class BasePage {
 		return isElementDisplayed(driver, BasePageUI.NO_DATA_PAGE_BY_TEXT, messageText);
 	}
 	
+	// Admin - Nopcommerce
+//	public void openSubMenuByName(WebDriver driver, String menuName, String subMenuName) {
+//		waitForElementClickable(driver,AdminBasePageUI.MENU_BY_NAME, menuName);
+//		clickToElement(driver, AdminBasePageUI.MENU_BY_NAME, menuName);
+//		
+//		waitForElementClickable(driver,AdminBasePageUI.SUBMENU_BY_NAME, subMenuName);
+//		clickToElement(driver, AdminBasePageUI.SUBMENU_BY_NAME, subMenuName);
+//		
+//	}
+	
+	public void openSubMenuPageByName(WebDriver driver, String menuPageName, String subMenuPageName) {
+		waitForElementClickable(driver, AdminBasePageUI.MENU_LINK_BY_NAME, menuPageName);
+		clickToElement(driver, AdminBasePageUI.MENU_LINK_BY_NAME, menuPageName);
+		
+		waitForElementClickable(driver, AdminBasePageUI.SUB_MENU_LINK_BY_NAME, subMenuPageName);
+		clickToElement(driver, AdminBasePageUI.SUB_MENU_LINK_BY_NAME, subMenuPageName);
+	}	
+	
+	public void clickToButtonByID(WebDriver driver, String buttonID) {
+		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
+		clickToElement(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
+		
+	}
 	private Alert alert;
 	private WebDriverWait explicitWait;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;

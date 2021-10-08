@@ -18,14 +18,7 @@ public class LoginPO extends BasePage{
 		senkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, emailAddress);
 	}
 
-	public HomePO clickToLoginButton() {
-		waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
-		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);	
-		if(driver.toString().contains("chrome") || driver.toString().contains("edge")) {
-			sleepInsecond(3);
-		}
-		return new HomePO(driver);
-	}
+
 
 	public void enterToPasswordTextbox(String password) {
 		waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
@@ -57,21 +50,16 @@ public class LoginPO extends BasePage{
 		return isElementDisplayed(driver, LoginPageUI.LOGIN_PASSWORD_INVALID_MESSAGE);
 	}
 	
-	public HomePO loginToSystem(String emailAddress, String password ) {
-		enterToEmailTextbox(emailAddress);
-		enterToPasswordTextbox(password);
-		clickToLoginButton();
-		return new HomePO(driver);
-	}
-	public HomePO openHomePage() {
-		waitForElementClickable(driver, LoginPageUI.HOMEPAGE_IMAGE);
-		clickToElement(driver, LoginPageUI.HOMEPAGE_IMAGE);
-		return new HomePO(driver);
-	}
+
 
 	public boolean isLoginPageTitleAdminDisplayed() {
 		waitForElementVisible(driver, LoginPageUI.ADMIN_LOGINPAGE_TITLE);
 		return isElementDisplayed(driver, LoginPageUI.ADMIN_LOGINPAGE_TITLE);
+	}
+
+	public DashboardPO openDashboard() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
