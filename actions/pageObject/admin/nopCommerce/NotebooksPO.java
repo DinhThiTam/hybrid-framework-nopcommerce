@@ -1,4 +1,4 @@
-package pageObject.nopCommerce;
+package pageObject.admin.nopCommerce;
 
 import java.util.ArrayList;
 import java.util.Collections;

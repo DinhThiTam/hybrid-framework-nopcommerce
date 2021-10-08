@@ -10,4 +10,5 @@ public class LoginPageUI {
 	public static final String LOGIN_PASSWORD_EMPTY_MESSAGE = "//div[text()='Login was unsuccessful. Please correct the errors and try again.']//li[text()='The credentials provided are incorrect']";
 	public static final String LOGIN_PASSWORD_INVALID_MESSAGE = "//div[text()='Login was unsuccessful. Please correct the errors and try again.']//li[text()='The credentials provided are incorrect']";
 	public static final String HOMEPAGE_IMAGE = "//img[@alt='nopCommerce demo store']";
+	public static final String ADMIN_LOGINPAGE_TITLE = "//div[@class='title']";
 }

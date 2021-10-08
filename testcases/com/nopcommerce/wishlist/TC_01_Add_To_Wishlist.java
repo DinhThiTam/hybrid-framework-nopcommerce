@@ -7,18 +7,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.nopcommerce.common.Common_01_Login;
+import com.nopcommerce.common.Common_01_Login_User;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.DesktopsPO;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.NotebooksPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.ProductDetailsPO;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.WishlistPO;
+import pageObject.user.nopCommerce.DesktopsPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.NotebooksPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.ProductDetailsPO;
+import pageObject.user.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
@@ -39,7 +39,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		loginPage = PageGenerator.getLoginPage(driver);
 		
 		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login.loginPageCookie);
+		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
 		loginPage.sleepInsecond(5);
 		loginPage.refreshPage(driver);
 		
@@ -82,7 +82,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		wishlistPage.clickToLinkForShare();
 		
 		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
-		verifyTrue(wishlistPage.isPageTitleDisplayedByText(Common_01_Login.firstName,Common_01_Login.lastName));
+		verifyTrue(wishlistPage.isPageTitleDisplayedByText(Common_01_Login_User.firstName,Common_01_Login_User.lastName));
 	}
 	
 	@Parameters({"browser"})

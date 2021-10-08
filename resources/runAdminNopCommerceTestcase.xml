@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="User_Nop Commerce">
+	<parameter name="url" value="https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/" />
+	<listeners>
+		<listener class-name="reportConfig.MethodListener" />
+		<listener class-name="reportConfig.ReportNGListener" />
+	</listeners>
+
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
+		<classes>
+		<class name="com.nopcommerce.common.Common_02_Login_Admin" />
+		<class name="com.nopcommerce.wishlist.TC_01_Add_To_Wishlist" />
+		</classes>
+	</test>
+	
+</suite>

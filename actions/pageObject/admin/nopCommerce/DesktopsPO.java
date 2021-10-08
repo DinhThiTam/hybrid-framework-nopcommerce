@@ -1,27 +1,22 @@
-package pageObject.nopCommerce;
+package pageObject.admin.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import pageUIs.nopCommerce.DesktopsPageUI;
 import pageUIs.nopCommerce.HomePageUI;
 import pageUIs.nopCommerce.MyAccountUI;
-import pageUIs.nopCommerce.ProductReviewPageUI;
 
-public class RecentlyViewrdProductsPO extends BasePage{
+public class DesktopsPO extends BasePage{
 	private WebDriver driver;
 
-	public RecentlyViewrdProductsPO(WebDriver driver) {
+	public DesktopsPO(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	
-
-
-
-
-
-
 	
 
+	
 
 }

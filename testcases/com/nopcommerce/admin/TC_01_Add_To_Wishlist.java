@@ -1,4 +1,4 @@
-package com.nopcommerce.wishlist;
+package com.nopcommerce.admin;
 
 import org.openqa.selenium.WebDriver;
 
@@ -22,7 +22,7 @@ import pageObject.user.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
-public class TC_02_Add_To_Cart extends BaseTest {
+public class TC_01_Add_To_Wishlist extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress,password, birthDay, birthMonth, birthYear, companyName;
 	
@@ -51,7 +51,7 @@ public class TC_02_Add_To_Cart extends BaseTest {
 	
 	}
 	@Test
-	public void Add_To_Cart_01() {
+	public void Wishlist_01_Add_To_Wishlist() {
 		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
@@ -78,21 +78,11 @@ public class TC_02_Add_To_Cart extends BaseTest {
 		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
 		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
-		log.info("Wishlist_01 - Step 05: Click to Checkbox at line '1' ");
-		wishlistPage.clickToPageActionByRowAndClass("1","add-to-cart");
+		log.info("Wishlist_01 - Step 08: Click to 'Your wishlist URL for sharing' link");
+		wishlistPage.clickToLinkForShare();
 		
-		log.info("Wishlist_01 - Step 05: Click to 'Add to cart' button");
-		wishlistPage.clickToButtonByName(driver, "Add to cart");
-		
-		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
-		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
-		
-		log.info("Wishlist_01 - Step 07: Verify shopping cart title is displayed");
-		verifyTrue(wishlistPage.isPageTitleShoppingCartDisplayed());
-		wishlistPage.backPage(driver);
-		
-		log.info("Wishlist_01 - Step 07: Verify message no data in page");
-		verifyTrue(wishlistPage.isPageMessageNoDataDisplayedByText(driver, "The wishlist is empty!"));
+		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
+		verifyTrue(wishlistPage.isPageTitleDisplayedByText(Common_01_Login_User.firstName,Common_01_Login_User.lastName));
 	}
 	
 	@Parameters({"browser"})
@@ -111,4 +101,5 @@ public class TC_02_Add_To_Cart extends BaseTest {
 	DesktopsPO desktopsPage;
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
+
 }

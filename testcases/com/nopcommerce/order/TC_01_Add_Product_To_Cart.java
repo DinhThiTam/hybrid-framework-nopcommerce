@@ -10,17 +10,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.ComparePO;
-import pageObject.nopCommerce.DesktopsPO;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.NotebooksPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.ProductDetailsPO;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.ShoppingCartPO;
-import pageObject.nopCommerce.WishlistPO;
+import pageObject.user.nopCommerce.ComparePO;
+import pageObject.user.nopCommerce.DesktopsPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.NotebooksPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.ProductDetailsPO;
+import pageObject.user.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.ShoppingCartPO;
+import pageObject.user.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 public class TC_01_Add_Product_To_Cart extends BaseTest {

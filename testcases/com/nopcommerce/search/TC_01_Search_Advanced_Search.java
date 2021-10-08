@@ -9,11 +9,11 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import commons.BaseTest;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.SearchPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.SearchPO;
 import pageUIs.nopCommerce.HomePageUI;
 import utilities.DataUtil;
 

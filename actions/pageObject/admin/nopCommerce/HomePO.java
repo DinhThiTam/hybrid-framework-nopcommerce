@@ -1,4 +1,4 @@
-package pageObject.nopCommerce;
+package pageObject.admin.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
@@ -22,6 +22,8 @@ public class HomePO extends BasePage{
 		waitForElementVisible(driver, HomePageUI.LOGOUT_LINK);
 		return isElementDisplayed(driver, HomePageUI.LOGOUT_LINK);
 	}
+
+	
 	
 
 

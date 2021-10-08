@@ -17,7 +17,7 @@
 <!-- 			<class name="com.nopcommerce.myaccount.TC_04_My_Product_Review" /> -->
 <!-- 			<class name="com.nopcommerce.search.TC_01_Search_Advanced_Search" /> -->
 <!-- 			<class name="com.nopcommerce.sort.TC_01_Sort" /> -->
-		<class name="com.nopcommerce.common.Common_01_Login" />
+		<class name="com.nopcommerce.common.Common_01_Login_User" />
 		<class name="com.nopcommerce.wishlist.TC_01_Add_To_Wishlist" />
 		<class name="com.nopcommerce.wishlist.TC_02_Add_To_Cart" />
 		<class name="com.nopcommerce.wishlist.TC_03_Remove_Product" />

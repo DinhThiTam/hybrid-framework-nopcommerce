@@ -8,11 +8,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.RegisterPO;
 import utilities.DataUtil;
 
 public class TC_02_Add_Addresses extends BaseTest {

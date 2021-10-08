@@ -7,14 +7,14 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.DesktopsPO;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.ProductDetailsPO;
-import pageObject.nopCommerce.ProductReviewPO;
-import pageObject.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.DesktopsPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.ProductDetailsPO;
+import pageObject.user.nopCommerce.ProductReviewPO;
+import pageObject.user.nopCommerce.RegisterPO;
 import utilities.DataUtil;
 
 

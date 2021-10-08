@@ -1,4 +1,4 @@
-package pageObject.nopCommerce;
+package pageObject.admin.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
@@ -67,6 +67,11 @@ public class LoginPO extends BasePage{
 		waitForElementClickable(driver, LoginPageUI.HOMEPAGE_IMAGE);
 		clickToElement(driver, LoginPageUI.HOMEPAGE_IMAGE);
 		return new HomePO(driver);
+	}
+
+	public boolean isLoginPageTitleAdminDisplayed() {
+		waitForElementVisible(driver, LoginPageUI.ADMIN_LOGINPAGE_TITLE);
+		return isElementDisplayed(driver, LoginPageUI.ADMIN_LOGINPAGE_TITLE);
 	}
 	
 

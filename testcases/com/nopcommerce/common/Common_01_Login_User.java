@@ -13,16 +13,15 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.SearchPO;
-
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.SearchPO;
 import utilities.DataUtil;
 
-public class Common_01_Login extends BaseTest{
+public class Common_01_Login_User extends BaseTest{
 	WebDriver driver;
 	public static String emailAddress, password, firstName, lastName;
 	public static Set<Cookie> loginPageCookie;

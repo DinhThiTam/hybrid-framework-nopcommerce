@@ -1,4 +1,4 @@
-package pageObject.nopCommerce;
+package pageObject.admin.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
@@ -59,9 +59,9 @@ public class PageGenerator {
 		return new WishlistPO(driver);
 	}
 	
-	public static ComparePO getComparePage(WebDriver driver) {
+	public static DashboardPO getComparePage(WebDriver driver) {
 
-		return new ComparePO(driver);
+		return new DashboardPO(driver);
 	}
 	
 	public static RecentlyViewrdProductsPO getRecentlyViewedProductsPage(WebDriver driver) {

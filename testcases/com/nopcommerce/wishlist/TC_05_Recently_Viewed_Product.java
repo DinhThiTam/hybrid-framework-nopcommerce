@@ -7,19 +7,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.nopcommerce.common.Common_01_Login;
+import com.nopcommerce.common.Common_01_Login_User;
 
 import commons.BaseTest;
-import pageObject.nopCommerce.DesktopsPO;
-import pageObject.nopCommerce.HomePO;
-import pageObject.nopCommerce.LoginPO;
-import pageObject.nopCommerce.MyAccountPO;
-import pageObject.nopCommerce.NotebooksPO;
-import pageObject.nopCommerce.PageGenerator;
-import pageObject.nopCommerce.ProductDetailsPO;
-import pageObject.nopCommerce.RecentlyViewrdProductsPO;
-import pageObject.nopCommerce.RegisterPO;
-import pageObject.nopCommerce.WishlistPO;
+import pageObject.user.nopCommerce.DesktopsPO;
+import pageObject.user.nopCommerce.HomePO;
+import pageObject.user.nopCommerce.LoginPO;
+import pageObject.user.nopCommerce.MyAccountPO;
+import pageObject.user.nopCommerce.NotebooksPO;
+import pageObject.user.nopCommerce.PageGenerator;
+import pageObject.user.nopCommerce.ProductDetailsPO;
+import pageObject.user.nopCommerce.RecentlyViewrdProductsPO;
+import pageObject.user.nopCommerce.RegisterPO;
+import pageObject.user.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
@@ -39,7 +39,7 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 		loginPage = PageGenerator.getLoginPage(driver);
 		
 		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login.loginPageCookie);
+		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
 		loginPage.sleepInsecond(5);
 		loginPage.refreshPage(driver);
 		
@@ -90,9 +90,7 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 		recentlyViewPage = PageGenerator.getRecentlyViewedProductsPage(driver);
 		recentlyViewPage.isProductDisplayedByTitle(driver, "Samsung Series 9 NP900X4C Premium Ultrabook");
 		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Spectre XT Pro UltraBook");
-		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook");
-		
-		
+		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook");	
 		
 	}
 	
