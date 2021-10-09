@@ -22,6 +22,27 @@ public class PageGenerator {
 
 		return new ProductSearchPO(driver);
 	}
+	
+	public static ProductDetailsPO getProductDetailsPage(WebDriver driver) {
+
+		return new ProductDetailsPO(driver);
+	}
+	
+	public static CustomersSearchPO getCustomersSearchPage(WebDriver driver) {
+
+		return new CustomersSearchPO(driver);
+	}
+	
+	public static AddNewCustomersPO getAddNewCustomersPage(WebDriver driver) {
+
+		return new AddNewCustomersPO(driver);
+	}
+	
+	public static CustomerDetailsPO getCustomerDetailsPage(WebDriver driver) {
+
+		return new CustomerDetailsPO(driver);
+	}
+
 
 
 

@@ -13,15 +13,16 @@ import commons.BaseTest;
 import pageObject.admin.nopCommerce.DashboardPO;
 import pageObject.admin.nopCommerce.LoginPO;
 import pageObject.admin.nopCommerce.PageGenerator;
+import pageObject.admin.nopCommerce.ProductDetailsPO;
 import pageObject.admin.nopCommerce.ProductSearchPO;
 import pageUIs.admin.nopCommerce.DashboardPageUI;
 import pageUIs.admin.nopCommerce.ProductSearchPageUI;
 import utilities.DataUtil;
 
 
-public class TC_01_Add_To_Wishlist extends BaseTest {
+public class TC_01_Catalog_Products extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
-	String productName, catagory, parentCatagory, childCatagory, manufacturer;
+	String productName, catagory, parentCatagory, childCatagory, manufacturer, skuProduct;
 	
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -34,6 +35,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		parentCatagory = "Computers";
 		childCatagory = "Computers >> Desktops";
 		manufacturer = "Apple";
+		skuProduct = "LE_IC_600";
 		
 		loginPage = PageGenerator.getLoginPage(driver);
 		verifyTrue(loginPage.isLoginPageTitleAdminDisplayed());
@@ -72,7 +74,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Published"),getPublishedValue);
 	}
 	
-	@Test
+	//@Test
 	public void TC_02_Search_With_Product_Name_ParentsCatalogue_Unchecked() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -91,7 +93,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 	
 	}
 	
-	@Test
+	//@Test
 	public void TC_03_Search_With_Product_Name_ParentsCatalogue_Checked() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -99,7 +101,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		log.info("Pre-Condition - Step 05: Enter to 'Product name' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchProductName", productName);
 		productSearchPage.selectItemInDropdownByNameAtAdminSite(driver, parentCatagory, "SearchCategoryId");
-		productSearchPage.clickToCheckboxAtAdminSite(driver, "SearchIncludeSubCategories");
+		productSearchPage.clickToCheckboxOrRadioAtAdminSite(driver, "SearchIncludeSubCategories");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("Pre-Condition - Step 05: Click to 'Search' button");
@@ -114,7 +116,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 	
 	}
 	
-	@Test
+	//@Test
 	public void TC_04_Search_With_Product_Name_ChildCatalogue() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -137,7 +139,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 	
 	}
 	
-	@Test
+	//@Test
 	public void TC_05_Search_With_Product_Name_Manufacturer() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -153,6 +155,26 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		productSearchPage.clickToButtonByID(driver,"search-products");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		verifyTrue(productSearchPage.isMessageInTableDisplayed());
+	}
+	
+	@Test
+	public void TC_06_Go_product_SKU() {
+		productSearchPage.refreshPage(driver);
+		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("Pre-Condition - Step 05: Enter to 'Go directly to product' textbox");
+		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "GoDirectlyToSku", skuProduct);
+		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		
+		log.info("Pre-Condition - Step 05: Click to 'Go' button");
+		productSearchPage.clickToButtonByID(driver,"go-to-product-by-sku");
+		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
+		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		verifyTrue(productDetailsPage.isFormTitleProductDetailsDisplayed());
+		verifyEquals(productDetailsPage.getValueProductNameInForm(driver, "value", "Name"), "Lenovo IdeaCentre 600 All-in-One PC");
 	
 	}
 	
@@ -166,5 +188,6 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 	LoginPO loginPage;
 	DashboardPO dashboardPage;
 	ProductSearchPO productSearchPage;
+	ProductDetailsPO productDetailsPage;
 
 }

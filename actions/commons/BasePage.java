@@ -746,7 +746,6 @@ public class BasePage {
 	public void clickToButtonByID(WebDriver driver, String buttonID) {
 		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
 		clickToElement(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
-		
 	}
 	
 	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String dataTableBody, String dataTableHeader, String rowIndex, String headerName) {
@@ -760,20 +759,33 @@ public class BasePage {
 		senkeyToElement(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);	
 	}
 	
-	public void clickToCheckboxAtAdminSite(WebDriver driver, String checkboxID) {
-		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
-		checkTheCheckboxOrRadio(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+	public void clickToCheckboxOrRadioAtAdminSite(WebDriver driver, String checkboxID) {
+		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, checkboxID);
+		checkTheCheckboxOrRadio(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, checkboxID);
 	}
 	
 	public void uncheckedToCheckboxAtAdminSite(WebDriver driver, String checkboxID) {
-		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
-		uncheckTheCheckbox(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, checkboxID);
+		uncheckTheCheckbox(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, checkboxID);
 	}
 	
 	public void selectItemInDropdownByNameAtAdminSite(WebDriver driver, String value, String dropdownID) {
 		waitForElementClickable(driver, AdminBasePageUI.DROPDOWN_BY_NAME_AT_ADMINSITE, dropdownID);
 		selectDropdownByText(driver, AdminBasePageUI.DROPDOWN_BY_NAME_AT_ADMINSITE, value, dropdownID);
 	}
+	
+	public String getValueProductNameInForm(WebDriver driver, String value, String textboxID) {
+		waitForElementVisible(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, textboxID);
+		return getElementAttribute(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);
+	}
+	
+	public void clickToButtonInHeaderOnSubMenuPageByText(WebDriver driver, String headerText, String buttonText) {
+		waitForElementClickable(driver, AdminBasePageUI.BUTTON_IN_HEADER_ON_SUBMENU__PAGE, headerText, buttonText);
+		clickToElement(driver, AdminBasePageUI.BUTTON_IN_HEADER_ON_SUBMENU__PAGE, headerText, buttonText);
+	}
+	
+	
+
 	
 	private Alert alert;
 	private WebDriverWait explicitWait;
