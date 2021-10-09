@@ -9,7 +9,7 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-		<class name="com.nopcommerce.common.Common_02_Login_Admin" />
+<!-- 		<class name="com.nopcommerce.common.Common_02_Login_Admin" /> -->
 		<class name="com.nopcommerce.admin.TC_01_Add_To_Wishlist" />
 		</classes>
 	</test>

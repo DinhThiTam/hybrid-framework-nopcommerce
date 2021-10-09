@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.hc.client5.http.cookie.SetCookie;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
@@ -24,14 +24,11 @@ import pageUIs.admin.nopCommerce.AdminBasePageUI;
 
 import pageUIs.nopCommerce.BasePageUI;
 
-import pageUIs.nopCommerce.ProductDetailsPageUI;
-import pageUIs.nopCommerce.WishlistPageUI;
-
 
 
 
 /**
- * @author Admin
+ * @author
  *
  */
 public class BasePage {
@@ -288,6 +285,13 @@ public class BasePage {
 	}
 	
 	public void uncheckTheCheckbox(WebDriver driver, String locator) {
+		if (isElementSelected(driver, locator)) {
+			getElement(driver, locator).click();
+		}
+	}
+	
+	public void uncheckTheCheckbox(WebDriver driver, String locator, String...params) {
+		locator = getDynamicLocator(locator, params);
 		if (isElementSelected(driver, locator)) {
 			getElement(driver, locator).click();
 		}
@@ -734,11 +738,43 @@ public class BasePage {
 		clickToElement(driver, AdminBasePageUI.SUB_MENU_LINK_BY_NAME, subMenuPageName);
 	}	
 	
+	public void openMenuPageByName(WebDriver driver, String menuPageName) {
+		waitForElementClickable(driver, AdminBasePageUI.MENU_LINK_BY_NAME, menuPageName);
+		clickToElement(driver, AdminBasePageUI.MENU_LINK_BY_NAME, menuPageName);
+	}	
+	
 	public void clickToButtonByID(WebDriver driver, String buttonID) {
 		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
 		clickToElement(driver, AdminBasePageUI.BUTTON_BY_ID, buttonID);
 		
 	}
+	
+	public String getValueInTableIDAtColumnNameAndRowIndex(WebDriver driver, String dataTableBody, String dataTableHeader, String rowIndex, String headerName) {
+		int columnIndex = getSizeElements(driver, AdminBasePageUI.TABLE_BY_DATATABLE_AND_HEADERNAME, dataTableHeader,headerName) + 1;
+		waitForElementVisible(driver, AdminBasePageUI.DATATABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, dataTableBody, rowIndex, String.valueOf(columnIndex));
+		return getElementText(driver, AdminBasePageUI.DATATABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, dataTableBody, rowIndex, String.valueOf(columnIndex));
+	}
+	
+	public void enterToTextboxByIDAtAdminSite(WebDriver driver, String textboxID, String value) {
+		waitForElementVisible(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, textboxID);
+		senkeyToElement(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);	
+	}
+	
+	public void clickToCheckboxAtAdminSite(WebDriver driver, String checkboxID) {
+		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+		checkTheCheckboxOrRadio(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+	}
+	
+	public void uncheckedToCheckboxAtAdminSite(WebDriver driver, String checkboxID) {
+		waitForElementClickable(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+		uncheckTheCheckbox(driver, AdminBasePageUI.CHECKBOX_AT_ADMINSITE, checkboxID);
+	}
+	
+	public void selectItemInDropdownByNameAtAdminSite(WebDriver driver, String value, String dropdownID) {
+		waitForElementClickable(driver, AdminBasePageUI.DROPDOWN_BY_NAME_AT_ADMINSITE, dropdownID);
+		selectDropdownByText(driver, AdminBasePageUI.DROPDOWN_BY_NAME_AT_ADMINSITE, value, dropdownID);
+	}
+	
 	private Alert alert;
 	private WebDriverWait explicitWait;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
