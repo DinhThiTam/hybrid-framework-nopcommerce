@@ -174,7 +174,7 @@ public class TC_01_Catalog_Products extends BaseTest {
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		verifyTrue(productDetailsPage.isFormTitleProductDetailsDisplayed());
-		verifyEquals(productDetailsPage.getValueProductNameInForm(driver, "value", "Name"), "Lenovo IdeaCentre 600 All-in-One PC");
+		verifyEquals(productDetailsPage.getValueTextboxInForm(driver, "value", "Name"), "Lenovo IdeaCentre 600 All-in-One PC");
 	
 	}
 	

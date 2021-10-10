@@ -15,11 +15,14 @@ public class CustomerDetailsPO extends BasePage{
 	}
 	
 
-	public boolean isAddCustomerMessageSuccessDisplayed() {
-		waitForElementVisible(driver, CustomersDetailsPageUI.ADD_CUSTOMER_SUCCESS_MESSAGE);
-		return isElementDisplayed(driver, CustomersDetailsPageUI.ADD_CUSTOMER_SUCCESS_MESSAGE);
-		
+
+	public CustomersSearchPO clickToBackToCustomerListButton() {
+		waitForElementClickable(driver, CustomersDetailsPageUI.BACK_BUTTON);
+		clickToElement(driver, CustomersDetailsPageUI.BACK_BUTTON);
+		return new CustomersSearchPO(driver);
 	}
+
+
 	
 
 

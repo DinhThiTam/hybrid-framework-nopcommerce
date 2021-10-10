@@ -13,17 +13,5 @@ public class CustomersSearchPO extends BasePage{
 	}
 
 
-
-
-	
-
-
-	
-
-	
-
-
-	
-	
-
 }
+

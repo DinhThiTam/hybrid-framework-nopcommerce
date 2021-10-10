@@ -20,8 +20,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageUIs.admin.nopCommerce.AddNewCustomersPageUI;
 import pageUIs.admin.nopCommerce.AdminBasePageUI;
-
+import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
 import pageUIs.nopCommerce.BasePageUI;
 
 
@@ -774,7 +775,7 @@ public class BasePage {
 		selectDropdownByText(driver, AdminBasePageUI.DROPDOWN_BY_NAME_AT_ADMINSITE, value, dropdownID);
 	}
 	
-	public String getValueProductNameInForm(WebDriver driver, String value, String textboxID) {
+	public String getValueTextboxInForm(WebDriver driver, String value, String textboxID) {
 		waitForElementVisible(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, textboxID);
 		return getElementAttribute(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);
 	}
@@ -784,6 +785,70 @@ public class BasePage {
 		clickToElement(driver, AdminBasePageUI.BUTTON_IN_HEADER_ON_SUBMENU__PAGE, headerText, buttonText);
 	}
 	
+	public void clickToExpandPanelByName(WebDriver driver, String panelName) {
+		//1 - get tag i attibute
+		waitForElementVisible(driver,AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
+		String toogleIconStatus = getElementAttribute(driver, AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, "class", panelName);
+		//2 - if not contains (fa-plus)
+		if (toogleIconStatus.contains("fa-plus")) {
+			waitForElementClickable(driver, AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
+			clickToElement(driver, AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
+		}
+	}
+	
+	public boolean isSelectedItemInRadioAtAdminSite(WebDriver driver, String radioLabel) {
+		waitForElementVisible(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, radioLabel);
+		return isElementSelected(driver, AdminBasePageUI.CHECKBOX_OR_RADIO_AT_ADMINSITE, radioLabel);
+	}
+	
+	public void selectCustomerRoleInDropdown(WebDriver driver, String dropdownLabel, String itemText) {
+		waitForElementClickable(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
+		clickToElement(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
+		sleepInsecond(3);
+		
+		clickToElement(driver, AdminBasePageUI.ITEM_DROPDOWN_BY_TEXT, itemText);
+	
+	}
+	
+	public void clearDynamicDropdown(WebDriver driver) {
+		waitForElementClickable(driver, AdminBasePageUI.DELETE_ITEM_ON_CUSTOMER_ROLE);
+		clickToElement(driver, AdminBasePageUI.DELETE_ITEM_ON_CUSTOMER_ROLE);
+	}
+
+
+	public String getItemSelected(WebDriver driver) {
+		waitForElementVisible(driver, AdminBasePageUI.ITEM_SELECTED);
+		return getElementText(driver, AdminBasePageUI.ITEM_SELECTED);
+	}
+	
+	public boolean isRowValueInRowDisplayed(WebDriver driver, String emailAddress, String fullName, String customerRole,
+			String companyName) {
+		waitForElementVisible(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+		return isElementDisplayed(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+	}
+	
+
+	public void clickToEditButtonInTable(WebDriver driver, String emailAddress, String fullName, String customerRole,
+			String companyName) {
+		waitForElementClickable(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+		clickToElement(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+	}
+	
+	public void enterToAdminCommentTextArea(WebDriver driver,String value) {
+		waitForElementVisible(driver, AdminBasePageUI.ADMIN_COMMENT_TEXTAREA_);
+		senkeyToElement(driver, AdminBasePageUI.ADMIN_COMMENT_TEXTAREA_, value);
+	}
+	
+	public void clickToButtonByNameAttribute(WebDriver driver, String attributeName) {
+		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_NAME_ATTRIBUTE, attributeName);
+		clickToElement(driver, AdminBasePageUI.BUTTON_BY_NAME_ATTRIBUTE, attributeName);
+	}
+	
+	public boolean isMessageSuccessDisplayed(WebDriver driver, String messageText) {
+		waitForElementVisible(driver, AdminBasePageUI.SUCCESS_MESSAGE_BY_TEXT, messageText);
+		return isElementDisplayed(driver, AdminBasePageUI.SUCCESS_MESSAGE_BY_TEXT, messageText);
+		
+	}
 	
 
 	
