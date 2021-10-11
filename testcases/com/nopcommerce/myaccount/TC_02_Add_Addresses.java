@@ -98,7 +98,7 @@ public class TC_02_Add_Addresses extends BaseTest {
 		myAccountPage.enterToTextboxByID(driver, "Address_Company", companyName);
 		
 		log.info("Add_Address_01 - Step 03: Update Country name information to dropdown");
-		myAccountPage.selectItemInDropdownByName(driver,countryName , "Address_CountryId");
+		myAccountPage.selectItemInDropdownByName(driver,countryName , "Address.CountryId");
 	
 		log.info("Add_Address_01 - Step 03: Update State province information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver, stateProvince, "Address_StateProvinceId");

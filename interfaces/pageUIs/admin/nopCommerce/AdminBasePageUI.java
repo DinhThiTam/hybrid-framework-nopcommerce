@@ -19,6 +19,8 @@ public class AdminBasePageUI {
 	public static final String ADMIN_COMMENT_TEXTAREA_ = "//textarea[@id='AdminComment']";
 	public static final String BUTTON_BY_NAME_ATTRIBUTE = "//button[@name='%s']";
 	public static final String SUCCESS_MESSAGE_BY_TEXT= "//div[@class='content-wrapper']//div[contains(string(),'%s')]";
+	public static final String BUTTON_BY_CONTAINS_TEXT= "//button[contains(string(),'%s')]";
+	public static final String BACK_BUTTON_BY_NAME= "//small[contains(string(),'%s')]";
 	
 }
 

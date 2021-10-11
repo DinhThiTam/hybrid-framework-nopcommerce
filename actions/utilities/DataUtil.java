@@ -26,6 +26,10 @@ public class DataUtil {
 		return faker.internet().emailAddress();
 	}
 	
+	public String getEditEmailAddress() {
+		return faker.internet().safeEmailAddress();
+	}
+	
 	public String getPassword() {
 		return faker.internet().password();
 	}

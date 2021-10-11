@@ -42,6 +42,12 @@ public class PageGenerator {
 
 		return new CustomerDetailsPO(driver);
 	}
+	
+	public static AddNewAddressPO getAddNewAddressPage(WebDriver driver) {
+
+		return new AddNewAddressPO(driver);
+	}
+
 
 
 

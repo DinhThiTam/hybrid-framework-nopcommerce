@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObject.admin.nopCommerce.CustomersSearchPO;
+import pageUIs.admin.nopCommerce.AddNewAddressPageUI;
 import pageUIs.admin.nopCommerce.AddNewCustomersPageUI;
 import pageUIs.admin.nopCommerce.AdminBasePageUI;
 import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
@@ -850,6 +852,22 @@ public class BasePage {
 		
 	}
 	
+	public void clickToButtonByContainsText(WebDriver driver, String buttonText) {
+		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
+		clickToElement(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
+		
+	}
+	
+	public String getTextboxValueByID(WebDriver driver, String value, String textboxID) {
+		waitForElementVisible(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, textboxID);
+		return getElementAttribute(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);
+	}
+	
+
+	public void clickToBackToCustomerListButton(WebDriver driver, String messageText) {
+		waitForElementClickable(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
+		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
+	}
 
 	
 	private Alert alert;
