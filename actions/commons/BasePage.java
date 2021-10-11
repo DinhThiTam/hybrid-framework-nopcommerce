@@ -591,7 +591,7 @@ public class BasePage {
 	
 	public String getTextboxValueByID(WebDriver driver, String textboxID) {
 		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
-		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, "value", textboxID);
+		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
 	}
 	
 	public void clickToRadioAndCheckboxByLabel(WebDriver driver, String radioLabel) {
@@ -858,7 +858,7 @@ public class BasePage {
 		
 	}
 	
-	public String getTextboxValueByID(WebDriver driver, String value, String textboxID) {
+	public String getTextboxValueByIDAtAdminSite(WebDriver driver, String value, String textboxID) {
 		waitForElementVisible(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, textboxID);
 		return getElementAttribute(driver, AdminBasePageUI.TEXTBOX_BY_ID_AT_ADMIN_SITE, value, textboxID);
 	}

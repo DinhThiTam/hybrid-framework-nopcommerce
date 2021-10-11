@@ -134,7 +134,7 @@ public class TC_02_Customers extends BaseTest {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_02_Search_Cusomer_With_Email() {
 
 		customersSearchPage.refreshPage(driver);
@@ -160,7 +160,7 @@ public class TC_02_Customers extends BaseTest {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_03_Search_Cusomer_With_FirstName_LastName() {
 
 		customersSearchPage.refreshPage(driver);
@@ -187,7 +187,7 @@ public class TC_02_Customers extends BaseTest {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_04_Search_Cusomer_With_Company() {
 
 		customersSearchPage.refreshPage(driver);
@@ -262,6 +262,7 @@ public class TC_02_Customers extends BaseTest {
 		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", editDateOfBirth);
 		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Company", editCompanyName);
 		customerDetailsPage.enterToAdminCommentTextArea(driver, editAdminComment);
+		
 		customerDetailsPage.clickToButtonByNameAttribute(driver, "save");
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
 		customersSearchPage.isMessageSuccessDisplayed(driver, "The customer has been updated successfully.");
@@ -274,7 +275,6 @@ public class TC_02_Customers extends BaseTest {
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2", "SearchMonthOfBirth");
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2","SearchDayOfBirth");
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", editCompanyName);
-		
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage.clearDynamicDropdown(driver);
 		customersSearchPage.sleepInsecond(2);
@@ -296,7 +296,7 @@ public class TC_02_Customers extends BaseTest {
 	
 	@Test
 	public void TC_07_Add_New_Address() {
-		
+		customersSearchPage.scrollToBottomPage(driver);
 		customersSearchPage.clickToEditButtonInTable(driver, "Guest", editFullName, customerRole, editCompanyName);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
@@ -305,6 +305,7 @@ public class TC_02_Customers extends BaseTest {
 		 
 		
 		customerDetailsPage.clickToButtonByContainsText(driver, "Add new address");
+		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		addNewAddressPage = PageGenerator.getAddNewAddressPage(driver);
 		addNewAddressPage.isJQueryAjaxLoadedSuccess(driver);
 		
@@ -346,47 +347,47 @@ public class TC_02_Customers extends BaseTest {
 		addNewAddressPage.clickToButtonByContainsText(driver, "Save");
 		
 		addNewAddressPage.isMessageSuccessDisplayed(driver, "The new address has been added successfully.");
+		addNewAddressPage.sleepInsecond(3);
 		
 		log.info("Add_Address_01 - Step 03: Verify Firstname infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_FirstName"), firstName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_FirstName"), firstName);
 		
 		log.info("Add_Address_01 - Step 03: Verify Lastname infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_LastName"), lastName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value","Address_LastName"), lastName);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_Email"), emailAddress);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value","Address_Email"), emailAddress);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_Company"), companyName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Company"), companyName);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
 		verifyEquals(addNewAddressPage.getSelectItemInDropdownByName(driver, "Address.CountryId"), countryName);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_City"), cityName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_City"), cityName);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_Address1"), address1);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Address1"), address1);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_Address2"), address2);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_Address2"), address2);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_ZipPostalCode"), zipCode);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_ZipPostalCode"), zipCode);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByID(driver, "Address_PhoneNumber"), phoneNumber);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_PhoneNumber"), phoneNumber);
+		addNewAddressPage.sleepInsecond(3);
 		
-		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer list");
+		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer details");
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		customerDetailsPage.scrollToBottomPage(driver);
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
 		
-		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "First name"),firstName);
-		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Last name"),lastName);
-		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Email"),emailAddress);
-		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Phone number"),phoneNumber);
-		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Address"),address1 + " " + address2);
+		customerDetailsPage.isRowValueInRowDisplayed(driver, firstName, lastName, emailAddress, phoneNumber);
+		
 		
 	}
 	
