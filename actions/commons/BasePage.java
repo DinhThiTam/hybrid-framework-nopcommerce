@@ -830,7 +830,7 @@ public class BasePage {
 	}
 	
 
-	public void clickToEditButtonInTable(WebDriver driver, String emailAddress, String fullName, String customerRole,
+	public void clickToEditButtonInTableAtSearchPage(WebDriver driver, String emailAddress, String fullName, String customerRole,
 			String companyName) {
 		waitForElementClickable(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
 		clickToElement(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
@@ -869,6 +869,7 @@ public class BasePage {
 		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 	}
 	
+
 
 
 	

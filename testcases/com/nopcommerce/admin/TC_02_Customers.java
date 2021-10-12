@@ -9,6 +9,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.nopcommerce.common.Common_02_Login_Admin;
+import com.nopcommerce.data.Customers.EditAddress;
+import com.nopcommerce.data.Customers.NewAddress;
+import com.nopcommerce.data.Customers.UpdateAddress;
 
 import commons.BaseTest;
 import pageObject.admin.nopCommerce.AddNewAddressPO;
@@ -30,7 +33,7 @@ public class TC_02_Customers extends BaseTest {
 	String emailAddress, password, firstName, lastName, gender, dateOfBirth, companyName, customerRole, adminComment,
 			fullName;
 	String editEmailAddress, editFirstName, editLastName, editDateOfBirth, editCompanyName, editAdminComment, editFullName;
-	String stateProvince, countryName, cityName, address1, address2, zipCode, citySateZip, phoneNumber, faxNumber, address;
+	String stateProvince, countryName, cityName, address1, address2, zipCode, citySateZip, phoneNumber, faxNumber;
 
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -44,29 +47,8 @@ public class TC_02_Customers extends BaseTest {
 		firstName = fakeData.getFirstName();
 		lastName = fakeData.getLastName();
 		fullName = firstName + " " + lastName;
-		gender = "Male";
-		dateOfBirth = "1/1/2000";
-		customerRole = "Guests";
-		adminComment = fakeData.getString();
-		companyName= "Automation FC";
-		stateProvince= "Other"; 
-		countryName="Viet Nam" ;
-		cityName= "Da Nang";
-		address1="123/04 Le Lai" ;
-		address2= "234/05 Hai Phong"; 
-		zipCode= "550000"; 
-		citySateZip = cityName + ", " + zipCode;
-		phoneNumber= "0123456789"; 
-		faxNumber = "0983970447";
-		address = companyName + '\n' + address1 + address2 + '\n' + cityName + "," + stateProvince + "," + zipCode + '\n' + countryName ;
-		
 		editEmailAddress= fakeData.getEditEmailAddress();
-		editFirstName= "dinh"; 
-		editLastName= "tam";
-		editDateOfBirth= "2/2/2000";
-		editCompanyName= "Edit Automation FC"; 
-		editAdminComment = "Edit Comment";
-		editFullName = editFirstName + " " + editLastName;
+		
 		
 		loginPage = PageGenerator.getLoginPage(driver);
 		verifyTrue(loginPage.isLoginPageTitleAdminDisplayed());
@@ -89,15 +71,15 @@ public class TC_02_Customers extends BaseTest {
 		customersSearchPage.clickToButtonInHeaderOnSubMenuPageByText(driver, "Customers", "Add new");
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		addNewCustomersPage = PageGenerator.getAddNewCustomersPage(driver);
-		addNewCustomersPage.isJQueryAjaxLoadedSuccess(driver);
+		addNewCustomersPage.sleepInsecond(5);
 
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Email", emailAddress);
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Password", password);
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "FirstName", firstName);
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "LastName", lastName);
 		addNewCustomersPage.clickToCheckboxOrRadioAtAdminSite(driver, "Gender_Male");
-		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", dateOfBirth);
-		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Company", companyName);
+		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", NewAddress.DATE_OF_BIRTH);
+		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Company", NewAddress.COMPANY_NAME);
 		addNewCustomersPage.sleepInsecond(2);
 		addNewCustomersPage.clearDynamicDropdown(driver);
 		addNewCustomersPage.sleepInsecond(2);
@@ -105,7 +87,7 @@ public class TC_02_Customers extends BaseTest {
 		addNewCustomersPage.clickToCheckboxOrRadioAtAdminSite(driver, "Active");
 
 		verifyEquals(addNewCustomersPage.getItemSelected(driver), "Guests");
-		addNewCustomersPage.enterToAdminCommentTextArea(driver, adminComment);
+		addNewCustomersPage.enterToAdminCommentTextArea(driver, NewAddress.ADMIN_COMMENT);
 		addNewCustomersPage.clickToButtonInHeaderOnSubMenuPageByText(driver, "Add a new customer",
 				"Save and Continue Edit");
 		addNewCustomersPage.isJQueryAjaxLoadedSuccess(driver);
@@ -116,8 +98,8 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "FirstName"), firstName);
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "LastName"), lastName);
 		verifyTrue(customerDetailsPage.isSelectedItemInRadioAtAdminSite(driver, "Gender_Male"));
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "DateOfBirth"), dateOfBirth);
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Company"), companyName);
+		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "DateOfBirth"), NewAddress.DATE_OF_BIRTH);
+		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Company"), NewAddress.COMPANY_NAME);
 		verifyTrue(customerDetailsPage.isSelectedItemInRadioAtAdminSite(driver, "Active"));
 		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
@@ -131,7 +113,7 @@ public class TC_02_Customers extends BaseTest {
 		customersSearchPage.clickToButtonByID(driver, "search-customers");
 		customersSearchPage.sleepInsecond(3);
 
-		customersSearchPage.isRowValueInRowDisplayed(driver, "Guest", fullName, customerRole, companyName);
+		customersSearchPage.isRowValueInRowDisplayed(driver, "Guest", fullName, NewAddress.CUSTOMER_ROLE, NewAddress.COMPANY_NAME);
 
 	}
 
@@ -157,7 +139,7 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Company name"), companyName);
+				"dataTables_scrollHead", "1", "Company name"), NewAddress.COMPANY_NAME);
 
 	}
 
@@ -184,7 +166,7 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Company name"), companyName);
+				"dataTables_scrollHead", "1", "Company name"), NewAddress.COMPANY_NAME);
 
 	}
 
@@ -193,7 +175,7 @@ public class TC_02_Customers extends BaseTest {
 
 		customersSearchPage.refreshPage(driver);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
-		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", companyName);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", NewAddress.COMPANY_NAME);
 
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage.clearDynamicDropdown(driver);
@@ -211,7 +193,7 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Company name"), companyName);
+				"dataTables_scrollHead", "1", "Company name"), NewAddress.COMPANY_NAME);
 
 	}
 
@@ -226,7 +208,7 @@ public class TC_02_Customers extends BaseTest {
 
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "1", "SearchMonthOfBirth");
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "1", "SearchDayOfBirth");
-		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", companyName);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", NewAddress.COMPANY_NAME);
 
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage.clearDynamicDropdown(driver);
@@ -244,25 +226,25 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Company name"), companyName);
+				"dataTables_scrollHead", "1", "Company name"), NewAddress.COMPANY_NAME);
 
 	}
 
 	@Test
 	public void TC_06_Edit_Customer() {
 
-		customersSearchPage.clickToEditButtonInTable(driver, "Guest", fullName, customerRole, companyName);
+		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", fullName, NewAddress.CUSTOMER_ROLE, NewAddress.COMPANY_NAME);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		
 
 		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Email", editEmailAddress);
-		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "FirstName", editFirstName);
-		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "LastName", editLastName);
-		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", editDateOfBirth);
-		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Company", editCompanyName);
-		customerDetailsPage.enterToAdminCommentTextArea(driver, editAdminComment);
+		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "FirstName", EditAddress.EDIT_FIRSTNAME);
+		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "LastName", EditAddress.EDIT_LASTNAME);
+		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", EditAddress.EDIT_DATEOFBIRTH);
+		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Company", EditAddress.EDIT_COMPANYNAME);
+		customerDetailsPage.enterToAdminCommentTextArea(driver, EditAddress.EDIT_COMMENTADMIN);
 		
 		customerDetailsPage.clickToButtonByNameAttribute(driver, "save");
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
@@ -270,12 +252,12 @@ public class TC_02_Customers extends BaseTest {
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchEmail", editEmailAddress);
-		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchFirstName", editFirstName);
-		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchLastName", editLastName);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchFirstName", EditAddress.EDIT_FIRSTNAME);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchLastName", EditAddress.EDIT_LASTNAME);
 
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2", "SearchMonthOfBirth");
 		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2","SearchDayOfBirth");
-		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", editCompanyName);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", EditAddress.EDIT_COMPANYNAME);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage.clearDynamicDropdown(driver);
 		customersSearchPage.sleepInsecond(2);
@@ -288,17 +270,17 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Email"), "Guest");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Name"), editFullName);
+				"dataTables_scrollHead", "1", "Name"), EditAddress.EDIT_FULLNAME);
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
-				"dataTables_scrollHead", "1", "Company name"), editCompanyName);
+				"dataTables_scrollHead", "1", "Company name"), EditAddress.EDIT_COMPANYNAME);
 	}
 	
 	@Test
 	public void TC_07_Add_New_Address() {
 		customersSearchPage.scrollToBottomPage(driver);
-		customersSearchPage.clickToEditButtonInTable(driver, "Guest", editFullName, customerRole, editCompanyName);
+		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", EditAddress.EDIT_FULLNAME, NewAddress.CUSTOMER_ROLE, EditAddress.EDIT_COMPANYNAME);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
@@ -322,31 +304,31 @@ public class TC_02_Customers extends BaseTest {
 		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_Email", emailAddress);
 		
 		log.info("Add_Address_01 - Step 07: Update Company name information to textbox");
-		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_Company", companyName);
+		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_Company", NewAddress.COMPANY_NAME);
 		
 		log.info("Add_Address_01 - Step 03: Update Country name information to dropdown");
-		addNewAddressPage.selectItemInDropdownByName(driver,countryName , "Address.CountryId");
+		addNewAddressPage.selectItemInDropdownByName(driver,NewAddress.COUNTRY_NAME , "Address.CountryId");
 	
 		log.info("Add_Address_01 - Step 03: Update State province information to dropdown");
-		addNewAddressPage.selectItemInDropdownByName(driver, stateProvince, "Address.StateProvinceId");
+		addNewAddressPage.selectItemInDropdownByName(driver, NewAddress.STATE_PROVINCE, "Address.StateProvinceId");
 		
 		log.info("Add_Address_01 - Step 03: Update Company City name information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_City", cityName);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_City", NewAddress.CITY_NAME);
 		
 		log.info("Add_Address_01 - Step 03: Update Address 1 information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_Address1", address1);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_Address1", NewAddress.ADDRESS1);
 		
 		log.info("Add_Address_01 - Step 03: Update Address 2 information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_Address2", address2);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_Address2", NewAddress.ADDRESS2);
 		
 		log.info("Add_Address_01 - Step 03: Update Zip code information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_ZipPostalCode", zipCode);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_ZipPostalCode", NewAddress.ZIP_CODE);
 		
 		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_PhoneNumber", phoneNumber);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_PhoneNumber", NewAddress.PHONE_NUMBER);
 		
 		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
-		addNewAddressPage.enterToTextboxByID(driver, "Address_FaxNumber", faxNumber);
+		addNewAddressPage.enterToTextboxByID(driver, "Address_FaxNumber", NewAddress.FAX_NUMBER);
 		
 		log.info("Add_Address_01 - Step 03: Click to 'Save' button");
 		addNewAddressPage.clickToButtonByContainsText(driver, "Save");
@@ -365,28 +347,28 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value","Address_Email"), emailAddress);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Company"), companyName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Company"), NewAddress.COMPANY_NAME);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getSelectItemInDropdownByName(driver, "Address.CountryId"), countryName);
+		verifyEquals(addNewAddressPage.getSelectItemInDropdownByName(driver, "Address.CountryId"), NewAddress.COUNTRY_NAME);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_City"), cityName);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_City"), NewAddress.CITY_NAME);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Address1"), address1);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Address1"), NewAddress.ADDRESS1);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_Address2"), address2);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_Address2"), NewAddress.ADDRESS2);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_ZipPostalCode"), zipCode);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_ZipPostalCode"), NewAddress.ZIP_CODE);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_PhoneNumber"), phoneNumber);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_PhoneNumber"), NewAddress.PHONE_NUMBER);
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
-		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_FaxNumber"), faxNumber);
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_FaxNumber"), NewAddress.FAX_NUMBER);
 		addNewAddressPage.sleepInsecond(3);
 		
 		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer details");
@@ -395,8 +377,124 @@ public class TC_02_Customers extends BaseTest {
 		//customerDetailsPage.scrollToBottomPage(driver);
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
 		
-		customerDetailsPage.isRowValueInRowDisplayedAtAdminSite(firstName, lastName, emailAddress, phoneNumber, faxNumber, companyName);
+		customerDetailsPage.isRowValueInRowDisplayedAtAdminSite(firstName, lastName, emailAddress, NewAddress.PHONE_NUMBER, NewAddress.FAX_NUMBER, NewAddress.COMPANY_NAME);
 		
+	}
+	
+	@Test
+	public void TC_08_Add_New_Address() {
+		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
+		customersSearchPage.sleepInsecond(3);
+		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
+		customersSearchPage.sleepInsecond(3);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchEmail", editEmailAddress);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchFirstName", EditAddress.EDIT_FIRSTNAME);
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchLastName", EditAddress.EDIT_LASTNAME);
+
+		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2", "SearchMonthOfBirth");
+		customersSearchPage.selectItemInDropdownByNameAtAdminSite(driver, "2","SearchDayOfBirth");
+		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchCompany", EditAddress.EDIT_COMPANYNAME);
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		customersSearchPage.clearDynamicDropdown(driver);
+		customersSearchPage.sleepInsecond(2);
+		customersSearchPage.selectCustomerRoleInDropdown(driver, "Customer roles", "Guests");
+		customersSearchPage.sleepInsecond(3);
+		log.info("Pre-Condition - Step 05: Click to 'Search' button");
+		customersSearchPage.clickToButtonByID(driver, "search-customers");
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		customersSearchPage.scrollToBottomPage(driver);
+		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", EditAddress.EDIT_FULLNAME, NewAddress.CUSTOMER_ROLE, EditAddress.EDIT_COMPANYNAME);
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
+		customerDetailsPage.clickToButtonInTableAtCustomerDetailPage("Addresses", "Edit");
+		
+		log.info("Add_Address_01 - Step 04: Update First name information to textbox");
+		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_FirstName", EditAddress.EDIT_FIRSTNAME);
+		
+		log.info("Add_Address_01 - Step 05: Update Last name information to textbox");
+		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_LastName", EditAddress.EDIT_LASTNAME);
+		
+		log.info("Add_Address_01 - Step 06: Update Email information to textbox");
+		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_Email", emailAddress);
+		
+		log.info("Add_Address_01 - Step 07: Update Company name information to textbox");
+		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_Company", EditAddress.EDIT_COMPANYNAME);
+		
+		log.info("Add_Address_01 - Step 03: Update Country name information to dropdown");
+		addNewAddressPage.selectItemInDropdownByName(driver,UpdateAddress.COUNTRY_NAME , "Address.CountryId");
+	
+		log.info("Add_Address_01 - Step 03: Update State province information to dropdown");
+		addNewAddressPage.selectItemInDropdownByName(driver, UpdateAddress.STATE_PROVINCE, "Address.StateProvinceId");
+		
+		log.info("Add_Address_01 - Step 03: Update Company City name information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_City", UpdateAddress.CITY_NAME);
+		
+		log.info("Add_Address_01 - Step 03: Update Address 1 information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_Address1", UpdateAddress.ADDRESS1);
+		
+		log.info("Add_Address_01 - Step 03: Update Address 2 information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_Address2", UpdateAddress.ADDRESS2);
+		
+		log.info("Add_Address_01 - Step 03: Update Zip code information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_ZipPostalCode", UpdateAddress.ZIP_CODE);
+		
+		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_PhoneNumber", UpdateAddress.PHONE_NUMBER);
+		
+		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_FaxNumber", UpdateAddress.FAX_NUMBER);
+		
+		log.info("Add_Address_01 - Step 03: Click to 'Save' button");
+		addNewAddressPage.clickToButtonByContainsText(driver, "Save");
+		addNewAddressPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		addNewAddressPage.isMessageSuccessDisplayed(driver, "The new address has been added successfully.");
+		addNewAddressPage.sleepInsecond(3);
+		
+		log.info("Add_Address_01 - Step 03: Verify Firstname infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_FirstName"), EditAddress.EDIT_FIRSTNAME);
+		
+		log.info("Add_Address_01 - Step 03: Verify Lastname infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value","Address_LastName"), EditAddress.EDIT_LASTNAME);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value","Address_Email"), emailAddress);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Company"), EditAddress.EDIT_COMPANYNAME);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getSelectItemInDropdownByName(driver, "Address.CountryId"), UpdateAddress.COUNTRY_NAME);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_City"), UpdateAddress.CITY_NAME);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_Address1"), UpdateAddress.ADDRESS1);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver,"value", "Address_Address2"), UpdateAddress.ADDRESS2);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_ZipPostalCode"), UpdateAddress.ZIP_CODE);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_PhoneNumber"), UpdateAddress.PHONE_NUMBER);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_FaxNumber"), NewAddress.FAX_NUMBER);
+		addNewAddressPage.sleepInsecond(3);
+		
+		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer details");
+		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		//customerDetailsPage.scrollToBottomPage(driver);
+		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
+		
+		customerDetailsPage.isRowValueInRowDisplayedAtAdminSite(EditAddress.EDIT_FIRSTNAME, EditAddress.EDIT_LASTNAME, emailAddress, UpdateAddress.PHONE_NUMBER, UpdateAddress.FAX_NUMBER, EditAddress.EDIT_COMPANYNAME);
 		
 	}
 	

@@ -22,5 +22,6 @@ public class AdminBasePageUI {
 	public static final String BUTTON_BY_CONTAINS_TEXT= "//button[contains(string(),'%s')]";
 	public static final String BACK_BUTTON_BY_NAME= "//small[contains(string(),'%s')]";
 	
+	
 }
 

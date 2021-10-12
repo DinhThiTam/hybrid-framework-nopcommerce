@@ -21,6 +21,10 @@ public class CustomerDetailsPO extends BasePage{
 		return isElementDisplayed(driver, CustomersDetailsPageUI.ROW_VALUE_BY_FIRSTNAME_LASTNAME_EMAIL_PHONE_FAX_ADDRESS, firstName,lastName,emailAddress,phoneNumber,faxNumber, address);
 	}
 	
+	public void clickToButtonInTableAtCustomerDetailPage(String cardTitle, String buttonName) {
+		waitForElementClickable(driver, CustomersDetailsPageUI.BUTTON_IN_TABLE_BY_CART_TITLE_AND_BUTTONNAME, cardTitle,buttonName);
+		clickToElement(driver, CustomersDetailsPageUI.BUTTON_IN_TABLE_BY_CART_TITLE_AND_BUTTONNAME, cardTitle,buttonName);
+	}
 
 
 
