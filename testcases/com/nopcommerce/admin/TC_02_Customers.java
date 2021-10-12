@@ -30,7 +30,7 @@ public class TC_02_Customers extends BaseTest {
 	String emailAddress, password, firstName, lastName, gender, dateOfBirth, companyName, customerRole, adminComment,
 			fullName;
 	String editEmailAddress, editFirstName, editLastName, editDateOfBirth, editCompanyName, editAdminComment, editFullName;
-	String stateProvince, countryName, cityName, address1, address2, zipCode, citySateZip, phoneNumber, faxNumber;
+	String stateProvince, countryName, cityName, address1, address2, zipCode, citySateZip, phoneNumber, faxNumber, address;
 
 	@Parameters({"browser","url"})
 	@BeforeClass
@@ -58,6 +58,7 @@ public class TC_02_Customers extends BaseTest {
 		citySateZip = cityName + ", " + zipCode;
 		phoneNumber= "0123456789"; 
 		faxNumber = "0983970447";
+		address = companyName + '\n' + address1 + address2 + '\n' + cityName + "," + stateProvince + "," + zipCode + '\n' + countryName ;
 		
 		editEmailAddress= fakeData.getEditEmailAddress();
 		editFirstName= "dinh"; 
@@ -305,7 +306,8 @@ public class TC_02_Customers extends BaseTest {
 		 
 		
 		customerDetailsPage.clickToButtonByContainsText(driver, "Add new address");
-		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		customerDetailsPage.sleepInsecond(5);
+	
 		addNewAddressPage = PageGenerator.getAddNewAddressPage(driver);
 		addNewAddressPage.isJQueryAjaxLoadedSuccess(driver);
 		
@@ -343,8 +345,12 @@ public class TC_02_Customers extends BaseTest {
 		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
 		addNewAddressPage.enterToTextboxByID(driver, "Address_PhoneNumber", phoneNumber);
 		
+		log.info("Add_Address_01 - Step 03: Update Phone number information to textbox");
+		addNewAddressPage.enterToTextboxByID(driver, "Address_FaxNumber", faxNumber);
+		
 		log.info("Add_Address_01 - Step 03: Click to 'Save' button");
 		addNewAddressPage.clickToButtonByContainsText(driver, "Save");
+		addNewAddressPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		addNewAddressPage.isMessageSuccessDisplayed(driver, "The new address has been added successfully.");
 		addNewAddressPage.sleepInsecond(3);
@@ -378,19 +384,21 @@ public class TC_02_Customers extends BaseTest {
 		
 		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
 		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_PhoneNumber"), phoneNumber);
+		
+		log.info("Add_Address_01 - Step 03: Verify email infomation is updated successfully");
+		verifyEquals(addNewAddressPage.getTextboxValueByIDAtAdminSite(driver, "value","Address_FaxNumber"), faxNumber);
 		addNewAddressPage.sleepInsecond(3);
 		
 		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer details");
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
-		customerDetailsPage.scrollToBottomPage(driver);
+		//customerDetailsPage.scrollToBottomPage(driver);
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
 		
-		customerDetailsPage.isRowValueInRowDisplayed(driver, firstName, lastName, emailAddress, phoneNumber);
+		customerDetailsPage.isRowValueInRowDisplayedAtAdminSite(firstName, lastName, emailAddress, phoneNumber, faxNumber, companyName);
 		
 		
 	}
-	
 	
 
 	@Parameters({ "browser" })

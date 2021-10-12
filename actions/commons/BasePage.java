@@ -868,6 +868,8 @@ public class BasePage {
 		waitForElementClickable(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 	}
+	
+
 
 	
 	private Alert alert;

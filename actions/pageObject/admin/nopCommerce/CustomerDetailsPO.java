@@ -15,10 +15,12 @@ public class CustomerDetailsPO extends BasePage{
 		this.driver = driver;
 	}
 	
-	public boolean isRowValueInAddressFormDisplayed(WebDriver driver, String firstName, String lastName, String emailAddress, String phoneNmber) {
-		waitForElementVisible(driver, CustomersDetailsPageUI.ROW_VALUE_BY_FIRSTNAME_LASTNAME_EMAIL_PHONE_FAX_ADDRESS, firstName,lastName,emailAddress,phoneNmber);
-		return isElementDisplayed(driver, CustomersDetailsPageUI.ROW_VALUE_BY_FIRSTNAME_LASTNAME_EMAIL_PHONE_FAX_ADDRESS, firstName,lastName,emailAddress,phoneNmber);
+	public boolean isRowValueInRowDisplayedAtAdminSite(String firstName, String lastName, String emailAddress,
+			String phoneNumber,String faxNumber,String address) {
+		waitForElementVisible(driver, CustomersDetailsPageUI.ROW_VALUE_BY_FIRSTNAME_LASTNAME_EMAIL_PHONE_FAX_ADDRESS, firstName,lastName,emailAddress,phoneNumber,faxNumber, address);
+		return isElementDisplayed(driver, CustomersDetailsPageUI.ROW_VALUE_BY_FIRSTNAME_LASTNAME_EMAIL_PHONE_FAX_ADDRESS, firstName,lastName,emailAddress,phoneNumber,faxNumber, address);
 	}
+	
 
 
 
