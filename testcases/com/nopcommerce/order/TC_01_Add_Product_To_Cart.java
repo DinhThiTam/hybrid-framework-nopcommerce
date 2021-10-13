@@ -26,9 +26,9 @@ import utilities.DataUtil;
 public class TC_01_Add_Product_To_Cart extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, processorProduct, ramProduct, hddProduct, sProduct,
-			softwareMicrosoft, softwareAcrobat, softwareTotal, softwareMicrosoft1, rightUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1;
+			softwareMicrosoft, softwareAcrobat, softwareTotal, softwareMicrosoft1, stringUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1, stringTotal;
+	float totalPrice, floatUnitPrice, floatTotal;
 	int quantity;
-	float totalPrice, unitPrice, replaceUnitPrice;
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
@@ -57,10 +57,10 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
 		
-		
+	
 		quantity = 1;
 		
-		totalPrice = unitPrice*quantity;
+		
 		log.info("Pre-Condition - Step 02: Open Register page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
 		registerPage = PageGenerator.getRegisterPage(driver);
@@ -126,9 +126,20 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("HDD: " + hddProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
-		//verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Unit price: " + String.valueOf(replaceUnitPrice)));
-//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + quantity));
+		
+		floatUnitPrice= productDetailsPage.getPriceUnit("price");
+		System.out.println(floatUnitPrice);
+		stringUnitPrice = productDetailsPage.getTextPriceUnit("price");
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(stringUnitPrice));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + String.valueOf(quantity)));
+		System.out.println(quantity);
+		totalPrice =quantity*floatUnitPrice;
+		
+	
+	floatTotal = productDetailsPage.getPriceUnit("totals");
+		verifyEquals(floatTotal,totalPrice);
 //		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Sub-Total: " + totalPrice));
+		System.out.println(totalPrice);
 	}
 	
 	@Test

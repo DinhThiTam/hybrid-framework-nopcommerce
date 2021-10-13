@@ -604,9 +604,9 @@ public class BasePage {
 		return isElementSelected(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, itemLabel);
 	}
 	
-	public void selectItemInDropdownByName(WebDriver driver, String value, String dropdownID) {
-		waitForElementClickable(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
-		selectDropdownByText(driver, BasePageUI.DROPDOWN_BY_NAME, value, dropdownID);
+	public void selectItemInDropdownByName(WebDriver driver, String value, String dropdownName) {
+		waitForElementClickable(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownName);
+		selectDropdownByText(driver, BasePageUI.DROPDOWN_BY_NAME, value, dropdownName);
 	}
 	
 	public String getSelectItemInDropdownByName(WebDriver driver, String dropdownID) {
@@ -869,6 +869,11 @@ public class BasePage {
 		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 	}
 	
+	public boolean isMessageInTableDisplayedByCardTitle(WebDriver driver, String cartTitle) {
+		waitForElementVisible(driver, AdminBasePageUI.MESSAGE_IN_TABLE_AT_ADMIN_SITE_BY_CARD_TITLE, cartTitle);
+		return isElementDisplayed(driver, AdminBasePageUI.MESSAGE_IN_TABLE_AT_ADMIN_SITE_BY_CARD_TITLE, cartTitle);
+		
+	}
 
 
 

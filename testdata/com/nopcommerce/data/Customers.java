@@ -31,15 +31,15 @@ public class Customers {
 		}
 		
 		public class UpdateAddress {
-			public static final String STATE_PROVINCE= "Prince Edward Island"; 
-			public static final String COUNTRY_NAME="United States" ;
-			public static final String CITY_NAME= "Albani";
-			public static final String ADDRESS1="123 PO Box" ;
-			public static final String ADDRESS2= "356 Los Bancos"; 
-			public static final String ZIP_CODE= "986589"; 
-			public static final String CITY_ZIP_CODE = CITY_NAME + ", " + ZIP_CODE;
-			public static final String PHONE_NUMBER= "0983456888"; 
-			public static final String FAX_NUMBER = "+4477899766662";
+			public static final String UPDATE_STATE_PROVINCE= "AA (Armed Forces Americas)"; 
+			public static final String UPDATE_COUNTRY_NAME="United States";
+			public static final String UPDATE_CITY_NAME= "Albani";
+			public static final String UPDATE_ADDRESS1="123 PO Box" ;
+			public static final String UPDATE_ADDRESS2= "356 Los Bancos"; 
+			public static final String UPDATE_ZIP_CODE= "986589"; 
+			public static final String UPDATE_CITY_ZIP_CODE = UPDATE_CITY_NAME + ", " + UPDATE_ZIP_CODE;
+			public static final String UPDATE_PHONE_NUMBER= "0983456888"; 
+			public static final String UPDATE_FAX_NUMBER = "+4477899766662";
 			
 		}
 		

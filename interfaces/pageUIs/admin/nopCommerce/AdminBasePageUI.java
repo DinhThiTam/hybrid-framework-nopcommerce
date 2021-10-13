@@ -21,6 +21,7 @@ public class AdminBasePageUI {
 	public static final String SUCCESS_MESSAGE_BY_TEXT= "//div[@class='content-wrapper']//div[contains(string(),'%s')]";
 	public static final String BUTTON_BY_CONTAINS_TEXT= "//button[contains(string(),'%s')]";
 	public static final String BACK_BUTTON_BY_NAME= "//small[contains(string(),'%s')]";
+	public static final String MESSAGE_IN_TABLE_AT_ADMIN_SITE_BY_CARD_TITLE= "//div[contains(string(),'%s')]/parent::div/following-sibling::div//td[text()='No data available in table']";
 	
 	
 }

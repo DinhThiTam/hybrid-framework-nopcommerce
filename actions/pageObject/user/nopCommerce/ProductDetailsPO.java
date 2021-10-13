@@ -1,10 +1,15 @@
 package pageObject.user.nopCommerce;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import commons.BasePage;
 import pageUIs.nopCommerce.DesktopsPageUI;
 import pageUIs.nopCommerce.ProductDetailsPageUI;
+
 
 public class ProductDetailsPO extends BasePage{
 	private WebDriver driver;
@@ -32,11 +37,17 @@ public class ProductDetailsPO extends BasePage{
 	}
 
 
-	public float getPriceUnit() {
-		String unitPrice = getElementText(driver, ProductDetailsPageUI.UNIT_PRICE).replaceAll(",", "");
-		float unitPriceCast = Float.parseFloat(unitPrice);
-		System.out.println(unitPriceCast);
-		return unitPriceCast;
+	public float getPriceUnit(String infoText) {
+		String unitPrice[] = getElementText(driver, ProductDetailsPageUI.UNIT_PRICE, infoText).split(":");
+		System.out.println(unitPrice[1]);
+
+		Float productPriceNumber = Float.parseFloat(unitPrice[1].replace(" $", "").replace(",", ""));
+		return productPriceNumber;
+	}
+	
+	public String getTextPriceUnit(String infoText) {
+		waitForElementVisible(driver,ProductDetailsPageUI.UNIT_PRICE, infoText);
+		return getElementText(driver, ProductDetailsPageUI.UNIT_PRICE, infoText);
 	}
 
 
