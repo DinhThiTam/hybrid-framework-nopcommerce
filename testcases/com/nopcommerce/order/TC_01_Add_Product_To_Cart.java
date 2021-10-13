@@ -21,12 +21,13 @@ import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RegisterPO;
 import pageObject.user.nopCommerce.ShoppingCartPO;
 import pageObject.user.nopCommerce.WishlistPO;
+import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
 public class TC_01_Add_Product_To_Cart extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, processorProduct, ramProduct, hddProduct, sProduct,
-			softwareMicrosoft, softwareAcrobat, softwareTotal, softwareMicrosoft1, stringUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1, stringTotal;
+			softwareMicrosoft, softwareAcrobat, softwareTotal, stringUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1, stringTotal;
 	float totalPrice, floatUnitPrice, floatTotal;
 	int quantity;
 
@@ -53,13 +54,8 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		sProduct = "Vista Premium [+$60.00]";
 		sProduct1 = "Vista Home [+$50.00]";
 		softwareMicrosoft = "Microsoft Office [+$50.00]";
-		softwareMicrosoft1 = "Microsoft Office [+$50.00]";
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
-		
-	
-		quantity = 1;
-		
 		
 		log.info("Pre-Condition - Step 02: Open Register page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
@@ -119,35 +115,32 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 
 		productDetailsPage.hoverToShoppingCartHeaderMenu();
-		//replaceUnitPrice = productDetailsPage.getPriceUnit();
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("There are 1 item(s) in your cart."));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(" Processor: " + processorProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("RAM: " + ramProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("HDD: " + hddProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
-		
+		quantity = 1;
 		floatUnitPrice= productDetailsPage.getPriceUnit("price");
-		System.out.println(floatUnitPrice);
 		stringUnitPrice = productDetailsPage.getTextPriceUnit("price");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(stringUnitPrice));
+	
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + String.valueOf(quantity)));
-		System.out.println(quantity);
+	
 		totalPrice =quantity*floatUnitPrice;
 		
-	
-	floatTotal = productDetailsPage.getPriceUnit("totals");
-		verifyEquals(floatTotal,totalPrice);
-//		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Sub-Total: " + totalPrice));
-		System.out.println(totalPrice);
+		verifyEquals(productDetailsPage.getPriceUnit("totals"),totalPrice);
+		
 	}
 	
 	@Test
 	public void Edit_Product_To_Cart_02() {
+		quantity = 2;
 		productDetailsPage.clickToButtonByName(driver, "Go to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
-		shoppingCartPO = PageGenerator.getShoppingCartPage(driver);
-		productDetailsPage = shoppingCartPO.clickToEditButtonInTableByRowNumber("1");
+		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		productDetailsPage = shoppingCartPage.clickToEditButtonInTableByRowNumber("1");
 		productDetailsPage.sleepInsecond(5);
 		productDetailsPage.selectItemInDropdownByName(driver, processorProduct1,"product_attribute_1");
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_1"),processorProduct1);
@@ -155,15 +148,50 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_2"),ramProduct1);
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, hddProduct1);
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, sProduct1);
-		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, softwareMicrosoft1);
-		productDetailsPage.enterToTextboxByID(driver, "product_enteredQuantity_1", "2");
+		
+		productDetailsPage.uncheckToCheckboxByLabel(driver, softwareAcrobat);
+		productDetailsPage.uncheckToCheckboxByLabel(driver, softwareTotal);
+		productDetailsPage.enterToTextboxByID(driver, "product_enteredQuantity_1", String.valueOf(quantity));
+		verifyEquals(productDetailsPage.getPriceAtProductDetailPage(),"$1,320.00");
+		
 		productDetailsPage.clickToButtonByName(driver, "Update");
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
 		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver),"The product has been added to your shopping cart");
-
+		
 		log.info("Wishlist_01 - Step 05: Click to Close icon");
 		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		productDetailsPage.hoverToShoppingCartHeaderMenu();
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("There are 2 item(s) in your cart."));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(" Processor: " + processorProduct1));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("RAM: " + ramProduct1));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("HDD: " + hddProduct1));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct1));
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
+		
+		floatUnitPrice= productDetailsPage.getPriceUnit("price");
+		stringUnitPrice = productDetailsPage.getTextPriceUnit("price");
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(stringUnitPrice));
+		
+		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + String.valueOf(quantity)));
+		
+		totalPrice =quantity*floatUnitPrice;
+		
+		verifyEquals(productDetailsPage.getPriceUnit("totals"),totalPrice);
+		
+	}
+	@Test
+	public void Edit_Product_To_Cart_03() {
+		quantity = 2;
+		String price[] = stringUnitPrice.split(":");
+		productDetailsPage.clickToButtonByName(driver, "Go to cart");
+		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		shoppingCartPage.clickToRemoveIconInTableByRowValue("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity));
+		verifyTrue(shoppingCartPage.isCartEmptyMessageDisplayed());
+		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity)));
+		
 		
 	}
 
@@ -186,6 +214,6 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 	ProductDetailsPO productDetailsPage;
 	WishlistPO wishlistPage;
 	ComparePO comparePage;
-	ShoppingCartPO shoppingCartPO;
+	ShoppingCartPO shoppingCartPage;
 
 }

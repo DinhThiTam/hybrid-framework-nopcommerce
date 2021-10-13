@@ -599,6 +599,11 @@ public class BasePage {
 		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
 	}
 	
+	public void uncheckToCheckboxByLabel(WebDriver driver, String radioLabel) {
+		waitForElementClickable(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
+		uncheckTheCheckbox(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
+	}
+	
 
 	public boolean isSelectedItemByLable(WebDriver driver, String itemLabel) {
 		return isElementSelected(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, itemLabel);

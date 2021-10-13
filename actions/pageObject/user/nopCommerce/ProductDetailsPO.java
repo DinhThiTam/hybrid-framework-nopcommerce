@@ -51,6 +51,12 @@ public class ProductDetailsPO extends BasePage{
 	}
 
 
+	public String getPriceAtProductDetailPage() {
+		waitForElementVisible(driver,ProductDetailsPageUI.PRODUCT_PRICE);
+		return getElementText(driver, ProductDetailsPageUI.PRODUCT_PRICE);
+	}
+
+
 
 
 	
