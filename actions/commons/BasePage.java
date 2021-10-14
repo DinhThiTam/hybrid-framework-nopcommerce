@@ -589,6 +589,11 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_BY_NAME, buttonName);
 	}
 	
+	public void clickToButtonByClassAndName(WebDriver driver, String overviewClass, String buttonName) {
+		waitForElementClickable(driver, BasePageUI.BUTTON_BY_CLASS_AND_NAME,overviewClass, buttonName);
+		clickToElement(driver, BasePageUI.BUTTON_BY_CLASS_AND_NAME, overviewClass, buttonName);
+	}
+	
 	public String getTextboxValueByID(WebDriver driver, String textboxID) {
 		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
 		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);

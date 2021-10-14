@@ -39,6 +39,12 @@ public class ShoppingCartPO extends BasePage{
 		return isElementDisplayed(driver, ShoppingCartUI.MESSAGE_CART_EMPTY);
 	}
 
+	public void enterToInputQuantityTextbox(String value) {
+		waitForElementClickable(driver, ShoppingCartUI.INPUT_CLASS_BUTTON);
+		senkeyToElement(driver, ShoppingCartUI.INPUT_CLASS_BUTTON, value);
+		
+	}
+
 
 
 	
