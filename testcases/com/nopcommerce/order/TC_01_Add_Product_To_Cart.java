@@ -193,26 +193,8 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
 		shoppingCartPage.clickToRemoveIconInTableByRowValue("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity));
 		verifyTrue(shoppingCartPage.isCartEmptyMessageDisplayed());
-//		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity)));
+		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity)));
 	}
-	
-	@Test
-	public void TC_04_Update_Shopping_Cart() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops '");
-		shoppingCartPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
-		desktopsPage = PageGenerator.getDesktopsPage(driver);
-
-		desktopsPage.clickToProductLinkByText(driver, "Lenovo IdeaCentre 600 All-in-One PC");
-		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
-		productDetailsPage.clickToButtonByClassAndName(driver, "add-to-cart", "Add to cart");
-		productDetailsPage.openMenuFooterPageByName(driver, "Shopping cart");
-		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
-		quantity = 5;
-//		verifyEquals(shoppingCartPage.isVal, expected)
-//		shoppingCartPage.enterToInputQuantityTextbox(String.valueOf(quantity));
-//		shoppingCartPage.clickToButtonByName(driver, "Update shopping cart");
-	}
-	
 	
 
 

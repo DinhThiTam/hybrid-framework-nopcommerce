@@ -11,7 +11,7 @@ public class BasePageUI {
 	public static final String PRODUCT_TITLE_SIZE= "//h2[@class='product-title']";
 	public static final String PRODUCT_TITLE_BY_TEXT = "//a[text()='%s']";
 	public static final String TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "//table[@class='%s']//tbody/tr[%s]/td[%s]";
-	public static final String TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME = "//table[@class='%s']//tr/th[text()='%s']/preceding-sibling::th";
+	public static final String TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME = "//table[@class='%s']//tr/th[contains(string(),'%s')]/preceding-sibling::th";
 	public static final String TABLE_HEADER_VERTICAL_BY_CLASS_AND_NAME = "//table[@class='%s']//tr[@class='%s']//preceding-sibling::tr";
 	public static final String BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE = "//a[text()='%s']/parent::h2[@class='product-title']//following-sibling::div[@class='add-info']//button[@title='%s']";
 	public static final String MESSAGE_BY_TEXT = "//p[@class='content']";

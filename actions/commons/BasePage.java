@@ -699,10 +699,10 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.PRODUCT_TITLE_BY_TEXT, linkText);
 	}
 	
-	public String getValueInTableIDAtColumnHorizontalNameAndRowIndex(WebDriver driver, String tableID, String rowIndex, String headerName) {
-		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME, tableID,headerName) + 1;
-		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
-		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, rowIndex, String.valueOf(columnIndex));
+	public String getValueInTableIDAtColumnHorizontalNameAndRowIndex(WebDriver driver, String tableClass, String rowIndex, String headerName) {
+		int columnIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_HORIZONTAL_BY_CLASS_AND_NAME, tableClass,headerName) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass, rowIndex, String.valueOf(columnIndex));
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass, rowIndex, String.valueOf(columnIndex));
 	}
 	
 	public String getValueInTableIDAtColumnVerticalByClassAndRowIndex(WebDriver driver, String tableID, String columnIndex, String headerClass) {
