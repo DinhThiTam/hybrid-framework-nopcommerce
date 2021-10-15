@@ -604,6 +604,11 @@ public class BasePage {
 		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
 	}
 	
+	public void clickToRadioByText(WebDriver driver, String radioText) {
+		waitForElementClickable(driver, BasePageUI.RADIO_BY_TEXT, radioText);
+		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_BY_TEXT, radioText);
+	}
+	
 	public void uncheckToCheckboxByLabel(WebDriver driver, String radioLabel) {
 		waitForElementClickable(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
 		uncheckTheCheckbox(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
@@ -619,9 +624,9 @@ public class BasePage {
 		selectDropdownByText(driver, BasePageUI.DROPDOWN_BY_NAME, value, dropdownName);
 	}
 	
-	public String getSelectItemInDropdownByName(WebDriver driver, String dropdownID) {
-		waitForElementVisible(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
-		return getSelectedItemDropdown(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownID);
+	public String getSelectItemInDropdownByName(WebDriver driver, String dropdownName) {
+		waitForElementVisible(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownName);
+		return getSelectedItemDropdown(driver, BasePageUI.DROPDOWN_BY_NAME, dropdownName);
 	}
 
 	public boolean isSelectedItemInRadio(WebDriver driver, String radioLabel) {
@@ -705,10 +710,16 @@ public class BasePage {
 		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass, rowIndex, String.valueOf(columnIndex));
 	}
 	
-	public String getValueInTableIDAtColumnVerticalByClassAndRowIndex(WebDriver driver, String tableID, String columnIndex, String headerClass) {
-		int rowIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_VERTICAL_BY_CLASS_AND_NAME, tableID,headerClass) + 1;
-		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID,String.valueOf(rowIndex),columnIndex);
-		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableID, String.valueOf(rowIndex),columnIndex);
+	public String getValueInTableIDAtColumnVerticalByClassAndRowIndex(WebDriver driver, String tableClass, String columnIndex, String headerClass) {
+		int rowIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_VERTICAL_BY_CLASS_AND_NAME, tableClass,headerClass) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,String.valueOf(rowIndex),columnIndex);
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass, String.valueOf(rowIndex),columnIndex);
+	}
+	
+	public String getValueInTableIDAtColumnVerticalByClassAndRowIndex2(WebDriver driver, String tableClass,  String trClass, String columnIndex, String headerClass) {
+		int rowIndex = getSizeElements(driver, BasePageUI.TABLE_HEADER_VERTICAL_BY_CLASS_AND_NAME, tableClass,headerClass) + 1;
+		waitForElementVisible(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,String.valueOf(rowIndex),columnIndex);
+		return getElementText(driver, BasePageUI.TABLE_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass, String.valueOf(rowIndex),columnIndex);
 	}
 	
 	

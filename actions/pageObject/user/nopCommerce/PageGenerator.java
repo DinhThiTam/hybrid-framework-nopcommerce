@@ -73,6 +73,11 @@ public class PageGenerator {
 
 		return new ShoppingCartPO(driver);
 	}
+	
+	public static CheckoutPO getCheckoutPage(WebDriver driver) {
+
+		return new CheckoutPO(driver);
+	}
 
 
 }

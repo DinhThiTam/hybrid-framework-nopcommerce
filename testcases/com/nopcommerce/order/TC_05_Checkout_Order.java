@@ -10,8 +10,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.nopcommerce.common.Common_01_Login_User;
+import com.nopcommerce.data.Customers.NewAddress;
 
 import commons.BaseTest;
+import pageObject.user.nopCommerce.CheckoutPO;
 import pageObject.user.nopCommerce.ComparePO;
 import pageObject.user.nopCommerce.DesktopsPO;
 import pageObject.user.nopCommerce.HomePO;
@@ -26,7 +28,7 @@ import pageObject.user.nopCommerce.WishlistPO;
 import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
-public class TC_02_Update_Shopping_Cart extends BaseTest {
+public class TC_05_Checkout_Order extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, processorProduct, ramProduct, hddProduct, sProduct,
 			softwareMicrosoft, softwareAcrobat, softwareTotal, stringUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1, stringTotal;
@@ -83,28 +85,54 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 
 	@Test
 	public void TC_04_Update_Shopping_Cart() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops '");
-		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
-		desktopsPage = PageGenerator.getDesktopsPage(driver);
-
-		desktopsPage.clickToProductLinkByText(driver, "Lenovo IdeaCentre 600 All-in-One PC");
-		desktopsPage.sleepInsecond(3);
+		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
+		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
+		
+		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
+		notebooksPage.sleepInsecond(3);
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		productDetailsPage.clickToButtonByClassAndName(driver, "add-to-cart", "Add to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		productDetailsPage.openMenuFooterPageByName(driver, "Shopping cart");
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
-		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Total"),"$500.00");
 	
 		
-		quantity = 5;
-		shoppingCartPage.enterToInputQuantityTextbox(String.valueOf(quantity));
-		shoppingCartPage.sleepInsecond(3);
-		shoppingCartPage.clickToButtonByName(driver, "Update shopping cart");
-		shoppingCartPage.sleepInsecond(3);
+		shoppingCartPage.clickToButtonByClassAndName(driver, "common-buttons","Estimate shipping");
+		shoppingCartPage.sleepInsecond(5);
+		shoppingCartPage.selectItemInDropdownByName(driver, NewAddress.COUNTRY_NAME, "CountryId");
+		shoppingCartPage.sleepInsecond(5);
+		shoppingCartPage.getSelectItemInDropdownByName(driver, "CountryId");
+		shoppingCartPage.getSelectItemInDropdownByName(driver, "StateProvinceId");
+		shoppingCartPage.enterToTextboxByID(driver, "ZipPostalCode", NewAddress.ZIP_CODE);
+		shoppingCartPage.isJQueryAjaxLoadedSuccess(driver);
+		shoppingCartPage.clickToRadioByText(driver, "Next Day Air");
+		shoppingCartPage.clickToButtonByName(driver,"Apply");
+		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
+		shoppingCartPage.clickToRadioAndCheckboxByLabel(driver, "I agree with the terms of service and I adhere to them unconditionally");
+		shoppingCartPage.clickToButtonByID(driver, "checkout");
+		checkoutPage = PageGenerator.getCheckoutPage(driver);
+		checkoutPage.uncheckToCheckboxByLabel(driver, "Ship to the same address");
+		checkoutPage.selectItemInDropdownByName(driver, NewAddress.COUNTRY_NAME, "BillingNewAddress.CountryId");
+		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
+		verifyEquals(checkoutPage.getSelectItemInDropdownByName(driver,"BillingNewAddress.StateProvinceId"),"Other");
+		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_City", NewAddress.CITY_NAME);
+		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_Address1", NewAddress.ADDRESS1);
+		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_ZipPostalCode", NewAddress.ZIP_CODE);
+		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_PhoneNumber", NewAddress.PHONE_NUMBER);
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Billing address", "Continue");
 		
-		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Total"),"$2,500.00");
+	
+		
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Shipping address", "Continue");
+		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
+		checkoutPage.clickToRadioAndCheckboxByLabel(driver, "Next Day Air ($0.00)");
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Shipping method", "Continue");
+		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
+		checkoutPage.clickToRadioAndCheckboxByLabel(driver, "Check / Money Order");
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Payment method", "Continue");
 	}
 	
 	
@@ -129,5 +157,6 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 	WishlistPO wishlistPage;
 	ComparePO comparePage;
 	ShoppingCartPO shoppingCartPage;
+	CheckoutPO checkoutPage;
 
 }

@@ -17,5 +17,6 @@ public class BasePageUI {
 	public static final String MESSAGE_BY_TEXT = "//p[@class='content']";
 	public static final String CLOSE_ICON_IN_MESSAGE = "//span[@title='Close']";
 	public static final String NO_DATA_PAGE_BY_TEXT = "//div[@class='page-body']/div[contains(string(),'%s')]";
-	public static final String BUTTON_BY_CLASS_AND_NAME = "//div[@class='%s']//button[text()='%s']";
+	public static final String BUTTON_BY_CLASS_AND_NAME = "//div[@class='%s']//*[contains(string(),'%s')]";
+	public static final String RADIO_BY_TEXT = "//div[text()='%s']/parent::div/div/label";
 }
