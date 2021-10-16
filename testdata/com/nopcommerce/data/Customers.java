@@ -4,7 +4,9 @@ public class Customers {
 		
 		public class NewAddress {
 			public static final String GENDER_MALE = "Male";
-			public static final String LAST_NAME = "Tam";
+			public static final String FIRST_NAME = "Automation";
+			public static final String LAST_NAME = "FC";
+			public static final String FULL_NAME = FIRST_NAME + " " + LAST_NAME;
 			public static final String DATE_OF_BIRTH = "1/1/2000";
 			public static final String CUSTOMER_ROLE = "Guests";
 			public static final String ADMIN_COMMENT = "New Comment";
@@ -15,7 +17,7 @@ public class Customers {
 			public static final String ADDRESS1="123/04 Le Lai" ;
 			public static final String ADDRESS2= "234/05 Hai Phong"; 
 			public static final String ZIP_CODE= "550000"; 
-			public static final String CITY_ZIP_CODE = CITY_NAME + ", " + ZIP_CODE;
+			public static final String CITY_ZIP_CODE = CITY_NAME + "," + ZIP_CODE;
 			public static final String PHONE_NUMBER= "0123456789"; 
 			public static final String FAX_NUMBER = "0983970447";
 		}

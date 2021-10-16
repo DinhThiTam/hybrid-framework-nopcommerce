@@ -29,10 +29,12 @@ public class ShoppingCartPO extends BasePage{
 		clickToElement(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty);
 	}
 	
-	public boolean isValueInTableUnDisplayed(String sku, String product, String price, String qty) {
-		waitForElementInvisible(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty);
-		return isElementUnDisplayed(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty);
+	public boolean isValueInTableUnDisplayed(String sku, String product, String price, String qty, String total) {
+		waitForElementInvisible(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty, total);
+		return isElementUnDisplayed(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty, total);
 	}
+	
+
 
 	public boolean isCartEmptyMessageDisplayed() {
 		waitForElementVisible(driver, ShoppingCartUI.MESSAGE_CART_EMPTY);
@@ -44,6 +46,7 @@ public class ShoppingCartPO extends BasePage{
 		senkeyToElement(driver, ShoppingCartUI.INPUT_CLASS_BUTTON, value);
 		
 	}
+
 
 
 

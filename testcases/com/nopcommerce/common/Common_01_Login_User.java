@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import com.nopcommerce.data.Customers.NewAddress;
+
 import commons.BaseTest;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
@@ -35,8 +37,6 @@ public class Common_01_Login_User extends BaseTest{
 		
 		fakeData = DataUtil.getData();
 		
-		firstName = fakeData.getFirstName();
-		lastName = fakeData.getLastName();
 		emailAddress = fakeData.getEmailAddress();
 		password = fakeData.getPassword();
 
@@ -49,10 +49,10 @@ public class Common_01_Login_User extends BaseTest{
 		registerPage = PageGenerator.getRegisterPage(driver);
 		
 		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		registerPage.enterToTextboxByID(driver,"FirstName", NewAddress.FIRST_NAME);
 		
 		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		registerPage.enterToTextboxByID(driver,"LastName", NewAddress.LAST_NAME);
 		
 		log.info("Register_03 - Step 03: Enter valid info to 'Email' textbox");
 		registerPage.enterToTextboxByID(driver,"Email", emailAddress);

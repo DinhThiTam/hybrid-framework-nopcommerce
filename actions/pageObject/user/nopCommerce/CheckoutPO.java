@@ -23,10 +23,29 @@ public void clickToButtonInCheckoutPageByTitleAndName(String stepTitle, String b
 	clickToElement(driver, CheckoutPageUI.BUTTON_IN_CHECKOUTPAGE_BY_TITLE_AND_NAME_, stepTitle, buttonName);
 }
 
-
-
-
+public String getTextPayment(String pindex) {
+	waitForElementVisible(driver, CheckoutPageUI.TEXT_PAYMENT_, pindex);
+	String text = getElementText(driver, CheckoutPageUI.TEXT_PAYMENT_, pindex);
+	System.out.println("Text in Payment: " + text );
+	return text;
 	
 	
-
 }
+
+public String getInfoListByTitleAndClass(String title, String textInfo) {
+	waitForElementVisible(driver, CheckoutPageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
+	return getElementText(driver, CheckoutPageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
+}
+
+public String getOrderNumber() {
+	String textOrderNumbe = getElementText(driver, CheckoutPageUI.ORDER_NUMER).substring(13);
+	return textOrderNumbe;
+}
+	
+public String getFullOrderNumber() {
+	waitForElementVisible(driver, CheckoutPageUI.ORDER_NUMER);
+	return getElementText(driver, CheckoutPageUI.ORDER_NUMER);
+}
+	
+}	
+

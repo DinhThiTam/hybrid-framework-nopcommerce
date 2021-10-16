@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.nopcommerce.common.Common_01_Login_User;
 import com.nopcommerce.data.Customers.NewAddress;
+import com.nopcommerce.data.Payment.PaymentInfo;
 
 import commons.BaseTest;
 import pageObject.user.nopCommerce.CheckoutPO;
@@ -44,11 +45,6 @@ public class TC_05_Checkout_Order extends BaseTest {
 		verifyTrue(homePage.isHomePageSliderDisplayed());
 		fakeData = DataUtil.getData();
 
-		firstName = fakeData.getFirstName();
-		lastName = fakeData.getLastName();
-		emailAddress = fakeData.getEmailAddress();
-		password = fakeData.getPassword();
-
 		processorProduct = "2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]";
 		processorProduct1 = "2.2 GHz Intel Pentium Dual-Core E2200";
 		ramProduct = "8GB [+$60.00]";
@@ -60,11 +56,6 @@ public class TC_05_Checkout_Order extends BaseTest {
 		softwareMicrosoft = "Microsoft Office [+$50.00]";
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
-		
-		log.info("Pre-Condition - Step 01: Open browser '"+ browserName + "' and navigate '" + appURL + "'");
-		driver = getBrowserDriver(browserName, appURL);
-		homePage = PageGenerator.getHomePage(driver);
-		verifyTrue(homePage.isHomePageSliderDisplayed());
 		
 		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-login");
@@ -133,6 +124,44 @@ public class TC_05_Checkout_Order extends BaseTest {
 		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
 		checkoutPage.clickToRadioAndCheckboxByLabel(driver, "Check / Money Order");
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Payment method", "Continue");
+		verifyEquals(checkoutPage.getTextPayment("1"),PaymentInfo.TEXT_INDEX_1);
+		verifyEquals(checkoutPage.getTextPayment("2"),PaymentInfo.TEXT_INDEX_2);
+		verifyEquals(checkoutPage.getTextPayment("3"),PaymentInfo.TEXT_INDEX_3);
+		verifyEquals(checkoutPage.getTextPayment("4"),PaymentInfo.TEXT_INDEX_4);
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Payment information", "Continue");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","fax"),"Fax:");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","country"),NewAddress.COUNTRY_NAME);
+		
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Payment","payment-method"),"Payment Method: Check / Money Order");
+		
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","fax"),"Fax:");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","country"),NewAddress.COUNTRY_NAME);
+		
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping","shipping-method"),"Shipping Method: Next Day Air");
+		
+		checkoutPage.scrollToBottomPage(driver);
+		
+		//verifyTrue(checkoutPage.isValueInTableDisplayed(driver,"AP_MBP_13", "Apple MacBook Pro 13-inch","$1,800.00", "2","$3,600.00"));
+		
+//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-subtotal"), "$3,600.00");
+//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "shipping-cost"), "$0.00");
+//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "tax-value"), "$0.00");
+//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-total"), "$3,600.00");
+//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
+		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Confirm order", "Confirm");
+		verifyEquals(checkoutPage.getFullOrderNumber(),"ORDER NUMBER:" + checkoutPage.getOrderNumber());
+		
+		
 	}
 	
 	
@@ -142,7 +171,9 @@ public class TC_05_Checkout_Order extends BaseTest {
 	@AfterClass(alwaysRun = true)
 	public void cleanBrowser(String browserName) {
 		log.info("Post-Condition - Close Browser - " + browserName + "");
+		System.out.println("Close");
 		cleanBrowserAndDriver();
+		
 	}
 
 	WebDriver driver;

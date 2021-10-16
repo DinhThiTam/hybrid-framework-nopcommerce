@@ -185,12 +185,13 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 	public void TC_03_Remove_from_Cart() {
 		quantity = 2;
 		String price[] = stringUnitPrice.split(":");
+		totalPrice = quantity * Float.valueOf(price[1]);
 		productDetailsPage.clickToButtonByName(driver, "Go to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
 		shoppingCartPage.clickToRemoveIconInTableByRowValue("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity));
 		verifyTrue(shoppingCartPage.isCartEmptyMessageDisplayed());
-		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity)));
+		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity), String.valueOf(totalPrice)));
 	}
 	
 

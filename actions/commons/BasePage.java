@@ -26,6 +26,7 @@ import pageUIs.admin.nopCommerce.AddNewCustomersPageUI;
 import pageUIs.admin.nopCommerce.AdminBasePageUI;
 import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.ShoppingCartUI;
 
 
 
@@ -742,6 +743,11 @@ public class BasePage {
 	public boolean isPageMessageNoDataDisplayedByText(WebDriver driver, String messageText) {
 		waitForElementVisible(driver, BasePageUI.NO_DATA_PAGE_BY_TEXT, messageText);
 		return isElementDisplayed(driver, BasePageUI.NO_DATA_PAGE_BY_TEXT, messageText);
+	}
+	
+	public boolean isValueInTableDisplayed(WebDriver driver, String sku, String product, String price, String qty, String total) {
+		waitForElementVisible(driver, BasePageUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty, total);
+		return isElementDisplayed(driver, BasePageUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty, total);
 	}
 	
 	// Admin - Nopcommerce
