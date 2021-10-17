@@ -7,6 +7,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.nopcommerce.common.Common_01_Login_User;
+import com.nopcommerce.data.Customers.NewAddress;
+
 import commons.BaseTest;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
@@ -45,37 +48,26 @@ public class TC_02_Add_Addresses extends BaseTest {
 		phoneNumber= "0123456789"; 
 		faxNumber = "0983970447";
 		
-		log.info("Pre-Condition - Step 02: Open Register page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-register");
-		registerPage = PageGenerator.getRegisterPage(driver);
+		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-login");
+		loginPage = PageGenerator.getLoginPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		log.info("Pre-Condition - Step 03: Set login page cookie");
+		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
+		loginPage.sleepInsecond(5);
+		loginPage.refreshPage(driver);
 		
-		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		log.info("Pre-Condition - Step 04: Open homepage");
+		homePage =  loginPage.openHomePage();
 		
-		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
-		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
-		
-		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
-		registerPage.enterToTextboxByID(driver,"Password", password);
-		
-		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
-		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
-		
-		log.info("Pre-Condition - Step 08: Click to 'Register' button");
-		registerPage.clickToButtonByName(driver, "Register");
-		
-		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
-		verifyTrue(registerPage.isSuccessMessageDisplayed());
-	
+		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
+		verifyTrue(homePage.isHomePageSliderDisplayed());
 	}
 	
 	@Test
 	public void Add_Address_01() {
-		log.info("Add_Address_01 - Step 01: Open 'My account' page on header");
-		registerPage.openMenuHeaderPageByClass(driver, "ico-account");
+		log.info("My_Account_01 - Step 01: Open 'My account' page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("Add_Address_01 - Step 02: Open 'Addresses' form");
@@ -86,10 +78,10 @@ public class TC_02_Add_Addresses extends BaseTest {
 		myAccountPage.clickToButtonByName(driver, "Add new");
 		
 		log.info("Add_Address_01 - Step 04: Update First name information to textbox");
-		myAccountPage.enterToTextboxByID(driver, "Address_FirstName", firstName);
+		myAccountPage.enterToTextboxByID(driver, "Address_FirstName", NewAddress.FIRST_NAME);
 		
 		log.info("Add_Address_01 - Step 05: Update Last name information to textbox");
-		myAccountPage.enterToTextboxByID(driver, "Address_LastName", lastName);
+		myAccountPage.enterToTextboxByID(driver, "Address_LastName", NewAddress.LAST_NAME);
 		
 		log.info("Add_Address_01 - Step 06: Update Email information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_Email", emailAddress);

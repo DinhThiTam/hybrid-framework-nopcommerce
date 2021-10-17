@@ -78,6 +78,11 @@ public class PageGenerator {
 
 		return new CheckoutPO(driver);
 	}
+	
+	public static OrderDetailsPO getOrderDetailsPage(WebDriver driver) {
+
+		return new OrderDetailsPO(driver);
+	}
 
 
 }

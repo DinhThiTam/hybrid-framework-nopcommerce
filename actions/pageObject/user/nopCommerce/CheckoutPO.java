@@ -29,22 +29,12 @@ public String getTextPayment(String pindex) {
 	System.out.println("Text in Payment: " + text );
 	return text;
 	
-	
 }
 
-public String getInfoListByTitleAndClass(String title, String textInfo) {
-	waitForElementVisible(driver, CheckoutPageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
-	return getElementText(driver, CheckoutPageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
-}
 
-public String getOrderNumber() {
-	String textOrderNumbe = getElementText(driver, CheckoutPageUI.ORDER_NUMER).substring(13);
-	return textOrderNumbe;
-}
-	
-public String getFullOrderNumber() {
-	waitForElementVisible(driver, CheckoutPageUI.ORDER_NUMER);
-	return getElementText(driver, CheckoutPageUI.ORDER_NUMER);
+public boolean isMessageSuccessOrderDisplayed() {
+	waitForElementVisible(driver, CheckoutPageUI.MESSAGE_SUCCESS_ORDER);
+	return isElementDisplayed(driver, CheckoutPageUI.MESSAGE_SUCCESS_ORDER);
 }
 	
 }	

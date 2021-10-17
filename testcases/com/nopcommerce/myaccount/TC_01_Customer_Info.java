@@ -7,6 +7,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.nopcommerce.common.Common_01_Login_User;
+import com.nopcommerce.data.Customers.NewAddress;
+
 import commons.BaseTest;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
@@ -40,36 +43,26 @@ public class TC_01_Customer_Info extends BaseTest {
 		birthYear = "1999";
 		companyName= "Automation FC";
 		
-		log.info("Pre-Condition - Step 02: Open Register page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-register");
-		registerPage = PageGenerator.getRegisterPage(driver);
+		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-login");
+		loginPage = PageGenerator.getLoginPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		log.info("Pre-Condition - Step 03: Set login page cookie");
+		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
+		loginPage.sleepInsecond(5);
+		loginPage.refreshPage(driver);
 		
-		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		log.info("Pre-Condition - Step 04: Open homepage");
+		homePage =  loginPage.openHomePage();
 		
-		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
-		registerPage.enterToTextboxByID(driver,"Email", validEmailAddress);
-		
-		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
-		registerPage.enterToTextboxByID(driver,"Password", validPassword);
-		
-		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
-		registerPage.enterToTextboxByID(driver,"ConfirmPassword", validPassword);
-		
-		log.info("Pre-Condition - Step 08: Click to 'Register' button");
-		registerPage.clickToButtonByName(driver, "Register");
-		
-		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
-		verifyTrue(registerPage.isSuccessMessageDisplayed());
+		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
+		verifyTrue(homePage.isHomePageSliderDisplayed());
 	
 	}
 	@Test
 	public void My_Account_01_Customer_Info() {
 		log.info("My_Account_01 - Step 01: Open 'My account' page on header");
-		registerPage.openMenuHeaderPageByClass(driver, "ico-account");
+		homePage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("My_Account_01 - Step 02: Open 'Customer Info' form");
@@ -79,10 +72,10 @@ public class TC_01_Customer_Info extends BaseTest {
 		myAccountPage.clickToRadioAndCheckboxByLabel(driver, "Female");
 		
 		log.info("My_Account_01 - Step 04: Update First name information to textbox");
-		myAccountPage.enterToTextboxByID(driver, "FirstName", firstName);
+		myAccountPage.enterToTextboxByID(driver, "FirstName", NewAddress.FIRST_NAME);
 		
 		log.info("My_Account_01 - Step 06: Update Last name information to textbox");
-		myAccountPage.enterToTextboxByID(driver, "LastName", lastName);
+		myAccountPage.enterToTextboxByID(driver, "LastName", NewAddress.LAST_NAME);
 		
 		log.info("My_Account_01 - Step 06: Update Date of birthday information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver, birthDay, "DateOfBirthDay");
@@ -102,10 +95,10 @@ public class TC_01_Customer_Info extends BaseTest {
 		verifyTrue(myAccountPage.isSelectedItemInRadio(driver, "Female"));
 		
 		log.info("My_Account_01 - Step 11: Verify firstname infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByID(driver, "FirstName"), firstName);
+		verifyEquals(myAccountPage.getTextboxValueByID(driver, "FirstName", "value"), NewAddress.FIRST_NAME);
 		
 		log.info("My_Account_01 - Step 12: Verify lastname infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByID(driver, "LastName"), lastName);
+		verifyEquals(myAccountPage.getTextboxValueByID(driver, "LastName", "value"), NewAddress.LAST_NAME);
 		
 		log.info("My_Account_01 - Step 13: Verify date of birth infomation is updated successfully");
 		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "DateOfBirthDay"), birthDay);
@@ -113,10 +106,10 @@ public class TC_01_Customer_Info extends BaseTest {
 		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "DateOfBirthYear"), birthYear);
 		
 		log.info("My_Account_01 - Step 14: Verify email infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Email"), validEmailAddress);
+		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Email", "value"), validEmailAddress);
 		
 		log.info("My_Account_01 - Step 15: Verify company name infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Company"), companyName);
+		verifyEquals(myAccountPage.getTextboxValueByID(driver, "Company", "value"), companyName);
 	}
 	
 	@Parameters({"browser"})

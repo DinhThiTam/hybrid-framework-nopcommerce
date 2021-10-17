@@ -40,11 +40,6 @@ public class TC_01_Catalog_Products extends BaseTest {
 		loginPage = PageGenerator.getLoginPage(driver);
 		verifyTrue(loginPage.isLoginPageTitleAdminDisplayed());
 		
-//		log.info("Pre-Condition - Step 02: Set login page cookie");
-//		loginPage.setAllCookies(driver, Common_02_Login_Admin.loginPageCookie);
-//		loginPage.sleepInsecond(5);
-//		loginPage.refreshPage(driver);
-		
 		log.info("Pre-Condition - Step 03: Open homepage");
 		loginPage.clickToButtonByName(driver, "Log in");
 		dashboardPage = PageGenerator.getDashboardPage(driver);
@@ -53,19 +48,21 @@ public class TC_01_Catalog_Products extends BaseTest {
 	}
 	@Test
 	public void TC_01_Search_With_Product_Name() {
-		log.info("Pre-Condition - Step 05: Open sub menu 'Product'");
+		log.info("TC_01 - Step 01: Open sub menu 'Product'");
 		dashboardPage.openSubMenuPageByName(driver, "Catalog","Products");
 		dashboardPage.isJQueryAjaxLoadedSuccess(driver);
 		productSearchPage = PageGenerator.getProductSearchPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Enter to 'Product name' textbox");
+		log.info("TC_01 - Step 02: Enter to 'Product name' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchProductName", productName);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Click to 'Search' button");
+		log.info("TC_01 - Step 03: Click to 'Search' button");
 		productSearchPage.clickToButtonByID(driver,"search-products");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_01 - Step 04: Verify only one item is displayed in table");
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Product name"),productName);
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "SKU"),"LE_IC_600");
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Price"),"500");
@@ -74,15 +71,15 @@ public class TC_01_Catalog_Products extends BaseTest {
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Published"),getPublishedValue);
 	}
 	
-	//@Test
+	@Test
 	public void TC_02_Search_With_Product_Name_ParentsCatalogue_Unchecked() {
+		log.info("TC_02 - Step 01: Refresh page");
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Enter to 'Product name' textbox");
+		log.info("TC_02 - Step 02: Enter to 'Product name' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchProductName", productName);
 		productSearchPage.selectItemInDropdownByNameAtAdminSite(driver, parentCatagory, "SearchCategoryId");
-		//productSearchPage.clickToCheckboxAtAdminSite(driver, "SearchIncludeSubCategories");
 		productSearchPage.uncheckedToCheckboxAtAdminSite(driver, "SearchIncludeSubCategories");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
@@ -93,7 +90,7 @@ public class TC_01_Catalog_Products extends BaseTest {
 	
 	}
 	
-	//@Test
+	@Test
 	public void TC_03_Search_With_Product_Name_ParentsCatalogue_Checked() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -116,7 +113,7 @@ public class TC_01_Catalog_Products extends BaseTest {
 	
 	}
 	
-	//@Test
+	@Test
 	public void TC_04_Search_With_Product_Name_ChildCatalogue() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -139,7 +136,7 @@ public class TC_01_Catalog_Products extends BaseTest {
 	
 	}
 	
-	//@Test
+	@Test
 	public void TC_05_Search_With_Product_Name_Manufacturer() {
 		productSearchPage.refreshPage(driver);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);

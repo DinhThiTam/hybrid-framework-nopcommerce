@@ -26,6 +26,7 @@ import pageUIs.admin.nopCommerce.AddNewCustomersPageUI;
 import pageUIs.admin.nopCommerce.AdminBasePageUI;
 import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.nopCommerce.CheckoutPageUI;
 import pageUIs.nopCommerce.ShoppingCartUI;
 
 
@@ -595,9 +596,9 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_BY_CLASS_AND_NAME, overviewClass, buttonName);
 	}
 	
-	public String getTextboxValueByID(WebDriver driver, String textboxID) {
+	public String getTextboxValueByID(WebDriver driver, String textboxID, String value) {
 		waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
-		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxID);
 	}
 	
 	public void clickToRadioAndCheckboxByLabel(WebDriver driver, String radioLabel) {
@@ -750,6 +751,32 @@ public class BasePage {
 		return isElementDisplayed(driver, BasePageUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL, sku, product,price, qty, total);
 	}
 	
+	public String getFullOrderNumber(WebDriver driver, String OrderClass) {
+		waitForElementVisible(driver, BasePageUI.ORDER_NUMER, OrderClass);
+		return getElementText(driver, BasePageUI.ORDER_NUMER, OrderClass);
+	}
+	
+	public String getOrderNumber(WebDriver driver, String OrderClass) {
+		String textOrderNumber = getElementText(driver, BasePageUI.ORDER_NUMER, OrderClass).substring(14);
+		return textOrderNumber;
+	}
+	
+	public String getSubStringInOrderDateAndOrderStatus(WebDriver driver,String textInfo) {
+		String textOrderNumber = getElementText(driver, BasePageUI.ORDER_INFO, textInfo).substring(12);
+		return textOrderNumber;
+	}
+	
+	public String getFullOrderDateAndOrderStatus(WebDriver driver,String textInfo) {
+		waitForElementVisible(driver, BasePageUI.ORDER_INFO, textInfo);
+		return getElementText(driver, BasePageUI.ORDER_INFO, textInfo);
+	}
+	
+	public String getInfoListByTitleAndClass(WebDriver driver, String title, String textInfo) {
+		waitForElementVisible(driver, BasePageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
+		return getElementText(driver, BasePageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
+	}
+	
+
 	// Admin - Nopcommerce
 //	public void openSubMenuByName(WebDriver driver, String menuName, String subMenuName) {
 //		waitForElementClickable(driver,AdminBasePageUI.MENU_BY_NAME, menuName);

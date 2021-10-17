@@ -151,7 +151,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 	@Test
 	public void TC_06_Product_Sub_Categories() {
 		log.info("TC_05 - Step 03: Verify textbox is entered 'Apple MacBook Pro' text");
-		verifyEquals(searchPage.getTextboxValueByID(driver, "q"), "Apple MacBook Pro");
+		verifyEquals(searchPage.getTextboxValueByID(driver, "q", "value"), "Apple MacBook Pro");
 		
 		log.info("TC_05 - Step 03: Verify 'Advanced Search' is selected");
 		verifyTrue(searchPage.isSelectedItemByLable(driver, "Advanced search"));
@@ -178,7 +178,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 	@Test
 	public void TC_07_Incorrect_Manufactuner() {
 		log.info("TC_05 - Step 03: Verify textbox is entered 'Apple MacBook Pro' text");
-		verifyEquals(searchPage.getTextboxValueByID(driver, "q"), "Apple MacBook Pro");
+		verifyEquals(searchPage.getTextboxValueByID(driver, "q", "value"), "Apple MacBook Pro");
 		
 		log.info("TC_05 - Step 03: Verify 'Advanced Search' is selected");
 		verifyTrue(searchPage.isSelectedItemByLable(driver, "Advanced search"));
@@ -208,7 +208,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 	@Test
 	public void TC_08_Correct_Manufactuner() {
 		log.info("TC_05 - Step 03: Verify textbox is entered 'Apple MacBook Pro' text");
-		verifyEquals(searchPage.getTextboxValueByID(driver, "q"), "Apple MacBook Pro");
+		verifyEquals(searchPage.getTextboxValueByID(driver, "q", "value"), "Apple MacBook Pro");
 		
 		log.info("TC_05 - Step 03: Verify 'Advanced Search' is selected");
 		verifyTrue(searchPage.isSelectedItemByLable(driver, "Advanced search"));

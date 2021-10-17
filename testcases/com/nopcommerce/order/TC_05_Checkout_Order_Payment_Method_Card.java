@@ -21,6 +21,7 @@ import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
 import pageObject.user.nopCommerce.MyAccountPO;
 import pageObject.user.nopCommerce.NotebooksPO;
+import pageObject.user.nopCommerce.OrderDetailsPO;
 import pageObject.user.nopCommerce.PageGenerator;
 import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RegisterPO;
@@ -29,7 +30,7 @@ import pageObject.user.nopCommerce.WishlistPO;
 import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
-public class TC_05_Checkout_Order extends BaseTest {
+public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, processorProduct, ramProduct, hddProduct, sProduct,
 			softwareMicrosoft, softwareAcrobat, softwareTotal, stringUnitPrice,sProduct1, processorProduct1, ramProduct1,hddProduct1, stringTotal;
@@ -129,49 +130,90 @@ public class TC_05_Checkout_Order extends BaseTest {
 		verifyEquals(checkoutPage.getTextPayment("3"),PaymentInfo.TEXT_INDEX_3);
 		verifyEquals(checkoutPage.getTextPayment("4"),PaymentInfo.TEXT_INDEX_4);
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Payment information", "Continue");
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","fax"),"Fax:");
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","address1"),NewAddress.ADDRESS1);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Billing Address","country"),NewAddress.COUNTRY_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver, "Billing Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","fax"),"Fax:");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","country"),NewAddress.COUNTRY_NAME);
 		
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Payment","payment-method"),"Payment Method: Check / Money Order");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Payment","payment-method"),"Payment Method: Check / Money Order");
 		
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","fax"),"Fax:");
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","address1"),NewAddress.ADDRESS1);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping Address","country"),NewAddress.COUNTRY_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","fax"),"Fax:");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","country"),NewAddress.COUNTRY_NAME);
 		
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass("Shipping","shipping-method"),"Shipping Method: Next Day Air");
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping","shipping-method"),"Shipping Method: Next Day Air");
 		
-		checkoutPage.scrollToBottomPage(driver);
 		
-		//verifyTrue(checkoutPage.isValueInTableDisplayed(driver,"AP_MBP_13", "Apple MacBook Pro 13-inch","$1,800.00", "2","$3,600.00"));
+		verifyTrue(checkoutPage.isValueInTableDisplayed(driver,"AP_MBP_13", "Apple MacBook Pro 13-inch","$1,800.00", "2","$3,600.00"));
 		
-//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-subtotal"), "$3,600.00");
-//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "shipping-cost"), "$0.00");
-//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "tax-value"), "$0.00");
-//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-total"), "$3,600.00");
-//		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
+		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-subtotal"), "$3,600.00");
+		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "shipping-cost"), "$0.00");
+		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "tax-value"), "$0.00");
+		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-total"), "$3,600.00");
+		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Confirm order", "Confirm");
-		verifyEquals(checkoutPage.getFullOrderNumber(),"ORDER NUMBER:" + checkoutPage.getOrderNumber());
+		verifyTrue(checkoutPage.isMessageSuccessOrderDisplayed());
+		String orderNumber = checkoutPage.getOrderNumber(driver, "order-number");
+		verifyEquals(checkoutPage.getFullOrderNumber(driver,"order-number"),"ORDER NUMBER: " + orderNumber);
+		
+		log.info("Add_Address_01 - Step 02: Open 'Orders' form");
+		checkoutPage.openMenuFooterPageByName(driver, "Orders");
+		myAccountPage = PageGenerator.getMyAccountPage(driver);
+		
+		
+		myAccountPage.sleepInsecond(2);
+		
+		verifyEquals(myAccountPage.getFullOrderNumber(driver,"order-list"),"Order Number: " + orderNumber);
+
+		myAccountPage.clickToButtonByName(driver, "Details");
+		myAccountPage.isJQueryAjaxLoadedSuccess(driver);
+		orderDetailsPage = PageGenerator.getOrderDetailsPage(driver);
+		orderDetailsPage.sleepInsecond(3);
+		verifyEquals(orderDetailsPage.getFullOrderNumber(driver,"order-number"),"ORDER #"+orderNumber);
+		orderDetailsPage.sleepInsecond(3);
+		
+		verifyEquals(orderDetailsPage.getFullOrderDateAndOrderStatus(driver,"order-date"),"Order Date: " + orderDetailsPage.getSubStringInOrderDateAndOrderStatus(driver, "order-date"));
+		verifyEquals(orderDetailsPage.getFullOrderDateAndOrderStatus(driver,"order-status"),"Order Status: Pending");
+		verifyEquals(orderDetailsPage.getFullOrderDateAndOrderStatus(driver,"order-total"),"Order Total: $3,600.00");
+		
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver, "Billing Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","fax"),"Fax:");
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","country"),NewAddress.COUNTRY_NAME);
+		
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Payment","payment-method"),"Payment Method: Check / Money Order");
+		
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","name"),NewAddress.FULL_NAME);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","fax"),"Fax:");
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","address1"),NewAddress.ADDRESS1);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","city-state-zip"),NewAddress.CITY_ZIP_CODE);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","country"),NewAddress.COUNTRY_NAME);
+		
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping","shipping-method"),"Shipping Method: Next Day Air");
+		
+		
+		verifyTrue(orderDetailsPage.isValueInTableDisplayed(driver,"AP_MBP_13", "Apple MacBook Pro 13-inch","$1,800.00", "2","$3,600.00"));
 		
 		
 	}
 	
-	
-
 
 	@Parameters({ "browser" })
 	@AfterClass(alwaysRun = true)
 	public void cleanBrowser(String browserName) {
 		log.info("Post-Condition - Close Browser - " + browserName + "");
-		System.out.println("Close");
 		cleanBrowserAndDriver();
 		
 	}
@@ -189,5 +231,6 @@ public class TC_05_Checkout_Order extends BaseTest {
 	ComparePO comparePage;
 	ShoppingCartPO shoppingCartPage;
 	CheckoutPO checkoutPage;
+	OrderDetailsPO orderDetailsPage;
 
 }

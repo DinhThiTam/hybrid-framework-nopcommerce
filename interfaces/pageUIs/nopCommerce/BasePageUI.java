@@ -19,5 +19,9 @@ public class BasePageUI {
 	public static final String NO_DATA_PAGE_BY_TEXT = "//div[@class='page-body']/div[contains(string(),'%s')]";
 	public static final String BUTTON_BY_CLASS_AND_NAME = "//div[@class='%s']//*[contains(string(),'%s')]";
 	public static final String RADIO_BY_TEXT = "//div[text()='%s']/parent::div/div/label";
-	public static final String ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL = "//td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/td[contains(string(),'%s')]/following-sibling::td[@class='remove-from-cart']";
+	public static final String ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL_REMOVE = "//td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/td[contains(string(),'%s')]/following-sibling::td[@class='remove-from-cart']";
+	public static final String ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL = "//td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]/following-sibling::td[contains(string(),'%s')]//following-sibling::td[contains(string(),'%s')]//following-sibling::td[contains(string(),'%s')]";
+	public static final String ORDER_NUMER = "//div[@class='%s']//strong";
+	public static final String ORDER_INFO= "//li[@class='%s']";
+	public static final String TEXT_BY_TITLE_AND_CLASS = "//strong[text()='%s']/parent::div/following-sibling::ul/li[@class='%s']";
 }

@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.nopcommerce.common.Common_01_Login_User;
+import com.nopcommerce.data.Customers.NewAddress;
 
 import commons.BaseTest;
 import pageObject.user.nopCommerce.DesktopsPO;
@@ -82,7 +83,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		wishlistPage.clickToLinkForShare();
 		
 		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
-		verifyTrue(wishlistPage.isPageTitleDisplayedByText(Common_01_Login_User.firstName,Common_01_Login_User.lastName));
+		verifyTrue(wishlistPage.isPageTitleDisplayedByText(NewAddress.FIRST_NAME,NewAddress.LAST_NAME));
 	}
 	
 	@Parameters({"browser"})

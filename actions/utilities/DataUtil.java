@@ -41,5 +41,18 @@ public class DataUtil {
 	public String getTitle() {
 		return faker.name().title();
 	}
+	
+	public String getCardNumber() {
+		return faker.finance().creditCard();
+	}
+	
+	public int getCode() {
+		return faker.code().hashCode();
+	}
+	
+	public String getCardHolderName() {
+		return faker.name().fullName().toUpperCase();
+	}
+	
 
 }

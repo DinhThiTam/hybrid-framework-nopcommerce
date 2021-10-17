@@ -10,7 +10,8 @@
 		<parameter name="browser" value="firefox" />
 		<classes>
 <!-- 		<class name="com.nopcommerce.common.Common_02_Login_Admin" /> -->
-		<class name="com.nopcommerce.admin.TC_02_Customers" />
+		<class name="com.nopcommerce.admin.TC_01_Catalog_Products" />
+<!-- 		<class name="com.nopcommerce.admin.TC_02_Customers" /> -->
 		</classes>
 	</test>
 	
