@@ -60,7 +60,7 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_01 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_01 - Step 02: Verify all error messages are displayed in mandantory fields");
+		log.info("Register_01 - Step 07: Verify all error messages are displayed in mandantory fields");
 		verifyTrue(registerPage.isFirstnameEmptyInvalidMessageDisplayed());
 		verifyTrue(registerPage.isLastnameEmptyInvalidMessageDisplayed());
 		verifyTrue(registerPage.isEmailEmptyMessageDisplayed());
@@ -88,7 +88,7 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_02 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_02 - Step 02: Verify email error messages is displayed in mandantory fields");
+		log.info("Register_02 - Step 07: Verify email error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isEmailInvalidMessageDisplayed());
 	}
 	
@@ -112,14 +112,14 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_03 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_03 - Step 02: Verify success messages is displayed in mandantory fields");
+		log.info("Register_03 - Step 07: Verify success messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isSuccessMessageDisplayed());
 		
-		log.info("Register_03 - Step 03: Open 'Logout' page on header");
+		log.info("Register_03 - Step 08: Open 'Logout' page on header");
 		registerPage.openMenuHeaderPageByClass(driver, "ico-logout");
 		homePage = PageGenerator.getHomePage(driver);
 		
-		log.info("Register_03 - Step 04: Open 'Register' page on header");
+		log.info("Register_03 - Step 09: Open 'Register' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-register");
 		registerPage = PageGenerator.getRegisterPage(driver);
 	}
@@ -144,7 +144,7 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_03 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_04 - Step 02: Verify email error messages is displayed in mandantory fields");
+		log.info("Register_04 - Step 08: Verify email error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isEmailExistMessageDisplayed());
 	}
 	
@@ -168,7 +168,7 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_03 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_05 - Step 02: Verify password error messages is displayed in mandantory fields");
+		log.info("Register_05 - Step 07: Verify password error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isPasswordInvalidMessageDisplayed());
 	}
 	
@@ -192,7 +192,7 @@ public class TC_01_Register extends BaseTest {
 		log.info("Register_03 - Step 06: Click to 'Register' button");
 		registerPage.clickToButtonByName(driver, "Register");
 		
-		log.info("Register_06 - Step 02: Verify confirm password error messages is displayed in mandantory fields");
+		log.info("Register_06 - Step 07: Verify confirm password error messages is displayed in mandantory fields");
 		verifyTrue(registerPage.isConfirmPasswordInvalidMessageDisplayed());
 	}
 

@@ -1,20 +1,19 @@
 package com.nopcommerce.search;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
+import com.nopcommerce.common.Common_01_Login_User;
+
 import commons.BaseTest;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
 import pageObject.user.nopCommerce.PageGenerator;
 import pageObject.user.nopCommerce.RegisterPO;
 import pageObject.user.nopCommerce.SearchPO;
-import pageUIs.nopCommerce.HomePageUI;
 import utilities.DataUtil;
 
 public class TC_01_Search_Advanced_Search extends BaseTest {
@@ -39,42 +38,32 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		dataAbsolute = "ThinkPad X1 Carbon";
 		dataAdvanceSearch = "Apple MacBook Pro";
 		
-		log.info("Pre-Condition - Step 02: Open Register page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-register");
-		registerPage = PageGenerator.getRegisterPage(driver);
+		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-login");
+		loginPage = PageGenerator.getLoginPage(driver);
 		
-		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
+		log.info("Pre-Condition - Step 03: Set login page cookie");
+		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
+		loginPage.sleepInsecond(5);
+		loginPage.refreshPage(driver);
 		
-		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", lastName);
+		log.info("Pre-Condition - Step 04: Open homepage");
+		homePage =  loginPage.openHomePage();
 		
-		log.info("Register_03 - Step 03: Enter valid info to 'Email' textbox");
-		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
-		
-		log.info("Register_03 - Step 04: Enter valid info to 'Password' textbox");
-		registerPage.enterToTextboxByID(driver,"Password", password);
-		
-		log.info("Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox");
-		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
-		
-		log.info("Register_03 - Step 06: Click to 'Register' button");
-		registerPage.clickToButtonByName(driver, "Register");
-		
-		log.info("Register_03 - Step 02: Verify success messages is displayed in mandantory fields");
-		verifyTrue(registerPage.isSuccessMessageDisplayed());
+		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
+		verifyTrue(homePage.isHomePageSliderDisplayed());
 	}
 	@Test
 	public void Search_01_Empty_Data() {
 		log.info("Pre-Condition - Step 02: Open Search page on footer");
-		registerPage.openMenuFooterPageByName(driver,"Search");
+		homePage.openMenuFooterPageByName(driver,"Search");
 		searchPage = PageGenerator.getSearchPage(driver);
 		
 		log.info("Login_01 - Step 02: Enter empty data to 'Search keyword' textbox");
-		searchPage.enterToTextboxByID(driver,"q", "");
+		searchPage.enterToTextboxByID(driver,"q", " ");
 		
 		log.info("Login_01 - Step 03: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		searchPage.sleepInsecond(3);
 		
 		log.info("Login_01 - Step 04: Verify error messages is displayed");
@@ -87,7 +76,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		searchPage.enterToTextboxByID(driver,"q", dataNotExist);
 		
 		log.info("Login_01 - Step 03: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("Login_01 - Step 04: Verify error messages is displayed");
 		verifyTrue(searchPage.isSearchMessageDisplayedByText("No products were found that matched your criteria."));
@@ -99,7 +88,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		searchPage.enterToTextboxByID(driver,"q", dataRelative);
 		
 		log.info("Login_01 - Step 03: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("Login_01 - Step 04: Verify 2 product titles are displayed");
 		verifyTrue(searchPage.isProductDisplayedByTitle("Lenovo IdeaCentre 600 All-in-One PC"));
@@ -114,7 +103,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		searchPage.enterToTextboxByID(driver,"q", dataAbsolute);
 		
 		log.info("Login_01 - Step 03: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("Login_01 - Step 04: Verify only one product titles are displayed");
 		verifyTrue(searchPage.isProductDisplayedByTitle("Lenovo Thinkpad X1 Carbon Laptop"));
@@ -142,7 +131,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		verifyEquals(searchPage.getSelectItemInDropdownByName(driver, "cid"), "Computers");
 		
 		log.info("TC_05 - Step 06: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("TC_05 - Step 07: Verify error messages is displayed");
 		verifyTrue(searchPage.isSearchMessageDisplayedByText("No products were found that matched your criteria."));
@@ -166,7 +155,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		verifyTrue(searchPage.isSelectedItemByLable(driver, "Automatically search sub categories"));
 		
 		log.info("TC_05 - Step 06: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("Login_01 - Step 04: Verify only one product titles are displayed");
 		verifyTrue(searchPage.isProductDisplayedByTitle("Apple MacBook Pro 13-inch"));
@@ -199,7 +188,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		verifyEquals(searchPage.getSelectItemInDropdownByName(driver, "mid"), "HP");
 		
 		log.info("TC_05 - Step 06: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("TC_05 - Step 07: Verify error messages is displayed");
 		verifyTrue(searchPage.isSearchMessageDisplayedByText("No products were found that matched your criteria."));
@@ -229,7 +218,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		verifyEquals(searchPage.getSelectItemInDropdownByName(driver, "mid"), "Apple");
 		
 		log.info("TC_05 - Step 06: Click to 'Search' button");
-		searchPage.clickToButtonByName(driver, "Search");
+		searchPage.clickToButtonByTagClassAndText(driver, "page-body", "Search");
 		
 		log.info("Login_01 - Step 04: Verify only one product titles are displayed");
 		verifyTrue(searchPage.isProductDisplayedByTitle("Apple MacBook Pro 13-inch"));
@@ -237,17 +226,7 @@ public class TC_01_Search_Advanced_Search extends BaseTest {
 		log.info("Login_01 - Step 04: Get the product size by 1");
 		verifyEquals(searchPage.getProductSize(driver), 1);
 	}
-	
-	@Test
-	public void TC_09_Price_Range() {
-		
-	}
-	
-	
-	@Test
-	public void TC_10_Price_Range_Less_Than_Product_Range() {
-		
-	}
+
 	
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun=true)

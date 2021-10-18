@@ -1,19 +1,16 @@
 package com.nopcommerce.login;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
 import commons.BaseTest;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
 import pageObject.user.nopCommerce.PageGenerator;
 import pageObject.user.nopCommerce.RegisterPO;
-import pageUIs.nopCommerce.HomePageUI;
 import utilities.DataUtil;
 
 public class TC_01_Login extends BaseTest {

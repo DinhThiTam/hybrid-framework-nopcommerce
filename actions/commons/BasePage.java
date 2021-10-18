@@ -591,6 +591,11 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.BUTTON_BY_NAME, buttonName);
 	}
 	
+	public void clickToButtonByTagClassAndText(WebDriver driver, String tagClass, String buttonName) {
+		waitForElementClickable(driver, BasePageUI.BUTTON_BY_TAG_CLASS_AND_TEXT,tagClass, buttonName);
+		clickToElement(driver, BasePageUI.BUTTON_BY_TAG_CLASS_AND_TEXT, tagClass, buttonName);
+	}
+	
 	public void clickToButtonByClassAndName(WebDriver driver, String overviewClass, String buttonName) {
 		waitForElementClickable(driver, BasePageUI.BUTTON_BY_CLASS_AND_NAME,overviewClass, buttonName);
 		clickToElement(driver, BasePageUI.BUTTON_BY_CLASS_AND_NAME, overviewClass, buttonName);

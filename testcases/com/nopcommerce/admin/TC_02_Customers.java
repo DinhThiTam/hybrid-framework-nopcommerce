@@ -1,6 +1,5 @@
 package com.nopcommerce.admin;
 
-import org.apache.log4j.net.TelnetAppender;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.AfterClass;
@@ -8,7 +7,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.nopcommerce.common.Common_02_Login_Admin;
 import com.nopcommerce.data.Customers.EditAddress;
 import com.nopcommerce.data.Customers.NewAddress;
 import com.nopcommerce.data.Customers.UpdateAddress;
@@ -23,9 +21,6 @@ import pageObject.admin.nopCommerce.LoginPO;
 import pageObject.admin.nopCommerce.PageGenerator;
 import pageObject.admin.nopCommerce.ProductDetailsPO;
 import pageObject.admin.nopCommerce.ProductSearchPO;
-import pageUIs.admin.nopCommerce.CustomersSearchPageUI;
-import pageUIs.admin.nopCommerce.DashboardPageUI;
-import pageUIs.admin.nopCommerce.ProductSearchPageUI;
 import utilities.DataUtil;
 
 public class TC_02_Customers extends BaseTest {
@@ -49,7 +44,7 @@ public class TC_02_Customers extends BaseTest {
 		fullName = firstName + " " + lastName;
 		editEmailAddress= fakeData.getEditEmailAddress();
 		
-		
+		log.info("Pre-Condition - Step 02: Verify Login Page is displayed");
 		loginPage = PageGenerator.getLoginPage(driver);
 		verifyTrue(loginPage.isLoginPageTitleAdminDisplayed());
 		
@@ -62,38 +57,67 @@ public class TC_02_Customers extends BaseTest {
 
 	@Test
 	public void TC_01_Create_New_Customer() {
-		log.info("Pre-Condition - Step 05: Open sub menu 'Customers'");
+		log.info("TC_01 - Step 01: Open sub menu 'Customers'");
 		dashboardPage.openSubMenuPageByName(driver, "Customers", "Customers");
 		dashboardPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
 
-		log.info("Pre-Condition - Step 05: Click to 'Add new' button");
+		log.info("TC_01 - Step 02: Click to 'Add new' button");
 		customersSearchPage.clickToButtonInHeaderOnSubMenuPageByText(driver, "Customers", "Add new");
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		addNewCustomersPage = PageGenerator.getAddNewCustomersPage(driver);
-		addNewCustomersPage.sleepInsecond(5);
-
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Email", emailAddress);
+		
+		log.info("TC_01 - Step 02: Enter to 'Password' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Password", password);
+		
+		log.info("TC_01 - Step 02: Enter to 'Firstname' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "FirstName", firstName);
+		
+		log.info("TC_01 - Step 02: Enter to 'Lastname' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "LastName", lastName);
+		
+		log.info("TC_01 - Step 02: Click to 'Male' radio button");
 		addNewCustomersPage.clickToCheckboxOrRadioAtAdminSite(driver, "Gender_Male");
+		
+		log.info("TC_01 - Step 02: Enter to 'Date of birth' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "DateOfBirth", NewAddress.DATE_OF_BIRTH);
+		
+		log.info("TC_01 - Step 02: Enter to 'Company name' textbox");
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Company", NewAddress.COMPANY_NAME);
 		addNewCustomersPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 02: Clear text in dropdown");
 		addNewCustomersPage.clearDynamicDropdown(driver);
 		addNewCustomersPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 02: Select 'Guest' role in dropdown");
 		addNewCustomersPage.selectCustomerRoleInDropdown(driver, "Customer roles", "Guests");
+		
+		log.info("TC_01 - Step 02: Click to 'Active' checkbox");
 		addNewCustomersPage.clickToCheckboxOrRadioAtAdminSite(driver, "Active");
-
+		
+		log.info("TC_01 - Step 02: Verify 'Guests' role is selected");
 		verifyEquals(addNewCustomersPage.getItemSelected(driver), "Guests");
+		
+		log.info("TC_01 - Step 02: Enter to 'Admin comment' textbox");
 		addNewCustomersPage.enterToAdminCommentTextArea(driver, NewAddress.ADMIN_COMMENT);
+		
+		log.info("TC_01 - Step 02: Click to 'Save and Continue Edit' button");
 		addNewCustomersPage.clickToButtonInHeaderOnSubMenuPageByText(driver, "Add a new customer",
 				"Save and Continue Edit");
 		addNewCustomersPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		
+		log.info("TC_01 - Step 02: Verify success mesage");
 		customerDetailsPage.isMessageSuccessDisplayed(driver,"The new customer has been added successfully.");
+		
+		log.info("TC_01 - Step 02: Click to expand panel");
 		customerDetailsPage.clickToExpandPanelByName(driver, "Customer info");
+		
+		log.info("TC_01 - Step 02: Verify ");
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Email"), emailAddress);
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "FirstName"), firstName);
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "LastName"), lastName);
@@ -101,58 +125,86 @@ public class TC_02_Customers extends BaseTest {
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "DateOfBirth"), NewAddress.DATE_OF_BIRTH);
 		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Company"), NewAddress.COMPANY_NAME);
 		verifyTrue(customerDetailsPage.isSelectedItemInRadioAtAdminSite(driver, "Active"));
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
-
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.clearDynamicDropdown(driver);
 		customersSearchPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.selectCustomerRoleInDropdown(driver, "Customer roles", "Guests");
 		customersSearchPage.sleepInsecond(3);
+		
 		log.info("Pre-Condition - Step 05: Click to 'Search' button");
 		customersSearchPage.clickToButtonByID(driver, "search-customers");
 		customersSearchPage.sleepInsecond(3);
 
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.isRowValueInRowDisplayed(driver, "Guest", fullName, NewAddress.CUSTOMER_ROLE, NewAddress.COMPANY_NAME);
-
 	}
 
-	//@Test
+	@Test
 	public void TC_02_Search_Cusomer_With_Email() {
-
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.refreshPage(driver);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchEmail", emailAddress);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.clearDynamicDropdown(driver);
 		customersSearchPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.selectCustomerRoleInDropdown(driver, "Customer roles", "Guests");
 		customersSearchPage.sleepInsecond(3);
+		
 		log.info("Pre-Condition - Step 05: Click to 'Search' button");
 		customersSearchPage.clickToButtonByID(driver, "search-customers");
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
-
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Email"), "Guest");
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Name"), fullName);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Customer roles"), "Guests");
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		verifyEquals(customersSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody",
 				"dataTables_scrollHead", "1", "Company name"), NewAddress.COMPANY_NAME);
 
 	}
 
-	//@Test
+	@Test
 	public void TC_03_Search_Cusomer_With_FirstName_LastName() {
-
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.refreshPage(driver);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchFirstName", firstName);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchLastName", lastName);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage.clearDynamicDropdown(driver);
 		customersSearchPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 02: Enter to 'Email' textbox");
 		customersSearchPage.selectCustomerRoleInDropdown(driver, "Customer roles", "Guests");
 		customersSearchPage.sleepInsecond(3);
 		log.info("Pre-Condition - Step 05: Click to 'Search' button");
@@ -170,7 +222,7 @@ public class TC_02_Customers extends BaseTest {
 
 	}
 
-	//@Test
+	@Test
 	public void TC_04_Search_Cusomer_With_Company() {
 
 		customersSearchPage.refreshPage(driver);
@@ -496,7 +548,6 @@ public class TC_02_Customers extends BaseTest {
 		addNewAddressPage.clickToBackToCustomerListButton(driver, "back to customer details");
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
-		//customerDetailsPage.scrollToBottomPage(driver);
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
 		
 		customerDetailsPage.isRowValueInRowDisplayedAtAdminSite(EditAddress.EDIT_FIRSTNAME, EditAddress.EDIT_LASTNAME, emailAddress, UpdateAddress.UPDATE_PHONE_NUMBER, UpdateAddress.UPDATE_FAX_NUMBER, EditAddress.EDIT_COMPANYNAME);

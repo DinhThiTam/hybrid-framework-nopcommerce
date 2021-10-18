@@ -27,7 +27,6 @@ import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RegisterPO;
 import pageObject.user.nopCommerce.ShoppingCartPO;
 import pageObject.user.nopCommerce.WishlistPO;
-import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
 public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {

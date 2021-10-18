@@ -23,7 +23,6 @@ import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RegisterPO;
 import pageObject.user.nopCommerce.ShoppingCartPO;
 import pageObject.user.nopCommerce.WishlistPO;
-import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
 public class TC_01_Add_Product_To_Cart extends BaseTest {
@@ -185,7 +184,7 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 	public void TC_03_Remove_from_Cart() {
 		quantity = 2;
 		String price[] = stringUnitPrice.split(":");
-		totalPrice = quantity * Float.valueOf(price[1]);
+		//totalPrice = quantity * Float.valueOf(price[1]);
 		productDetailsPage.clickToButtonByName(driver, "Go to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);

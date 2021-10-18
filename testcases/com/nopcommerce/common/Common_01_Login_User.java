@@ -1,8 +1,5 @@
 package com.nopcommerce.common;
 
-import static org.testng.Assert.assertTrue;
-
-import java.util.Random;
 import java.util.Set;
 
 

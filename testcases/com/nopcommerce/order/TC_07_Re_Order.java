@@ -13,7 +13,6 @@ import com.nopcommerce.common.Common_01_Login_User;
 import com.nopcommerce.data.Customers.EditAddress;
 import com.nopcommerce.data.Customers.NewAddress;
 import com.nopcommerce.data.Customers.UpdateAddress;
-import com.nopcommerce.data.Payment.PaymentInfo;
 
 import commons.BaseTest;
 import pageObject.user.nopCommerce.CheckoutPO;
@@ -29,7 +28,6 @@ import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RegisterPO;
 import pageObject.user.nopCommerce.ShoppingCartPO;
 import pageObject.user.nopCommerce.WishlistPO;
-import pageUIs.nopCommerce.ProductDetailsPageUI;
 import utilities.DataUtil;
 
 public class TC_07_Re_Order extends BaseTest {
