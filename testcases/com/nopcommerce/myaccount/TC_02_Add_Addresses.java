@@ -71,8 +71,10 @@ public class TC_02_Add_Addresses extends BaseTest {
 		homePage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
+
 		log.info("My_Account_01 - Step 02: Open 'Addresses' form");
 		//myAccountPage.openTabMenuByName(driver, "Addresses");
+
 		
 		log.info("Add_Address_01 - Step 03: Click to 'Add new' button");
 		myAccountPage.clickToButtonByName(driver, "Add new");
