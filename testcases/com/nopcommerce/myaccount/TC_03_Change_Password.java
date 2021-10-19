@@ -63,7 +63,7 @@ public class TC_03_Change_Password extends BaseTest {
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("Change_Password_01 - Step 02: Open 'Change password' form");
-		myAccountPage.openTabMenuByName("Change password");
+		//myAccountPage.openTabMenuByName(driver, "Change password");
 		
 		log.info("Change_Password_01 - Step 03: Enter Old Password information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "OldPassword", password);

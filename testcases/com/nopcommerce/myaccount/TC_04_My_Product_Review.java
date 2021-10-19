@@ -91,7 +91,7 @@ public class TC_04_My_Product_Review extends BaseTest {
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("My_Product_Review_01 - Step 08: Open tab menu 'My product reviews'");
-		myAccountPage.openTabMenuByName("My product reviews");
+		//myAccountPage.openTabMenuByName(driver, "My product reviews");
 		
 		log.info("My_Product_Review_01 - Step 09: Verify review is displayed");
 		verifyEquals(myAccountPage.getReviewTextByClass("review-title"), titleReview);

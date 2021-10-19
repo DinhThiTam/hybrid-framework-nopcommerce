@@ -1,0 +1,46 @@
+[INFO ] [2021-10-19 09:52:03,340] --------START delete file in folder---------
+[INFO ] [2021-10-19 09:52:03,342] --------END delete file in folder---------
+[INFO ] [2021-10-19 09:52:03,348] Pre-Condition - Open browser 'firefox' and navigate 'https://demo.nopcommerce.com/'
+[INFO ] [2021-10-19 09:52:12,970] Common_01 - Step 01: Verify Home Page is displayed
+[INFO ] [2021-10-19 09:52:13,173]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:52:13,176] Pre-Condition - Step 02: Open Register page on header
+[INFO ] [2021-10-19 09:52:14,800] Register_03 - Step 01: Enter valid info to 'First Name' textbox
+[INFO ] [2021-10-19 09:52:14,935] Register_03 - Step 02: Enter valid info to 'Last Name' textbox
+[INFO ] [2021-10-19 09:52:15,026] Register_03 - Step 03: Enter valid info to 'Email' textbox
+[INFO ] [2021-10-19 09:52:15,151] Register_03 - Step 04: Enter valid info to 'Password' textbox
+[INFO ] [2021-10-19 09:52:15,241] Register_03 - Step 05: Enter valid info to 'Confirm Password' textbox
+[INFO ] [2021-10-19 09:52:15,333] Register_03 - Step 06: Click to 'Register' button
+[INFO ] [2021-10-19 09:52:17,848] Register_03 - Step 02: Verify success messages is displayed in mandantory fields
+[INFO ] [2021-10-19 09:52:17,929]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:52:17,929] Register_03 - Step 03: Open 'Logout' page on header
+[INFO ] [2021-10-19 09:52:19,516] Pre-Condition - Step 02: Open 'Login' page on header
+[INFO ] [2021-10-19 09:52:20,077] Login_06 - Step 01: Enter valid email to 'Email' textbox
+[INFO ] [2021-10-19 09:52:20,185] Login_06 - Step 02: Enter valid password to 'Password' textbox
+[INFO ] [2021-10-19 09:52:20,279] Login_06 - Step 03: Click to 'Login' button
+[INFO ] [2021-10-19 09:52:22,798] Common_01  - Step 17: Verify Home Page is displayed
+[INFO ] [2021-10-19 09:52:22,898]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:52:22,898] Common_01  - Step 18: Get all login page cookies
+[INFO ] [2021-10-19 09:52:22,918] Post-Condition - Close Browser - firefox
+[INFO ] [2021-10-19 09:52:22,918] OS name = windows 10
+[INFO ] [2021-10-19 09:52:24,054] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://demo.nopcommerce.com/'
+[INFO ] [2021-10-19 09:52:30,685]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:52:30,789] Pre-Condition - Step 02: Open 'Login' page on header
+[INFO ] [2021-10-19 09:52:32,424] Pre-Condition - Step 03: Set login page cookie
+[INFO ] [2021-10-19 09:52:39,123] Pre-Condition - Step 04: Open homepage
+[INFO ] [2021-10-19 09:52:40,602] Pre-Condition - Step 05: Verify Home Page is displayed
+[INFO ] [2021-10-19 09:52:40,702]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:52:40,716] My_Account_01 - Step 01: Open 'My account' page on header
+[INFO ] [2021-10-19 09:52:42,093] My_Account_01 - Step 02: Open 'Addresses' form
+[INFO ] [2021-10-19 09:52:42,093] Add_Address_01 - Step 03: Click to 'Add new' button
+[INFO ] [2021-10-19 09:53:42,226] Post-Condition - Close Browser - firefox
+[INFO ] [2021-10-19 09:53:42,226] OS name = windows 10
+[INFO ] [2021-10-19 09:53:43,456] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://demo.nopcommerce.com/'
+[INFO ] [2021-10-19 09:53:50,905]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:53:50,977] Pre-Condition - Step 02: Open 'Login' page on header
+[INFO ] [2021-10-19 09:53:52,443] Pre-Condition - Step 03: Set login page cookie
+[INFO ] [2021-10-19 09:53:59,101] Pre-Condition - Step 04: Open homepage
+[INFO ] [2021-10-19 09:54:00,605] Pre-Condition - Step 05: Verify Home Page is displayed
+[INFO ] [2021-10-19 09:54:00,724]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-19 09:54:00,725] Change_Password_01 - Step 01: Open 'My account' page on header
+[INFO ] [2021-10-19 09:54:02,143] Change_Password_01 - Step 02: Open 'Change password' form
+[INFO ] [2021-10-19 09:54:02,143] Change_Password_01 - Step 03: Enter Old Password information to textbox

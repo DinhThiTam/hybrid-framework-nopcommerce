@@ -18,6 +18,7 @@ import pageObject.user.nopCommerce.PageGenerator;
 import pageObject.user.nopCommerce.RegisterPO;
 import utilities.DataUtil;
 
+
 public class TC_02_Add_Addresses extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
 	String firstName, lastName, emailAddress, password, companyName, fullName, citySateZip, stateProvince, countryName, cityName, address1, address2, zipCode, phoneNumber, faxNumber;
@@ -62,17 +63,16 @@ public class TC_02_Add_Addresses extends BaseTest {
 		
 		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
 		verifyTrue(homePage.isHomePageSliderDisplayed());
-	}
 	
+	}
 	@Test
-	public void Add_Address_01() {
+	public void My_Account_01_Customer_Info() {
 		log.info("My_Account_01 - Step 01: Open 'My account' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
-		log.info("Add_Address_01 - Step 02: Open 'Addresses' form");
-		myAccountPage.openTabMenuByName("Change password");
-		myAccountPage.sleepInsecond(2);
+		log.info("My_Account_01 - Step 02: Open 'Addresses' form");
+		//myAccountPage.openTabMenuByName(driver, "Addresses");
 		
 		log.info("Add_Address_01 - Step 03: Click to 'Add new' button");
 		myAccountPage.clickToButtonByName(driver, "Add new");
@@ -138,7 +138,6 @@ public class TC_02_Add_Addresses extends BaseTest {
 		verifyEquals(myAccountPage.getTextboxValueByClass("city-state-zip"), citySateZip);
 	}
 	
-
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun=true)
 	public void cleanBrowser(String browserName) {

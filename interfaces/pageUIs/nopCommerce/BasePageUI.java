@@ -2,6 +2,7 @@ package pageUIs.nopCommerce;
 
 public class BasePageUI {
 	public static final String MENU_HEADER_BY_CLASS = "//div[@class='header']//a[@class='%s']";
+	public static final String TAB_MENU_BY_NAME = "//div[@class='side-2']//li[contains(string(),'%s')]";
 	public static final String TEXTBOX_BY_ID = "//input[@id='%s']";
 	public static final String BUTTON_BY_NAME = "//button[text()='%s']";
 	public static final String BUTTON_BY_TAG_CLASS_AND_TEXT = "//div[@class='%s']//button[text()='%s']";

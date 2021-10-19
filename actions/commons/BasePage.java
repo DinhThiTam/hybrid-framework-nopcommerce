@@ -27,6 +27,7 @@ import pageUIs.admin.nopCommerce.AdminBasePageUI;
 import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.CheckoutPageUI;
+import pageUIs.nopCommerce.MyAccountUI;
 import pageUIs.nopCommerce.ShoppingCartUI;
 
 
@@ -461,12 +462,18 @@ public class BasePage {
 		sleepInsecond(1);
 		jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
 	}
-
-	public void clickToElementByJS(WebDriver driver, String locator) {
+	
+	public void clickToElementByJSArgument(WebDriver driver, String locator) {
 		jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].click();", getElement(driver, locator));
 	}
-
+	
+	public void clickToElementByJSArgument(WebDriver driver, String locator, String...params) {
+		locator = getDynamicLocator(locator, params);
+		jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].click();", getElement(driver, locator));
+	}
+	
 	public void scrollToElement(WebDriver driver, String locator) {
 		jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", getElement(driver, locator));
@@ -779,6 +786,10 @@ public class BasePage {
 	public String getInfoListByTitleAndClass(WebDriver driver, String title, String textInfo) {
 		waitForElementVisible(driver, BasePageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
 		return getElementText(driver, BasePageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
+	}
+	
+	public void openTabMenuByName(WebDriver driver) {
+		jsExecutor.executeScript("document.querySelector('//div[@class='side-2']//li[contains(string(),'Addresses')]').click()");
 	}
 	
 
