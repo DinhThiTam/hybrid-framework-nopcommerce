@@ -46,17 +46,6 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 		emailAddress = fakeData.getEmailAddress();
 		password = fakeData.getPassword();
 
-		processorProduct = "2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]";
-		processorProduct1 = "2.2 GHz Intel Pentium Dual-Core E2200";
-		ramProduct = "8GB [+$60.00]";
-		ramProduct1 = "4GB [+$20.00]";
-		hddProduct = "400 GB [+$100.00]";
-		hddProduct1 = "320 GB";
-		sProduct = "Vista Premium [+$60.00]";
-		sProduct1 = "Vista Home [+$50.00]";
-		softwareMicrosoft = "Microsoft Office [+$50.00]";
-		softwareAcrobat = "Acrobat Reader [+$10.00]";
-		softwareTotal = "Total Commander [+$5.00]";
 		
 		log.info("Pre-Condition - Step 01: Open browser '"+ browserName + "' and navigate '" + appURL + "'");
 		driver = getBrowserDriver(browserName, appURL);
@@ -77,32 +66,41 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 		
 		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
 		verifyTrue(homePage.isHomePageSliderDisplayed());
-
 	}
 
 	@Test
-	public void TC_04_Update_Shopping_Cart() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops '");
+	public void TC_02_Update_Shopping_Cart() {
+		log.info("TC_02 - Step 01: Open sub menu 'Desktops '");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
 
+		log.info("TC_02 - Step 02: Click to the product link");
 		desktopsPage.clickToProductLinkByText(driver, "Lenovo IdeaCentre 600 All-in-One PC");
-		desktopsPage.sleepInsecond(3);
+		desktopsPage.isJQueryAjaxLoadedSuccess(driver);
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
-		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_02 - Step 03: Click to 'Add to cart'");
 		productDetailsPage.clickToButtonByClassAndName(driver, "add-to-cart", "Add to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		
+		log.info("TC_02 - Step 04: Open 'Shopping cart' page");
 		productDetailsPage.openMenuFooterPageByName(driver, "Shopping cart");
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		
+		log.info("TC_02 - Step 05: Verify the product is displayed in the table");
 		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Total"),"$500.00");
 	
-		
 		quantity = 5;
+		
+		log.info("TC_02 - Step 06: Enter to input quantity textbox");
 		shoppingCartPage.enterToInputQuantityTextbox(String.valueOf(quantity));
 		shoppingCartPage.sleepInsecond(3);
+		
+		log.info("TC_02 - Step 07: Click to 'Update shopping cart' button");
 		shoppingCartPage.clickToButtonByName(driver, "Update shopping cart");
 		shoppingCartPage.sleepInsecond(3);
 		
+		log.info("TC_02 - Step 08: Verify the total price is updated");
 		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Total"),"$2,500.00");
 	}
 	

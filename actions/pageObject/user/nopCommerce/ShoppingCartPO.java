@@ -24,9 +24,9 @@ public class ShoppingCartPO extends BasePage{
 		return new ProductDetailsPO(driver);
 	}
 	
-	public void clickToRemoveIconInTableByRowValue(String sku, String product, String price, String qty) {
-		waitForElementClickable(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL_REMOVE, sku, product,price, qty);
-		clickToElement(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL_REMOVE, sku, product,price, qty);
+	public void clickToRemoveIconInTableByRowValue(String sku, String product, String price, String qty, String total) {
+		waitForElementClickable(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL_REMOVE, sku, product,price, qty, total);
+		clickToElement(driver, ShoppingCartUI.ROW_VALUE_BY_SKU_PRODUCT_PRICE_QTY_TOTAL_REMOVE, sku, product,price, qty, total);
 	}
 	
 	public boolean isValueInTableUnDisplayed(String sku, String product, String price, String qty, String total) {

@@ -13,13 +13,10 @@ import commons.BaseTest;
 import pageObject.user.nopCommerce.DesktopsPO;
 import pageObject.user.nopCommerce.HomePO;
 import pageObject.user.nopCommerce.LoginPO;
-import pageObject.user.nopCommerce.MyAccountPO;
 import pageObject.user.nopCommerce.NotebooksPO;
 import pageObject.user.nopCommerce.PageGenerator;
 import pageObject.user.nopCommerce.ProductDetailsPO;
 import pageObject.user.nopCommerce.RecentlyViewrdProductsPO;
-import pageObject.user.nopCommerce.RegisterPO;
-import pageObject.user.nopCommerce.WishlistPO;
 import utilities.DataUtil;
 
 
@@ -34,6 +31,7 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 		driver = getBrowserDriver(browserName, appURL);
 		homePage = PageGenerator.getHomePage(driver);
 		verifyTrue(homePage.isHomePageSliderDisplayed());
+		
 		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-login");
 		loginPage = PageGenerator.getLoginPage(driver);
@@ -52,46 +50,48 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 	}
 	@Test
 	public void Add_To_Cart_01() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
+		log.info("Add_To_Cart_01 - Step 01: Open sub menu 'Notebooks'");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 02: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"Asus N551JK-XO076H Laptop");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
-		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
+		log.info("Add_To_Cart_01 - Step 03: Click to back page");
 		productDetailsPage.backPage(driver);
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 04: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"Asus N551JK-XO076H Laptop");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		productDetailsPage.backPage(driver);
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 05: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"Samsung Series 9 NP900X4C Premium Ultrabook");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		productDetailsPage.backPage(driver);
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 06: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"HP Spectre XT Pro UltraBook");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		productDetailsPage.backPage(driver);
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 07: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"HP Envy 6-1180ca 15.6-Inch Sleekbook");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
+		log.info("Add_To_Cart_01 - Step 08: Open 'Recently viewed products' page on footer menu");
 		productDetailsPage.openMenuFooterPageByName(driver, "Recently viewed products");
 		recentlyViewPage = PageGenerator.getRecentlyViewedProductsPage(driver);
-		recentlyViewPage.isProductDisplayedByTitle(driver, "Samsung Series 9 NP900X4C Premium Ultrabook");
-		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Spectre XT Pro UltraBook");
-		recentlyViewPage.isProductDisplayedByTitle(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook");	
 		
+		log.info("Add_To_Cart_01 - Step 09: Verify only the last three products are displayed");
+		verifyTrue(recentlyViewPage.isProductDisplayedByTitle(driver, "Samsung Series 9 NP900X4C Premium Ultrabook"));
+		verifyTrue(recentlyViewPage.isProductDisplayedByTitle(driver, "HP Spectre XT Pro UltraBook"));
+		verifyTrue(recentlyViewPage.isProductDisplayedByTitle(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook"));
 	}
 	
 	@Parameters({"browser"})
@@ -102,13 +102,10 @@ public class TC_05_Recently_Viewed_Product extends BaseTest {
 	}
 	WebDriver driver;
 	HomePO homePage;
-	RegisterPO registerPage;
 	LoginPO loginPage;
 	DataUtil fakeData;
-	MyAccountPO myAccountPage;
 	NotebooksPO notebooksPage;
 	DesktopsPO desktopsPage;
 	ProductDetailsPO productDetailsPage;
-	WishlistPO wishlistPage;
 	RecentlyViewrdProductsPO recentlyViewPage;
 }

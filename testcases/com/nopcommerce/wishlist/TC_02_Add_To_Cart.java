@@ -52,46 +52,46 @@ public class TC_02_Add_To_Cart extends BaseTest {
 	}
 	@Test
 	public void Add_To_Cart_01() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Notebooks'");
+		log.info("Add_To_Cart_01 - Step 01: Open sub menu 'Notebooks'");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
-		log.info("Wishlist_01 - Step 02: Click to the product title link");
+		log.info("Add_To_Cart_01 - Step 02: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		
-		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
+		log.info("Add_To_Cart_01 - Step 03: Click to 'Add your review' link");
 		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
 		
-		log.info("Wishlist_01 - Step 04: Verify message is displayed");
+		log.info("Add_To_Cart_01 - Step 04: Verify message is displayed");
 		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver), "The product has been added to your wishlist");
 		
-		log.info("Wishlist_01 - Step 05: Click to Close icon");
+		log.info("Add_To_Cart_01 - Step 05: Click to Close icon");
 		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.sleepInsecond(2);
 		
-		log.info("Wishlist_01 - Step 06: Open 'Wishlist' page on header");
+		log.info("Add_To_Cart_01 - Step 06: Open 'Wishlist' page on header");
 		productDetailsPage.openMenuHeaderPageByClass(driver, "ico-wishlist");
 		wishlistPage = PageGenerator.getWishlistPage(driver);
 		
-		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
+		log.info("Add_To_Cart_01 - Step 07: Verify Product Information displayed at table");
 		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
-		log.info("Wishlist_01 - Step 05: Click to Checkbox at line '1' ");
+		log.info("Add_To_Cart_01 - Step 08: Click to Checkbox at line '1' ");
 		wishlistPage.clickToPageActionByRowAndClass("1","add-to-cart");
 		
-		log.info("Wishlist_01 - Step 05: Click to 'Add to cart' button");
+		log.info("Add_To_Cart_01 - Step 09: Click to 'Add to cart' button");
 		wishlistPage.clickToButtonByName(driver, "Add to cart");
 		
-		log.info("Wishlist_01 - Step 07: Verify Product Information displayed at table");
+		log.info("Add_To_Cart_01 - Step 10: Verify Product Information displayed at table");
 		verifyEquals(wishlistPage.getValueInTableIDAtColumnHorizontalNameAndRowIndex(driver, "cart", "1", "Product(s)"), "Apple MacBook Pro 13-inch");
 		
-		log.info("Wishlist_01 - Step 07: Verify shopping cart title is displayed");
+		log.info("Add_To_Cart_01 - Step 11: Verify shopping cart title is displayed");
 		verifyTrue(wishlistPage.isPageTitleShoppingCartDisplayed());
 		wishlistPage.backPage(driver);
 		
-		log.info("Wishlist_01 - Step 07: Verify message no data in page");
+		log.info("Add_To_Cart_01 - Step 07: Verify message no data in page");
 		verifyTrue(wishlistPage.isPageMessageNoDataDisplayedByText(driver, "The wishlist is empty!"));
 	}
 	

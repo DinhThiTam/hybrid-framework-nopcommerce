@@ -58,11 +58,6 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
 		
-		log.info("Pre-Condition - Step 01: Open browser '"+ browserName + "' and navigate '" + appURL + "'");
-		driver = getBrowserDriver(browserName, appURL);
-		homePage = PageGenerator.getHomePage(driver);
-		verifyTrue(homePage.isHomePageSliderDisplayed());
-		
 		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-login");
 		loginPage = PageGenerator.getLoginPage(driver);
@@ -77,83 +72,135 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		
 		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
 		verifyTrue(homePage.isHomePageSliderDisplayed());
-
 	}
 
 	@Test
-	public void Add_Product_To_Cart_01() {
-		log.info("Wishlist_01 - Step 01: Open sub menu 'Desktops '");
+	public void TC_01_Add_Product_To_Cart() {
+		log.info("TC_01 - Step 01: Open sub menu 'Desktops'");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
 
+		log.info("TC_01 - Step 02: Click to Product Link");
 		desktopsPage.clickToProductLinkByText(driver, "Build your own computer");
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 
+		log.info("TC_01 - Step 03: Click to 'Processor' dropdown");
 		productDetailsPage.selectItemInDropdownByName(driver, processorProduct,"product_attribute_1");
+		
+		log.info("TC_01 - Step 04: Verify item in dropdown is selected");
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_1"),processorProduct);
+		
+		log.info("TC_01 - Step 05: Click to 'RAM' dropdown");
 		productDetailsPage.selectItemInDropdownByName(driver, ramProduct, "product_attribute_2");
+		
+		log.info("TC_01 - Step 06: Verify item in dropdown is selected");
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_2"),ramProduct);
+		
+		log.info("TC_01 - Step 07: Click to 'HDD' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, hddProduct);
+		
+		log.info("TC_01 - Step 08: Click to 'OS' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, sProduct);
+		
+		log.info("TC_01 - Step 09: Click to 'Microsoft Office [+$50.00]' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, softwareMicrosoft);
+		
+		log.info("TC_01 - Step 10: Click to 'Acrobat Reader [+$10.00]' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, softwareAcrobat);
+		
+		log.info("TC_01 - Step 11: Click to 'Total Commander [+$5.00]' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, softwareTotal);
-
+		
+		log.info("TC_01 - Step 12: Click to 'Add to cart' button");
 		productDetailsPage.clickToButtonByName(driver, "Add to cart");
-
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 
-		log.info("Wishlist_01 - Step 04: Verify message is displayed");
+		log.info("TC_01 - Step 13: Verify message is displayed");
 		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver),"The product has been added to your shopping cart");
 
-		log.info("Wishlist_01 - Step 05: Click to Close icon");
+		log.info("TC_01 - Step 14: Click to Close icon");
 		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 
+		log.info("TC_01 - Step 15: Hover to mini shopping cart on header menu");
 		productDetailsPage.hoverToShoppingCartHeaderMenu();
+		
+		log.info("TC_01 - Step 16: Verify the infomation of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("There are 1 item(s) in your cart."));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(" Processor: " + processorProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("RAM: " + ramProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("HDD: " + hddProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
+		
 		quantity = 1;
+		
+		log.info("TC_01 - Step 17: Get the value of the price unit and parse as float");
 		floatUnitPrice= productDetailsPage.getPriceUnit("price");
+		
+		log.info("TC_01 - Step 17: Get text of element");
 		stringUnitPrice = productDetailsPage.getTextPriceUnit("price");
+		
+		log.info("TC_01 - Step 16: Verify unit price of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(stringUnitPrice));
 	
+		log.info("TC_01 - Step 16: Verify quantity of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + String.valueOf(quantity)));
 	
+		log.info("TC_01 - Step 16: Verify total price of the product displayed in the cart");
 		totalPrice =quantity*floatUnitPrice;
-		
 		verifyEquals(productDetailsPage.getPriceUnit("totals"),totalPrice);
-		
 	}
 	
 	@Test
-	public void Edit_Product_To_Cart_02() {
-		
+	public void TC_02_Edit_Product_To_Cart() {
+		log.info("TC_02 - Step 16: Click to 'Go to cart' button");
 		productDetailsPage.clickToButtonByName(driver, "Go to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		
+		log.info("TC_02 - Step 16: Click to 'Edit' button in table");
 		productDetailsPage = shoppingCartPage.clickToEditButtonInTableByRowNumber("1");
 		productDetailsPage.sleepInsecond(5);
+		
+		log.info("TC_01 - Step 03: Click to 'Processor' dropdown");
 		productDetailsPage.selectItemInDropdownByName(driver, processorProduct1,"product_attribute_1");
+		
+		log.info("TC_01 - Step 04: Verify item in dropdown is selected");
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_1"),processorProduct1);
+		
+		log.info("TC_01 - Step 03: Click to 'RAM' dropdown");
 		productDetailsPage.selectItemInDropdownByName(driver, ramProduct1, "product_attribute_2");
+		
+		log.info("TC_01 - Step 04: Verify item in dropdown is selected");
 		verifyEquals(productDetailsPage.getSelectItemInDropdownByName(driver, "product_attribute_2"),ramProduct1);
+		
+		log.info("TC_01 - Step 07: Click to 'HDD' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, hddProduct1);
+		
+		log.info("TC_01 - Step 07: Click to 'OS' radio button");
 		productDetailsPage.clickToRadioAndCheckboxByLabel(driver, sProduct1);
 		productDetailsPage.sleepInsecond(3);
+		
+		log.info("TC_01 - Step 07: Uncheck to 'Acrobat Reader [+$10.00]' checkbox");
 		productDetailsPage.uncheckToCheckboxByLabel(driver, softwareAcrobat);
 		productDetailsPage.sleepInsecond(3);
+		
+		log.info("TC_01 - Step 07: Uncheck to 'Total Commander [+$5.00]' checkbox");
 		productDetailsPage.uncheckToCheckboxByLabel(driver, softwareTotal);
 		productDetailsPage.sleepInsecond(3);
+		
 		quantity = 2;
+		
+		log.info("TC_01 - Step 07: Enter to quantity textbox");
 		productDetailsPage.enterToTextboxByID(driver, "product_enteredQuantity_1", String.valueOf(quantity));
+		
+		log.info("TC_01 - Step 07: Verify the price is '$1,320.00'");
 		verifyEquals(productDetailsPage.getPriceAtProductDetailPage(),"$1,320.00");
 		
+		log.info("TC_01 - Step 07:Click to 'Update' button");
 		productDetailsPage.clickToButtonByName(driver, "Update");
+		
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
 		verifyEquals(productDetailsPage.getMessageInProductDetailsDisplayedByText(driver),"The product has been added to your shopping cart");
 		
@@ -161,7 +208,10 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		productDetailsPage.clickToCloseIconInMessage(driver);
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		
+		log.info("Wishlist_01 - Step 05: Hover to mini shopping cart");
 		productDetailsPage.hoverToShoppingCartHeaderMenu();
+		
+		log.info("Wishlist_01 - Step 04: Verify the infomation of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("There are 2 item(s) in your cart."));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(" Processor: " + processorProduct1));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("RAM: " + ramProduct1));
@@ -169,32 +219,40 @@ public class TC_01_Add_Product_To_Cart extends BaseTest {
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("OS: " + sProduct1));
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Software: " + softwareMicrosoft));
 		
+		log.info("TC_01 - Step 17: Get the value of the price unit and parse as float");
 		floatUnitPrice= productDetailsPage.getPriceUnit("price");
+		
+		log.info("TC_01 - Step 17: Get text of element");
 		stringUnitPrice = productDetailsPage.getTextPriceUnit("price");
+		
+		log.info("TC_01 - Step 16: Verify unit price of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass(stringUnitPrice));
 		
+		log.info("TC_01 - Step 16: Verify quantity of the product displayed in the cart");
 		verifyTrue(productDetailsPage.isProductInfoInMiniShoppingCartHeaderByClass("Quantity: " + String.valueOf(quantity)));
 		
+		log.info("TC_01 - Step 16: Verify total price of the product displayed in the cart");
 		totalPrice =quantity*floatUnitPrice;
-		
 		verifyEquals(productDetailsPage.getPriceUnit("totals"),totalPrice);
 		
 	}
 	@Test
 	public void TC_03_Remove_from_Cart() {
-		quantity = 2;
-		String price[] = stringUnitPrice.split(":");
-		//totalPrice = quantity * Float.valueOf(price[1]);
+		log.info("TC_02 - Step 16: Click to 'Go to cart' button");
 		productDetailsPage.clickToButtonByName(driver, "Go to cart");
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
-		shoppingCartPage.clickToRemoveIconInTableByRowValue("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity));
+		
+		log.info("TC_01 - Step 16: Click to 'Remove' button in table");
+		shoppingCartPage.clickToRemoveIconInTableByRowValue("COMP_CUST", "Build your own computer","$1,320.00", "2", "$2,640.00");
+		
+		log.info("TC_01 - Step 16: Verify message is displayed ");
 		verifyTrue(shoppingCartPage.isCartEmptyMessageDisplayed());
-		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer",price[1], String.valueOf(quantity), String.valueOf(totalPrice)));
+		
+		log.info("TC_01 - Step 16: Verify the product in table undisplayed ");
+		verifyTrue(shoppingCartPage.isValueInTableUnDisplayed("COMP_CUST", "Build your own computer","$1,320.00", "2", "$2,640.00"));
 	}
 	
-
-
 	@Parameters({ "browser" })
 	@AfterClass(alwaysRun = true)
 	public void cleanBrowser(String browserName) {
