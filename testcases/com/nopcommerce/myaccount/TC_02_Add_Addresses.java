@@ -71,7 +71,7 @@ public class TC_02_Add_Addresses extends BaseTest {
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("Add_Address_01 - Step 02: Open 'Addresses' form");
-		myAccountPage.openTabMenuByName("Change password");
+		myAccountPage.openTabMenuByName("Addresses");
 		myAccountPage.sleepInsecond(2);
 		
 		log.info("Add_Address_01 - Step 03: Click to 'Add new' button");
