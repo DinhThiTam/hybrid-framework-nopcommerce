@@ -75,7 +75,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 	}
 
 	@Test
-	public void TC_01_Update_Shopping_Cart() {
+	public void TC_01_Checkout_Order_Method_Card() {
 		log.info("TC_01 - Step 01: Open sub menu 'Notebooks'");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
@@ -92,10 +92,21 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		log.info("TC_01 - Step 04: Open 'Shopping cart' menu");
 		productDetailsPage.openMenuFooterPageByName(driver, "Shopping cart");
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		
+		log.info("TC_01 - Step 04: Remove the product in the table");
+		shoppingCartPage.clickToRemoveIconInTableByRowValue("LE_IC_600", "Lenovo IdeaCentre 600 All-in-One PC", "$500.00", "5", "$2,500.00");
+		shoppingCartPage.isJQueryAjaxLoadedSuccess(driver);
 	
 		log.info("TC_01 - Step 05:Click to 'Estimate shipping' button");
 		shoppingCartPage.clickToButtonByClassAndName(driver, "common-buttons","Estimate shipping");
 		shoppingCartPage.sleepInsecond(5);
+		
+		log.info("TC_01 - Step 06:Select to 'Country name' in dropdown");
+		shoppingCartPage.selectItemInDropdownByName(driver, NewAddress.COUNTRY_NAME, "CountryId");
+		shoppingCartPage.sleepInsecond(2);
+		
+		log.info("TC_01 - Step 06: Select item 'State Province' in dropdown");
+		shoppingCartPage.selectItemInDropdownByNameAtAdminSite(driver, NewAddress.STATE_PROVINCE, "StateProvinceId");
 		
 		log.info("TC_01 - Step 06: Verify item in dropdown is displayed");
 		verifyEquals(shoppingCartPage.getSelectItemInDropdownByName(driver, "CountryId"),NewAddress.COUNTRY_NAME);
@@ -117,7 +128,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 		
 		log.info("TC_01 - Step 12:Click to checkbox");
-		shoppingCartPage.clickToRadioAndCheckboxByLabel(driver, "I agree with the terms of service and I adhere to them unconditionally");
+		shoppingCartPage.clickToRadioAndCheckboxByID(driver, "termsofservice");
 		
 		log.info("TC_01 - Step 13:Click to 'Check out' button");
 		shoppingCartPage.clickToButtonByID(driver, "checkout");

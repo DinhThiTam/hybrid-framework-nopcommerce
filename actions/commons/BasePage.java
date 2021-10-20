@@ -148,9 +148,14 @@ public class BasePage {
 		return By.xpath(locator);
 	}
 
+	public void getElementByJS(WebDriver driver, String locator) {
+		jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("document.querySelector(locator).click()");
+	}
+	
 	public WebElement getElement(WebDriver driver, String locator) {
 		return driver.findElement(getByXpath(locator));
-	}
+	}	
 	
 	public WebElement getElement(WebDriver driver, String locator, String... params) {
 		return driver.findElement(getByXpath(getDynamicLocator(locator, params)));
@@ -613,6 +618,11 @@ public class BasePage {
 		return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxID);
 	}
 	
+	public void clickToRadioAndCheckboxByID(WebDriver driver, String radioID) {
+		waitForElementClickable(driver, BasePageUI.TEXTBOX_BY_ID, radioID);
+		clickToElementByJSArgument(driver, BasePageUI.TEXTBOX_BY_ID, radioID);
+	}
+	
 	public void clickToRadioAndCheckboxByLabel(WebDriver driver, String radioLabel) {
 		waitForElementClickable(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
 		checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_AND_CHECKBOX_BY_LABEL, radioLabel);
@@ -788,9 +798,13 @@ public class BasePage {
 		return getElementText(driver, BasePageUI.TEXT_BY_TITLE_AND_CLASS, title, textInfo);
 	}
 	
-	public void openTabMenuByName(WebDriver driver) {
-		jsExecutor.executeScript("document.querySelector('//div[@class='side-2']//li[contains(string(),'Addresses')]').click()");
+	public void openTabMenuByName(WebDriver driver,String menuTab) {
+		//jsExecutor.executeScript("document.querySelector('//div[@class='side-2']//li[contains(string(),'Addresses')]').click()");
+		waitForElementVisible(driver, BasePageUI.TAB_MENU_BY_NAME,menuTab);
+		clickToElement(driver, BasePageUI.TAB_MENU_BY_NAME, menuTab);
 	}
+	
+	
 	
 
 	// Admin - Nopcommerce

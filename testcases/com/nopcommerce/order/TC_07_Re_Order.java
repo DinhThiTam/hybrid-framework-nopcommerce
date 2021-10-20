@@ -73,7 +73,7 @@ public class TC_07_Re_Order extends BaseTest {
 		
 		log.info("TC_01 - Step 02: Click to the product title link");
 		notebooksPage.clickToProductLinkByText(driver,"Apple MacBook Pro 13-inch");
-		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		notebooksPage.isJQueryAjaxLoadedSuccess(driver);
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		log.info("TC_01 - Step 03:Click to 'Add to cart' button");

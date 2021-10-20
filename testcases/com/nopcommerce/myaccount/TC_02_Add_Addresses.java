@@ -49,33 +49,43 @@ public class TC_02_Add_Addresses extends BaseTest {
 		phoneNumber= "0123456789"; 
 		faxNumber = "0983970447";
 		
-		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-login");
-		loginPage = PageGenerator.getLoginPage(driver);
+		log.info("Pre-Condition - Step 02: Open Register page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
-		loginPage.sleepInsecond(5);
-		loginPage.refreshPage(driver);
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
 		
-		log.info("Pre-Condition - Step 04: Open homepage");
-		homePage =  loginPage.openHomePage();
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
 		
-		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
-		verifyTrue(homePage.isHomePageSliderDisplayed());
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
+		
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", password);
+		
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
+		
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
+		
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
+		verifyTrue(registerPage.isSuccessMessageDisplayed());
 	
 	}
 	@Test
-	public void My_Account_01_Customer_Info() {
+	public void My_Account_02_Addresses() {
 		log.info("My_Account_01 - Step 01: Open 'My account' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-account");
+		registerPage.openMenuHeaderPageByClass(driver, "ico-account");
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 
 		log.info("My_Account_01 - Step 02: Open 'Addresses' form");
-		//myAccountPage.openTabMenuByName(driver, "Addresses");
+		myAccountPage.openTabMenuAddress();
+		myAccountPage.sleepInsecond(3);
 
-		
 		log.info("Add_Address_01 - Step 03: Click to 'Add new' button");
 		myAccountPage.clickToButtonByName(driver, "Add new");
 		
@@ -93,9 +103,10 @@ public class TC_02_Add_Addresses extends BaseTest {
 		
 		log.info("Add_Address_01 - Step 08: Update Country name information to dropdown");
 		myAccountPage.selectItemInDropdownByName(driver,countryName , "Address.CountryId");
+		myAccountPage.isJQueryAjaxLoadedSuccess(driver);
 	
 		log.info("Add_Address_01 - Step 09: Update State province information to dropdown");
-		myAccountPage.selectItemInDropdownByName(driver, stateProvince, "Address_StateProvinceId");
+		verifyEquals(myAccountPage.getSelectItemInDropdownByName(driver, "Address.StateProvinceId"), stateProvince);
 		
 		log.info("Add_Address_01 - Step 10: Update Company City name information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "Address_City", cityName);
@@ -116,13 +127,13 @@ public class TC_02_Add_Addresses extends BaseTest {
 		myAccountPage.clickToButtonByName(driver, "Save");
 		
 		log.info("Add_Address_01 - Step 16: Verify full name infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByClass("name"), fullName);
+		verifyEquals(myAccountPage.getTextboxValueByClass("name"), NewAddress.FULL_NAME);
 		
 		log.info("Add_Address_01 - Step 17: Verify email infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("email"), "Email: " + emailAddress);
 		
 		log.info("Add_Address_01 - Step 18: Verify phone number infomation is updated successfully");
-		verifyEquals(myAccountPage.getTextboxValueByClass("Address_PhoneNumber"), "Phone number: " + phoneNumber);
+		verifyEquals(myAccountPage.getTextboxValueByClass("phone"), "Phone number: " + phoneNumber);
 		
 		log.info("Add_Address_01 - Step 19: Verify company name infomation is updated successfully");
 		verifyEquals(myAccountPage.getTextboxValueByClass("company"), companyName);

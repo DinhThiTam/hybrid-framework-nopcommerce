@@ -62,7 +62,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		
 		
-		log.info("Wishlist_01 - Step 03: Click to 'Add your review' link");
+		log.info("Wishlist_01 - Step 03: Click to 'Add to wishlist' link");
 		productDetailsPage.clickButtonByID("add-to-wishlist-button-4");
 		
 		log.info("Wishlist_01 - Step 04: Verify message is displayed");
@@ -81,6 +81,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		
 		log.info("Wishlist_01 - Step 08: Click to 'Your wishlist URL for sharing' link");
 		wishlistPage.clickToLinkForShare();
+		wishlistPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
 		verifyTrue(wishlistPage.isPageTitleDisplayedByText(NewAddress.FIRST_NAME,NewAddress.LAST_NAME));

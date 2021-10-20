@@ -39,31 +39,42 @@ public class TC_03_Change_Password extends BaseTest {
 		newPassword = fakeData.getPassword();
 		
 		
-		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-login");
-		loginPage = PageGenerator.getLoginPage(driver);
+		log.info("Pre-Condition - Step 02: Open Register page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
-		loginPage.sleepInsecond(5);
-		loginPage.refreshPage(driver);
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
 		
-		log.info("Pre-Condition - Step 04: Open homepage");
-		homePage =  loginPage.openHomePage();
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
 		
-		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
-		verifyTrue(homePage.isHomePageSliderDisplayed());
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
+		
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", password);
+		
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
+		
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
+		
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
+		verifyTrue(registerPage.isSuccessMessageDisplayed());
 	
 	}
 	@Test
 	public void Change_Password_01() {
 		log.info("Change_Password_01 - Step 01: Open 'My account' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-account");
-		homePage.isJQueryAjaxLoadedSuccess(driver);
+		registerPage.openMenuHeaderPageByClass(driver, "ico-account");
+		registerPage.isJQueryAjaxLoadedSuccess(driver);
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("Change_Password_01 - Step 02: Open 'Change password' form");
-		//myAccountPage.openTabMenuByName(driver, "Change password");
+		myAccountPage.openTabMenuChangePasswod();
+		myAccountPage.sleepInsecond(3);
 		
 		log.info("Change_Password_01 - Step 03: Enter Old Password information to textbox");
 		myAccountPage.enterToTextboxByID(driver, "OldPassword", password);

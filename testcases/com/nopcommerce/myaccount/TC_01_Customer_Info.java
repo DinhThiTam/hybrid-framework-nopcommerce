@@ -66,7 +66,8 @@ public class TC_01_Customer_Info extends BaseTest {
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("My_Account_01 - Step 02: Open 'Customer Info' form");
-		myAccountPage.openTabMenuByName(driver);
+		myAccountPage.openTabMenuCustomerInfo();
+		myAccountPage.sleepInsecond(3);
 		
 		log.info("My_Account_01 - Step 03: Update Gender information 'Female' to radio button");
 		myAccountPage.clickToRadioAndCheckboxByLabel(driver, "Female");

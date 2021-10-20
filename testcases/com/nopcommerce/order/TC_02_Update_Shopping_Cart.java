@@ -47,11 +47,6 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 		password = fakeData.getPassword();
 
 		
-		log.info("Pre-Condition - Step 01: Open browser '"+ browserName + "' and navigate '" + appURL + "'");
-		driver = getBrowserDriver(browserName, appURL);
-		homePage = PageGenerator.getHomePage(driver);
-		verifyTrue(homePage.isHomePageSliderDisplayed());
-		
 		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
 		homePage.openMenuHeaderPageByClass(driver, "ico-login");
 		loginPage = PageGenerator.getLoginPage(driver);

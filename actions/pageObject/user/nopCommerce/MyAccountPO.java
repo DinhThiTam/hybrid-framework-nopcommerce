@@ -1,5 +1,6 @@
 package pageObject.user.nopCommerce;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
@@ -14,9 +15,6 @@ public class MyAccountPO extends BasePage{
 	public MyAccountPO(WebDriver driver) {
 		this.driver = driver;
 	}
-
-
-	
 
 	public String getTextboxValueByClass(String textClass) {
 		waitForElementVisible(driver, MyAccountUI.VALUE_TEXT_BY_CLASS, textClass);
@@ -37,12 +35,38 @@ public class MyAccountPO extends BasePage{
 		waitForElementVisible(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass);
 		return getElementText(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass);
 	}
+	
+	public boolean isReviewTextDisplayedByClassAndText(String reviewClass, String textReview) {
+		waitForElementVisible(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass, textReview);
+		return isElementDisplayed(driver, MyAccountUI.REVIEW_TEXT_BY_CLASS, reviewClass, textReview);
+	}
+	
+	public void openTabMenuAddress() {
+		jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("document.querySelector(\"li[class^='customer-addresses'] > a\").click()");
+	}
+	
+	public void openTabMenuChangePasswod() {
+		jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("document.querySelector(\"li[class^='change-password'] > a\").click()");
+	}
+	
+	public void openTabMenuProductReview() {
+		jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("document.querySelector(\"li[class^='customer-reviews'] > a\").click()");
+	}
+	
+	public void openTabMenuCustomerInfo() {
+		jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("document.querySelector(\"li[class^='customer-info'] > a\").click()");
+	}
+	
 
 
 
 
 
 	
-
+	private JavascriptExecutor jsExecutor;
 
 }

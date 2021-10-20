@@ -43,26 +43,36 @@ public class TC_04_My_Product_Review extends BaseTest {
 		textReview = fakeData.getString();
 		
 		
-		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-login");
-		loginPage = PageGenerator.getLoginPage(driver);
+		log.info("Pre-Condition - Step 02: Open Register page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
-		loginPage.sleepInsecond(5);
-		loginPage.refreshPage(driver);
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
 		
-		log.info("Pre-Condition - Step 04: Open homepage");
-		homePage =  loginPage.openHomePage();
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
 		
-		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
-		verifyTrue(homePage.isHomePageSliderDisplayed());
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
+		
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", password);
+		
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
+		
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
+		
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
+		verifyTrue(registerPage.isSuccessMessageDisplayed());
 	
 	}
 	@Test
 	public void My_Product_Review_01() {
 		log.info("My_Product_Review_01 - Step 01: Open sub menu 'Desktops'");
-		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
+		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);
 		
 		log.info("My_Product_Review_01 - Step 02: Click to the product title link");
@@ -72,7 +82,7 @@ public class TC_04_My_Product_Review extends BaseTest {
 		log.info("My_Product_Review_01 - Step 03: Click to 'Add your review' link");
 		productDetailsPage.clickToProductLinkByText(driver,"Add your review");
 		productReviewPage = PageGenerator.getReviewProductPage(driver);
-		
+		productReviewPage.sleepInsecond(5);
 		
 		log.info("My_Product_Review_01 - Step 04: Enter the review title in the textbox ");
 		productReviewPage.enterToTextboxByID(driver, "AddProductReview_Title", titleReview);
@@ -91,11 +101,11 @@ public class TC_04_My_Product_Review extends BaseTest {
 		myAccountPage = PageGenerator.getMyAccountPage(driver);
 		
 		log.info("My_Product_Review_01 - Step 08: Open tab menu 'My product reviews'");
-		//myAccountPage.openTabMenuByName(driver, "My product reviews");
+		myAccountPage.openTabMenuProductReview();
 		
 		log.info("My_Product_Review_01 - Step 09: Verify review is displayed");
-		verifyEquals(myAccountPage.getReviewTextByClass("review-title"), titleReview);
-		verifyEquals(myAccountPage.getReviewTextByClass("review-text"), textReview);
+		verifyTrue(myAccountPage.isReviewTextDisplayedByClassAndText("review-title", titleReview));
+		verifyTrue(myAccountPage.isReviewTextDisplayedByClassAndText("review-text", textReview));
 	}
 	
 	@Parameters({"browser"})
