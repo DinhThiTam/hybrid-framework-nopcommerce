@@ -121,8 +121,8 @@ public class TC_06_Checkout_Order_Payment_Method_Cheque extends BaseTest {
 		log.info("TC_01 - Step 12:Verify the product is displayed in the table");
 		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 		
-		log.info("TC_01 - Step 13:Click to checkbox");
-		shoppingCartPage.clickToRadioAndCheckboxByLabel(driver, "I agree with the terms of service and I adhere to them unconditionally");
+		log.info("TC_01 - Step 12:Click to checkbox");
+		shoppingCartPage.clickToRadioAndCheckboxByID(driver, "termsofservice");
 	
 		log.info("TC_01 - Step 14:Click to 'Check out' button");
 		shoppingCartPage.clickToButtonByID(driver, "checkout");
@@ -224,6 +224,7 @@ public class TC_06_Checkout_Order_Payment_Method_Cheque extends BaseTest {
 		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 		
 		log.info("TC_01 - Step 41:Click to 'Confirm' button ");
+		checkoutPage.scrollToBottomPage(driver);
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Confirm order", "Confirm");
 		
 		log.info("TC_01 - Step 42:Verify success message is displayed ");

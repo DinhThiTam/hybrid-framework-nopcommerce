@@ -124,8 +124,8 @@ public class TC_07_Re_Order extends BaseTest {
 		log.info("TC_01 - Step 12:Verify the product is displayed in the table");
 		verifyEquals(shoppingCartPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 		
-		log.info("TC_01 - Step 13:Click to checkbox");
-		shoppingCartPage.clickToRadioAndCheckboxByLabel(driver, "I agree with the terms of service and I adhere to them unconditionally");
+		log.info("TC_01 - Step 12:Click to checkbox");
+		shoppingCartPage.clickToRadioAndCheckboxByID(driver, "termsofservice");
 		
 		log.info("TC_01 - Step 14:Click to 'Check out' button");
 		shoppingCartPage.clickToButtonByID(driver, "checkout");
@@ -227,6 +227,9 @@ public class TC_07_Re_Order extends BaseTest {
 		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "tax-value"), "$0.00");
 		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "order-total"), "$3,600.00");
 		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
+		
+		log.info("TC_01 - Step 41:Click to 'Confirm' button ");
+		checkoutPage.scrollToBottomPage(driver);
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Confirm order", "Confirm");
 		
 		log.info("TC_01 - Step 40:Verify Order Number is displayed ");
