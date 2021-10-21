@@ -84,7 +84,7 @@ public class TC_01_Add_To_Wishlist extends BaseTest {
 		wishlistPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("Wishlist_01 - Step 09: Verify page title is displayed with firstName and lastName ");
-		verifyTrue(wishlistPage.isPageTitleDisplayedByText(NewAddress.FIRST_NAME,NewAddress.LAST_NAME));
+		verifyTrue(wishlistPage.isPageTitleDisplayedByText(Common_01_Login_User.firstName,Common_01_Login_User.lastName));
 	}
 	
 	@Parameters({"browser"})

@@ -64,7 +64,7 @@ public class TC_02_Update_Shopping_Cart extends BaseTest {
 	}
 
 	@Test
-	public void TC_02_Update_Shopping_Cart() {
+	public void TC_01_Update_Shopping_Cart() {
 		log.info("TC_02 - Step 01: Open sub menu 'Desktops '");
 		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Desktops ");
 		desktopsPage = PageGenerator.getDesktopsPage(driver);

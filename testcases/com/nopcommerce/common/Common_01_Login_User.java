@@ -36,6 +36,8 @@ public class Common_01_Login_User extends BaseTest{
 		
 		emailAddress = fakeData.getEmailAddress();
 		password = fakeData.getPassword();
+		firstName = "Automation";
+		lastName = "FC";
 
 		log.info("Common_01 - Step 01: Verify Home Page is displayed");
 		homePage = PageGenerator.getHomePage(driver);
@@ -46,10 +48,10 @@ public class Common_01_Login_User extends BaseTest{
 		registerPage = PageGenerator.getRegisterPage(driver);
 		
 		log.info("Register_03 - Step 01: Enter valid info to 'First Name' textbox");
-		registerPage.enterToTextboxByID(driver,"FirstName", NewAddress.FIRST_NAME);
+		registerPage.enterToTextboxByID(driver,"FirstName", firstName);
 		
 		log.info("Register_03 - Step 02: Enter valid info to 'Last Name' textbox");
-		registerPage.enterToTextboxByID(driver,"LastName", NewAddress.LAST_NAME);
+		registerPage.enterToTextboxByID(driver,"LastName", lastName);
 		
 		log.info("Register_03 - Step 03: Enter valid info to 'Email' textbox");
 		registerPage.enterToTextboxByID(driver,"Email", emailAddress);

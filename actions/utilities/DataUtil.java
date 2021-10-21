@@ -43,7 +43,7 @@ public class DataUtil {
 	}
 	
 	public String getCardNumber() {
-		return faker.finance().creditCard();
+		return faker.business().creditCardNumber();
 	}
 	
 	public int getCode() {

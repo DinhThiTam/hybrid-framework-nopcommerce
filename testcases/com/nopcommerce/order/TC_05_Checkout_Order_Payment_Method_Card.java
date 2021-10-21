@@ -56,28 +56,40 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		softwareMicrosoft = "Microsoft Office [+$50.00]";
 		softwareAcrobat = "Acrobat Reader [+$10.00]";
 		softwareTotal = "Total Commander [+$5.00]";
+		emailAddress = fakeData.getEmailAddress();
+		password = fakeData.getPassword();
 		
-		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-login");
-		loginPage = PageGenerator.getLoginPage(driver);
+		log.info("Pre-Condition - Step 02: Open Register page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
-		loginPage.sleepInsecond(5);
-		loginPage.refreshPage(driver);
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", NewAddress.FIRST_NAME);
 		
-		log.info("Pre-Condition - Step 04: Open homepage");
-		homePage =  loginPage.openHomePage();
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", NewAddress.LAST_NAME);
 		
-		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
-		verifyTrue(homePage.isHomePageSliderDisplayed());
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
+		
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", password);
+		
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
+		
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
+		
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
+		verifyTrue(registerPage.isSuccessMessageDisplayed());
 
 	}
 
 	@Test
 	public void TC_01_Checkout_Order_Method_Card() {
 		log.info("TC_01 - Step 01: Open sub menu 'Notebooks'");
-		homePage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
+		registerPage.openSubMenuPage(driver, "top-menu notmobile", "Computers ", "Notebooks ");
 		notebooksPage = PageGenerator.getNotebooksPage(driver);
 		
 		log.info("TC_01 - Step 02: Click to the product title link");
@@ -92,10 +104,6 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		log.info("TC_01 - Step 04: Open 'Shopping cart' menu");
 		productDetailsPage.openMenuFooterPageByName(driver, "Shopping cart");
 		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
-		
-		log.info("TC_01 - Step 04: Remove the product in the table");
-		shoppingCartPage.clickToRemoveIconInTableByRowValue("LE_IC_600", "Lenovo IdeaCentre 600 All-in-One PC", "$500.00", "5", "$2,500.00");
-		shoppingCartPage.isJQueryAjaxLoadedSuccess(driver);
 	
 		log.info("TC_01 - Step 05:Click to 'Estimate shipping' button");
 		shoppingCartPage.clickToButtonByClassAndName(driver, "common-buttons","Estimate shipping");
@@ -187,7 +195,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		
 		log.info("TC_01 - Step 28:Verify the infomation in 'Billing Address' are displayed");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver, "Billing Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + emailAddress);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","fax"),"Fax:");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","address1"),NewAddress.ADDRESS1);
@@ -199,7 +207,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		
 		log.info("TC_01 - Step30:Verify the infomation in 'Shipping Address' are displayed");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + emailAddress);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","fax"),"Fax:");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","address1"),NewAddress.ADDRESS1);
@@ -218,7 +226,9 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		verifyEquals(checkoutPage.getValueInTableIDAtColumnVerticalByClassAndRowIndex(driver, "cart-total", "2", "earn-reward-points"), "360 points");
 	
 		log.info("TC_01 - Step 33:Click to 'Confirm' button");
+		checkoutPage.scrollToBottomPage(driver);
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Confirm order", "Confirm");
+		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_01 - Step 34:Verify success message is displayed");
 		verifyTrue(checkoutPage.isMessageSuccessOrderDisplayed());
@@ -251,7 +261,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		
 		log.info("TC_01 - Step 41:Verify the infomation in 'Billing Address' are displayed");
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver, "Billing Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + emailAddress);
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","fax"),"Fax:");
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Billing Address","address1"),NewAddress.ADDRESS1);
@@ -263,7 +273,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 		
 		log.info("TC_01 - Step 43:Verify the infomation in 'Shipping Address' are displayed");
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + emailAddress);
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","fax"),"Fax:");
 		verifyEquals(orderDetailsPage.getInfoListByTitleAndClass(driver,"Shipping Address","address1"),NewAddress.ADDRESS1);
@@ -298,5 +308,6 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 	ShoppingCartPO shoppingCartPage;
 	CheckoutPO checkoutPage;
 	OrderDetailsPO orderDetailsPage;
+	RegisterPO registerPage;
 
 }

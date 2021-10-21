@@ -31,7 +31,7 @@ import utilities.DataUtil;
 
 public class TC_07_Re_Order extends BaseTest {
 	String projectLocation = System.getProperty("user.dir");
-	String firstName, lastName, emailAddress, password, cardNumber, cardHolderName;
+	String firstName, lastName, emailAddress, password, cardNumber, cardHolderName, editEmail;
 	int cardCode;
 
 	@Parameters({ "browser", "url" })
@@ -46,22 +46,35 @@ public class TC_07_Re_Order extends BaseTest {
 		cardNumber = fakeData.getCardNumber();
 		cardHolderName = fakeData.getCardHolderName();
 		cardCode = fakeData.getCode();
-		emailAddress = fakeData.getEditEmailAddress();
+		emailAddress = fakeData.getEmailAddress();
+		password = fakeData.getPassword();
+		editEmail = fakeData.getEditEmailAddress();
+		cardNumber = "377625690391528";
 		
-		log.info("Pre-Condition - Step 02: Open 'Login' page on header");
-		homePage.openMenuHeaderPageByClass(driver, "ico-login");
-		loginPage = PageGenerator.getLoginPage(driver);
+		log.info("Pre-Condition - Step 02: Open Register page on header");
+		homePage.openMenuHeaderPageByClass(driver, "ico-register");
+		registerPage = PageGenerator.getRegisterPage(driver);
 		
-		log.info("Pre-Condition - Step 03: Set login page cookie");
-		loginPage.setAllCookies(driver, Common_01_Login_User.loginPageCookie);
-		loginPage.sleepInsecond(5);
-		loginPage.refreshPage(driver);
+		log.info("Pre-Condition - Step 03: Enter valid info to 'First Name' textbox");
+		registerPage.enterToTextboxByID(driver,"FirstName", NewAddress.FIRST_NAME);
 		
-		log.info("Pre-Condition - Step 04: Open homepage");
-		homePage =  loginPage.openHomePage();
+		log.info("Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox");
+		registerPage.enterToTextboxByID(driver,"LastName", NewAddress.LAST_NAME);
 		
-		log.info("Pre-Condition - Step 05: Verify Home Page is displayed");
-		verifyTrue(homePage.isHomePageSliderDisplayed());
+		log.info("Pre-Condition - Step 05: Enter valid info to 'Email' textbox");
+		registerPage.enterToTextboxByID(driver,"Email", emailAddress);
+		
+		log.info("Pre-Condition - Step 06: Enter valid info to 'Password' textbox");
+		registerPage.enterToTextboxByID(driver,"Password", password);
+		
+		log.info("Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox");
+		registerPage.enterToTextboxByID(driver,"ConfirmPassword", password);
+		
+		log.info("Pre-Condition - Step 08: Click to 'Register' button");
+		registerPage.clickToButtonByName(driver, "Register");
+		
+		log.info("Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields");
+		verifyTrue(registerPage.isSuccessMessageDisplayed());
 
 	}
 
@@ -131,7 +144,7 @@ public class TC_07_Re_Order extends BaseTest {
 		log.info("TC_01 - Step 18:Enter to 'City' textbox");
 		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_City", NewAddress.CITY_NAME);
 		
-		log.info("TC_01 - Step 19:Enter to 'Address1' textbox");
+		log.info("TC_01 - Step 18:Enter to 'Address1' textbox");
 		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_Address1", NewAddress.ADDRESS1);
 		
 		log.info("TC_01 - Step 20:Enter to 'Zip code' textbox");
@@ -139,6 +152,7 @@ public class TC_07_Re_Order extends BaseTest {
 		
 		log.info("TC_01 - Step 21:Enter to 'Phone number' textbox");
 		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_PhoneNumber", NewAddress.PHONE_NUMBER);
+		
 		
 		log.info("TC_01 - Step 22:Click to 'Continue' button' in 'Billing address' title");
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Billing address", "Continue");
@@ -183,7 +197,7 @@ public class TC_07_Re_Order extends BaseTest {
 		
 		log.info("TC_01 - Step 35:Verify the infomation in 'Billing Address' are displayed");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver, "Billing Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","email"),"Email: " + emailAddress);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","fax"),"Fax:");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Billing Address","address1"),NewAddress.ADDRESS1);
@@ -196,7 +210,7 @@ public class TC_07_Re_Order extends BaseTest {
 		
 		log.info("TC_01 - Step 37:Verify the infomation in 'Shipping Address' are displayed");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","name"),NewAddress.FULL_NAME);
-		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + Common_01_Login_User.emailAddress);
+		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","email"),"Email: " + emailAddress);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","phone"),"Phone: " + NewAddress.PHONE_NUMBER);
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","fax"),"Fax:");
 		verifyEquals(checkoutPage.getInfoListByTitleAndClass(driver,"Shipping Address","address1"),NewAddress.ADDRESS1);
@@ -270,7 +284,7 @@ public class TC_07_Re_Order extends BaseTest {
 		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_LastName", EditAddress.EDIT_LASTNAME);
 		
 		log.info("TC_01 - Step 55:Enter to 'Email' textbox");
-		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_Email",emailAddress );
+		checkoutPage.enterToTextboxByID(driver, "BillingNewAddress_Email",editEmail);
 		
 		log.info("TC_01 - Step 56:Select to 'Country name' in dropdown");
 		checkoutPage.selectItemInDropdownByName(driver, UpdateAddress.UPDATE_COUNTRY_NAME, "BillingNewAddress.CountryId");
