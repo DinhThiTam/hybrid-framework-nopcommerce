@@ -1,210 +1,24 @@
-[INFO ] [2021-10-21 11:26:53,416] --------START delete file in folder---------
-[INFO ] [2021-10-21 11:26:53,416] --------END delete file in folder---------
-[INFO ] [2021-10-21 11:26:53,423] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/'
-[INFO ] [2021-10-21 11:26:59,203]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:26:59,204] Pre-Condition - Step 03: Open homepage
-[INFO ] [2021-10-21 11:27:05,786] TC_01 - Step 01: Open sub menu 'Product'
-[INFO ] [2021-10-21 11:27:10,845] TC_01 - Step 02: Enter to 'Product name' textbox
-[INFO ] [2021-10-21 11:27:11,021] TC_01 - Step 03: Click to 'Search' button
-[INFO ] [2021-10-21 11:27:11,866] TC_01 - Step 04: Verify only one item is displayed in table
-[INFO ] [2021-10-21 11:27:11,935]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:11,993]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:12,054]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:12,116]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:12,243]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:12,246] TC_02 - Step 01: Refresh page
-[INFO ] [2021-10-21 11:27:16,785] TC_02 - Step 02: Enter to 'Product name' textbox
-[INFO ] [2021-10-21 11:27:16,908] TC_02 - Step 03: Select item in dropdown
-[INFO ] [2021-10-21 11:27:17,222] TC_02 - Step 03: Uncheck to checkbox
-[INFO ] [2021-10-21 11:27:17,286] TC_02 - Step 04: Click to 'Search' button
-[INFO ] [2021-10-21 11:27:17,563] TC_02 - Step 05: Verify 'No data available in table' message is dispayed 
-[INFO ] [2021-10-21 11:27:19,257]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:19,259] TC_03 - Step 01: Refresh page
-[INFO ] [2021-10-21 11:27:23,460] TC_03 - Step 02: Enter to 'Product name' textbox
-[INFO ] [2021-10-21 11:27:23,584] TC_03 - Step 03: Select item in dropdown
-[INFO ] [2021-10-21 11:27:23,941] TC_03 - Step 04: Check to 'Search subcategories' checkbox
-[INFO ] [2021-10-21 11:27:24,252] TC_03 - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:27:26,158] TC_03 - Step 06: Verify only one item is displayed in table
-[INFO ] [2021-10-21 11:27:26,218]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:26,280]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:26,343]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:26,406]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:26,529]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:26,530] TC_04 - Step 01: Refresh page
-[INFO ] [2021-10-21 11:27:30,221] TC_04 - Step 02: Enter to 'Product name' textbox
-[INFO ] [2021-10-21 11:27:30,363] TC_04 - Step 03: Select to Child Category in dropdown
-[INFO ] [2021-10-21 11:27:30,684] TC_04 - Step 04: Uncheck to 'Search subcategories' checkbox
-[INFO ] [2021-10-21 11:27:30,782] TC_04 - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:27:31,612] TC_04 - Step 06: Verify only one item is displayed in table
-[INFO ] [2021-10-21 11:27:31,695]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:31,772]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:31,834]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:31,898]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:32,024]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:32,025] TC_05 - Step 01: Refresh page
-[INFO ] [2021-10-21 11:27:35,745] TC_05 - Step 02: Enter to 'Product name' textbox
-[INFO ] [2021-10-21 11:27:35,883] TC_05 - Step 03: Select to Category in dropdown
-[INFO ] [2021-10-21 11:27:35,965] TC_05 - Step 04: Uncheck to 'Search subcategories' checkbox
-[INFO ] [2021-10-21 11:27:36,042] TC_05 - Step 05: Select to Manufacturer dropdown
-[INFO ] [2021-10-21 11:27:36,368] TC_05 - Step 06: Click to 'Search' button
-[INFO ] [2021-10-21 11:27:37,742] TC_05 - Step 07: Verify only one item is displayed in table
-[INFO ] [2021-10-21 11:27:37,810]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:27:37,811] TC_05 - Step 01: Refresh page
-[INFO ] [2021-10-21 11:27:42,108] Pre-Condition - Step 05: Enter to 'Go directly to product' textbox
-[INFO ] [2021-10-21 11:27:42,239] Pre-Condition - Step 05: Click to 'Go' button
-[INFO ] [2021-10-21 11:27:47,568] Pre-Condition - Step 05: Verify Title product details page is displayed
-[INFO ] [2021-10-21 11:28:00,309]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:00,309] Pre-Condition - Step 05: Verify product info is displayed
-[INFO ] [2021-10-21 11:28:00,365]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:00,366] Post-Condition - Close Browser - firefox
-[INFO ] [2021-10-21 11:28:00,366] OS name = windows 10
-[INFO ] [2021-10-21 11:28:01,175] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/'
-[INFO ] [2021-10-21 11:28:07,000] Pre-Condition - Step 02: Verify Login Page is displayed
-[INFO ] [2021-10-21 11:28:07,088]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:07,088] Pre-Condition - Step 03: Open homepage
-[INFO ] [2021-10-21 11:28:11,199] TC_01 - Step 01: Open sub menu 'Customers'
-[INFO ] [2021-10-21 11:28:13,192] TC_01 - Step 02: Click to 'Add new' button
-[INFO ] [2021-10-21 11:28:14,380] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:14,509] TC_01 - Step 02: Enter to 'Password' textbox
-[INFO ] [2021-10-21 11:28:14,610] TC_01 - Step 02: Enter to 'Firstname' textbox
-[INFO ] [2021-10-21 11:28:14,726] TC_01 - Step 02: Enter to 'Lastname' textbox
-[INFO ] [2021-10-21 11:28:14,820] TC_01 - Step 02: Click to 'Male' radio button
-[INFO ] [2021-10-21 11:28:15,096] TC_01 - Step 02: Enter to 'Date of birth' textbox
-[INFO ] [2021-10-21 11:28:15,194] TC_01 - Step 02: Enter to 'Company name' textbox
-[INFO ] [2021-10-21 11:28:17,300] TC_01 - Step 02: Clear text in dropdown
-[INFO ] [2021-10-21 11:28:19,605] TC_01 - Step 02: Select 'Guest' role in dropdown
-[INFO ] [2021-10-21 11:28:23,251] TC_01 - Step 02: Click to 'Active' checkbox
-[INFO ] [2021-10-21 11:28:23,330] TC_01 - Step 02: Verify 'Guests' role is selected
-[INFO ] [2021-10-21 11:28:23,386]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:23,386] TC_01 - Step 02: Enter to 'Admin comment' textbox
-[INFO ] [2021-10-21 11:28:23,496] TC_01 - Step 02: Click to 'Save and Continue Edit' button
-[INFO ] [2021-10-21 11:28:29,746] TC_01 - Step 02: Verify success mesage
-[INFO ] [2021-10-21 11:28:29,805] TC_01 - Step 02: Click to expand panel
-[INFO ] [2021-10-21 11:28:29,877] TC_01 - Step 02: Verify 
-[INFO ] [2021-10-21 11:28:29,956]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,018]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,081]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,127]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,190]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,253]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,299]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:30,299] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:31,948] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:34,238] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:40,808] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:28:44,117] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:44,249] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:47,560] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:47,678] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:49,960] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:56,637] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:28:58,044] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:58,136]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:58,136] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:58,198]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:58,198] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:58,259]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:58,259] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:28:58,322]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:28:58,324] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:29:01,041] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:29:01,166] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:29:01,258] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:29:03,554] TC_01 - Step 02: Enter to 'Email' textbox
-[INFO ] [2021-10-21 11:29:10,125] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:29:11,069]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:11,130]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:11,192]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:11,254]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:22,745] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:29:23,657]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:23,720]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:23,779]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:23,842]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:37,505] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:29:38,493]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:38,555]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:38,618]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:38,679]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:53,147] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:29:54,091]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:54,151]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:54,213]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:29:54,275]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:02,176] Add_Address_01 - Step 04: Update First name information to textbox
-[INFO ] [2021-10-21 11:30:02,279] Add_Address_01 - Step 05: Update Last name information to textbox
-[INFO ] [2021-10-21 11:30:02,385] Add_Address_01 - Step 06: Update Email information to textbox
-[INFO ] [2021-10-21 11:30:02,500] Add_Address_01 - Step 07: Update Company name information to textbox
-[INFO ] [2021-10-21 11:30:02,602] Add_Address_01 - Step 03: Update Country name information to dropdown
-[INFO ] [2021-10-21 11:30:02,902] Add_Address_01 - Step 03: Update State province information to dropdown
-[INFO ] [2021-10-21 11:30:02,983] Add_Address_01 - Step 03: Update Company City name information to textbox
-[INFO ] [2021-10-21 11:30:03,088] Add_Address_01 - Step 03: Update Address 1 information to textbox
-[INFO ] [2021-10-21 11:30:03,222] Add_Address_01 - Step 03: Update Address 2 information to textbox
-[INFO ] [2021-10-21 11:30:03,326] Add_Address_01 - Step 03: Update Zip code information to textbox
-[INFO ] [2021-10-21 11:30:03,425] Add_Address_01 - Step 03: Update Phone number information to textbox
-[INFO ] [2021-10-21 11:30:03,518] Add_Address_01 - Step 03: Update Phone number information to textbox
-[INFO ] [2021-10-21 11:30:03,610] Add_Address_01 - Step 03: Click to 'Save' button
-[INFO ] [2021-10-21 11:30:10,001] Add_Address_01 - Step 03: Verify Firstname infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,066]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,066] Add_Address_01 - Step 03: Verify Lastname infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,136]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,136] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,192]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,192] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,253]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,253] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,723]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,723] Add_Address_01 - Step 03: Update State province information to dropdown
-[INFO ] [2021-10-21 11:30:10,823]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,823] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,895]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,895] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:10,955]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:10,955] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:11,016]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:11,016] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:11,078]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:11,078] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:11,141]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:11,141] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:11,201]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:33,385] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:30:40,047] Add_Address_01 - Step 04: Update First name information to textbox
-[INFO ] [2021-10-21 11:30:40,148] Add_Address_01 - Step 05: Update Last name information to textbox
-[INFO ] [2021-10-21 11:30:40,238] Add_Address_01 - Step 06: Update Email information to textbox
-[INFO ] [2021-10-21 11:30:40,344] Add_Address_01 - Step 07: Update Company name information to textbox
-[INFO ] [2021-10-21 11:30:40,447] Add_Address_01 - Step 03: Update Country name information to dropdown
-[INFO ] [2021-10-21 11:30:40,743] Add_Address_01 - Step 03: Update Company City name information to textbox
-[INFO ] [2021-10-21 11:30:40,843] Add_Address_01 - Step 03: Update Address 1 information to textbox
-[INFO ] [2021-10-21 11:30:40,973] Add_Address_01 - Step 03: Update Address 2 information to textbox
-[INFO ] [2021-10-21 11:30:41,064] Add_Address_01 - Step 03: Update Zip code information to textbox
-[INFO ] [2021-10-21 11:30:41,154] Add_Address_01 - Step 03: Update Phone number information to textbox
-[INFO ] [2021-10-21 11:30:41,249] Add_Address_01 - Step 03: Update Phone number information to textbox
-[INFO ] [2021-10-21 11:30:41,343] Add_Address_01 - Step 03: Click to 'Save' button
-[INFO ] [2021-10-21 11:30:45,887] Add_Address_01 - Step 03: Verify Firstname infomation is updated successfully
-[INFO ] [2021-10-21 11:30:45,953]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:45,953] Add_Address_01 - Step 03: Verify Lastname infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,015]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,015] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,078]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,078] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,139]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,139] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,236]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,236] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,318]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,318] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,372]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,372] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,434]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,434] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,495]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,496] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,557]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,557] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,619]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:30:46,619] Add_Address_01 - Step 03: Verify email infomation is updated successfully
-[INFO ] [2021-10-21 11:30:46,681]  -------------------------- PASSED -------------------------- 
-[INFO ] [2021-10-21 11:31:08,519] Pre-Condition - Step 05: Click to 'Search' button
-[INFO ] [2021-10-21 11:31:13,406] Post-Condition - Close Browser - firefox
-[INFO ] [2021-10-21 11:31:13,406] OS name = windows 10
+[INFO ] [2021-10-21 17:20:11,454] --------START delete file in folder---------
+[INFO ] [2021-10-21 17:20:11,454] --------END delete file in folder---------
+[INFO ] [2021-10-21 17:20:11,460] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://demo.nopcommerce.com/'
+[INFO ] [2021-10-21 17:20:18,515]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-21 17:20:18,614] Pre-Condition - Step 02: Open Register page on header
+[INFO ] [2021-10-21 17:20:20,116] Pre-Condition - Step 03: Enter valid info to 'First Name' textbox
+[INFO ] [2021-10-21 17:20:20,207] Pre-Condition - Step 04: Enter valid info to 'Last Name' textbox
+[INFO ] [2021-10-21 17:20:20,301] Pre-Condition - Step 05: Enter valid info to 'Email' textbox
+[INFO ] [2021-10-21 17:20:20,396] Pre-Condition - Step 06: Enter valid info to 'Password' textbox
+[INFO ] [2021-10-21 17:20:20,489] Pre-Condition - Step 07: Enter valid info to 'Confirm Password' textbox
+[INFO ] [2021-10-21 17:20:20,630] Pre-Condition - Step 08: Click to 'Register' button
+[INFO ] [2021-10-21 17:20:22,541] Pre-Condition - Step 09: Verify success messages is displayed in mandantory fields
+[INFO ] [2021-10-21 17:20:22,610]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-10-21 17:20:22,616] TC_01 - Step 01: Open sub menu 'Notebooks'
+[INFO ] [2021-10-21 17:20:23,603] TC_01 - Step 02: Click to the product title link
+[INFO ] [2021-10-21 17:20:24,749] TC_01 - Step 03:Click to 'Add to cart' button
+[INFO ] [2021-10-21 17:20:25,636] Post-Condition - Close Browser - firefox
+[INFO ] [2021-10-21 17:20:25,636] OS name = windows 10
+[INFO ] [2021-10-21 17:20:25,640] Tried to run command without establishing a connection
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:53'
+System info: host: 'DESKTOP-E6N9TK3', ip: '192.168.1.59', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_271'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 93.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20210927210923, moz:geckodriverVersion: 0.30.0, moz:headless: false, moz:processID: 25032, moz:profile: C:\Users\Admin\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: e72b697d-983e-40e7-8ec8-53523666ae52

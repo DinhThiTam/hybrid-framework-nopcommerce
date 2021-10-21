@@ -107,7 +107,7 @@ public class TC_05_Checkout_Order_Payment_Method_Card extends BaseTest {
 	
 		log.info("TC_01 - Step 05:Click to 'Estimate shipping' button");
 		shoppingCartPage.clickToButtonByClassAndName(driver, "common-buttons","Estimate shipping");
-		shoppingCartPage.sleepInsecond(5);
+		shoppingCartPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_01 - Step 06:Select to 'Country name' in dropdown");
 		shoppingCartPage.selectItemInDropdownByName(driver, NewAddress.COUNTRY_NAME, "CountryId");

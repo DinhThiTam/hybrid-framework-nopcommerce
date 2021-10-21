@@ -50,18 +50,21 @@ public class TC_01_Catalog_Products extends BaseTest {
 	public void TC_01_Search_With_Product_Name() {
 		log.info("TC_01 - Step 01: Open sub menu 'Product'");
 		dashboardPage.openSubMenuPageByName(driver, "Catalog","Products");
+		dashboardPage.isJQueryAjaxLoadedSuccess(driver);
 		productSearchPage = PageGenerator.getProductSearchPage(driver);
-		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("TC_01 - Step 02: Enter to 'Product name' textbox");
+		log.info("TC_01 - Step 02: Expand Panel 'Search'");
+		productSearchPage.clickToExpandPanelSearch();
+		
+		log.info("TC_01 - Step 03: Enter to 'Product name' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchProductName", productName);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("TC_01 - Step 03: Click to 'Search' button");
+		log.info("TC_01 - Step 04: Click to 'Search' button");
 		productSearchPage.clickToButtonByID(driver,"search-products");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("TC_01 - Step 04: Verify only one item is displayed in table");
+		log.info("TC_01 - Step 05: Verify only one item is displayed in table");
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Product name"),productName);
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "SKU"),"LE_IC_600");
 		verifyEquals(productSearchPage.getValueInTableIDAtColumnNameAndRowIndex(driver, "dataTables_scrollBody", "dataTables_scrollHead", "1", "Price"),"500");
@@ -184,26 +187,26 @@ public class TC_01_Catalog_Products extends BaseTest {
 	
 	@Test
 	public void TC_06_Go_product_SKU() {
-		log.info("TC_05 - Step 01: Refresh page");
+		log.info("TC_06 - Step 01: Refresh page");
 		productSearchPage.refreshPage(driver);
 		
 		
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Enter to 'Go directly to product' textbox");
+		log.info("TC_06 - Step 02: Enter to 'Go directly to product' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "GoDirectlyToSku", skuProduct);
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Click to 'Go' button");
+		log.info("TC_06 - Step 03: Click to 'Go' button");
 		productSearchPage.clickToButtonByID(driver,"go-to-product-by-sku");
 		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		productDetailsPage = PageGenerator.getProductDetailsPage(driver);
 		productDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		
-		log.info("Pre-Condition - Step 05: Verify Title product details page is displayed");
+		log.info("TC_06 - Step 04: Verify Title product details page is displayed");
 		verifyTrue(productDetailsPage.isFormTitleProductDetailsDisplayed());
 		
-		log.info("Pre-Condition - Step 05: Verify product info is displayed");
+		log.info("TC_06 - Step 05: Verify product info is displayed");
 		verifyEquals(productDetailsPage.getValueTextboxInForm(driver, "value", "Name"), "Lenovo IdeaCentre 600 All-in-One PC");
 	}
 	

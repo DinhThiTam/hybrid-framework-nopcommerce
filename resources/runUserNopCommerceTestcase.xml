@@ -2,42 +2,42 @@
 <suite name="User_Nop Commerce">
 	<parameter name="url" value="https://demo.nopcommerce.com/" />
 	<listeners>
-<!-- 		<listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
-<!-- 		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 		<listener class-name="reportConfig.MethodListener" />
-<!-- 		<listener class-name="reportConfig.ExtentTestListener" /> -->
+		<listener class-name="reportConfig.ExtentReportListenerV2" />
 		<listener class-name="reportConfig.ReportNGListener" />
 	</listeners>
 
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.register.TC_01_Register" />
-			<class name="com.nopcommerce.login.TC_01_Login" />
+<!-- 			<class name="com.nopcommerce.register.TC_01_Register" /> -->
+<!-- 			<class name="com.nopcommerce.login.TC_01_Login" /> -->
 
-			<class name="com.nopcommerce.common.Common_01_Login_User" />
+<!-- 			<class name="com.nopcommerce.common.Common_01_Login_User" /> -->
 			
-			<class name="com.nopcommerce.wishlist.TC_01_Add_To_Wishlist" />
-			<class name="com.nopcommerce.wishlist.TC_02_Add_To_Cart" />
-			<class name="com.nopcommerce.wishlist.TC_03_Remove_Product" />
-			<class name="com.nopcommerce.wishlist.TC_04_Add_To_Compare" />
-			<class name="com.nopcommerce.wishlist.TC_05_Recently_Viewed_Product" />
+<!-- 			<class name="com.nopcommerce.wishlist.TC_01_Add_To_Wishlist" /> -->
+<!-- 			<class name="com.nopcommerce.wishlist.TC_02_Add_To_Cart" /> -->
+<!-- 			<class name="com.nopcommerce.wishlist.TC_03_Remove_Product" /> -->
+<!-- 			<class name="com.nopcommerce.wishlist.TC_04_Add_To_Compare" /> -->
+<!-- 			<class name="com.nopcommerce.wishlist.TC_05_Recently_Viewed_Product" /> -->
 			
-			<class name="com.nopcommerce.myaccount.TC_01_Customer_Info" />
-			<class name="com.nopcommerce.myaccount.TC_02_Add_Addresses" />
-			<class name="com.nopcommerce.myaccount.TC_03_Change_Password" />
-			<class name="com.nopcommerce.myaccount.TC_04_My_Product_Review" />
+<!-- 			<class name="com.nopcommerce.myaccount.TC_01_Customer_Info" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_02_Add_Addresses" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_03_Change_Password" /> -->
+<!-- 			<class name="com.nopcommerce.myaccount.TC_04_My_Product_Review" /> -->
 			
-			<class name="com.nopcommerce.search.TC_01_Search_Advanced_Search" />
+<!-- 			<class name="com.nopcommerce.search.TC_01_Search_Advanced_Search" /> -->
 			
-			<class name="com.nopcommerce.sort.TC_01_Sort_Display_Paging" />
+<!-- 			<class name="com.nopcommerce.sort.TC_01_Sort_Display_Paging" /> -->
 
 
 			
-			<class name="com.nopcommerce.order.TC_01_Add_Product_To_Cart" />
-			<class name="com.nopcommerce.order.TC_02_Update_Shopping_Cart" />
-			<class name="com.nopcommerce.order.TC_05_Checkout_Order_Payment_Method_Card" />
-			<class name="com.nopcommerce.order.TC_06_Checkout_Order_Payment_Method_Cheque" />
+<!-- 			<class name="com.nopcommerce.order.TC_01_Add_Product_To_Cart" /> -->
+<!-- 			<class name="com.nopcommerce.order.TC_02_Update_Shopping_Cart" /> -->
+<!-- 			<class name="com.nopcommerce.order.TC_05_Checkout_Order_Payment_Method_Card" /> -->
+<!-- 			<class name="com.nopcommerce.order.TC_06_Checkout_Order_Payment_Method_Cheque" /> -->
 			<class name="com.nopcommerce.order.TC_07_Re_Order" />
 
 		</classes>

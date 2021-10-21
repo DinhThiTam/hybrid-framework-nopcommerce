@@ -99,7 +99,7 @@ public class TC_07_Re_Order extends BaseTest {
 	
 		log.info("TC_01 - Step 05:Click to 'Estimate shipping' button");
 		shoppingCartPage.clickToButtonByClassAndName(driver, "common-buttons","Estimate shipping");
-		shoppingCartPage.sleepInsecond(5);
+		shoppingCartPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_01 - Step 06:Select to 'Country name' in dropdown");
 		shoppingCartPage.selectItemInDropdownByName(driver, NewAddress.COUNTRY_NAME, "CountryId");
@@ -166,7 +166,7 @@ public class TC_07_Re_Order extends BaseTest {
 		
 		log.info("TC_01 - Step 25:Click to 'Continue' button' in 'Shipping method' title");
 		checkoutPage.clickToButtonInCheckoutPageByTitleAndName("Shipping method", "Continue");
-		checkoutPage.isJQueryAjaxLoadedSuccess(driver);
+		checkoutPage.sleepInsecond(3);
 		
 		log.info("TC_01 - Step 26:Click to 'Credit Card' radio");
 		checkoutPage.clickToRadioAndCheckboxByLabel(driver, "Credit Card");
