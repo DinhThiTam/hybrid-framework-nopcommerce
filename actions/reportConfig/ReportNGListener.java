@@ -42,37 +42,36 @@ public class ReportNGListener implements ITestListener {
 	}
 
 	@Override
-//	chụp ảnh
-//	public void onTestFailure(ITestResult result) {
-//		System.setProperty("org.uncommons.reportng.escape-output", "false");
-//
-//		Object testClass = result.getInstance();
-//		WebDriver driver = ((BaseTest) testClass).getWebDriver();
-//
-//		String screenshotPath = captureScreenshot(driver, result.getName());
-//		Reporter.getCurrentTestResult();
-//		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotPath + "\">" + "<img src=\"file:///" + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
-//		Reporter.setCurrentTestResult(null);
-//		
-//	}
-	//Base64 - ko ton dung luong
 	public void onTestFailure(ITestResult result) {
-		try {
-			System.setProperty("org.uncommons.reportng.escape-output", "false");
-			Object testClass = result.getInstance();
-			WebDriver driver = ((BaseTest) testClass).getWebDriver();
+		System.setProperty("org.uncommons.reportng.escape-output", "false");
 
-			String screenshotPath = captureScreenshot(driver, result.getName());
-			Reporter.getCurrentTestResult();
-			Reporter.log("<br><a target=\"_blank\" href=\"data:image/png;base64," + screenshotPath + "\">" + "<img src=\"data:image/png;base64," + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
-			Reporter.setCurrentTestResult(null);
-		} catch (NoSuchSessionException e) {
-			e.printStackTrace();
-		} catch (WebDriverException e) {
-			e.printStackTrace();
-		}
+		Object testClass = result.getInstance();
+		WebDriver driver = ((BaseTest) testClass).getWebDriver();
+
+		String screenshotPath = captureScreenshot(driver, result.getName());
+		Reporter.getCurrentTestResult();
+		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotPath + "\">" + "<img src=\"file:///" + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
+		Reporter.setCurrentTestResult(null);
 		
 	}
+	//Base64 - ko ton dung luong
+//	public void onTestFailure(ITestResult result) {
+//		try {
+//			System.setProperty("org.uncommons.reportng.escape-output", "false");
+//			Object testClass = result.getInstance();
+//			WebDriver driver = ((BaseTest) testClass).getWebDriver();
+//
+//			String screenshotPath = captureScreenshot(driver, result.getName());
+//			Reporter.getCurrentTestResult();
+//			Reporter.log("<br><a target=\"_blank\" href=\"data:image/png;base64," + screenshotPath + "\">" + "<img src=\"data:image/png;base64," + screenshotPath + "\" " + "height='200' width='200'/> " + "</a></br>");
+//			Reporter.setCurrentTestResult(null);
+//		} catch (NoSuchSessionException e) {
+//			e.printStackTrace();
+//		} catch (WebDriverException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 	@Override
 	public void onTestSkipped(ITestResult arg0) {
@@ -93,13 +92,27 @@ public class ReportNGListener implements ITestListener {
 	}
 	
 	public String captureScreenshot(WebDriver driver, String screenshotName) {
-			//Calendar calendar = Calendar.getInstance();
-			//SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-			//File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			String screenshotBase64 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
-			//String screenPath = projectLocation + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
-			//FileUtils.copyFile(source, new File(screenPath));
-			return screenshotBase64;
+		try {
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			String screenPath = projectLocation + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
+				FileUtils.copyFile(source, new File(screenPath));
+			return screenPath;
+		} catch (IOException e) {
+			System.out.println("Exception while taking screenshot: " + e.getMessage());
+			return e.getMessage();
+		}
 	}
+	
+//	public String captureScreenshot(WebDriver driver, String screenshotName) {
+//		//Calendar calendar = Calendar.getInstance();
+//		//SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+//		//File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//		String screenshotBase64 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
+//		//String screenPath = projectLocation + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
+//		//FileUtils.copyFile(source, new File(screenPath));
+//		return screenshotBase64;
+//}
 
 }

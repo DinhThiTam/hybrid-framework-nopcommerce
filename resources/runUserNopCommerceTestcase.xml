@@ -12,7 +12,7 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-<!-- 			<class name="com.nopcommerce.register.TC_01_Register" /> -->
+			<class name="com.nopcommerce.register.TC_01_Register" />
 <!-- 			<class name="com.nopcommerce.login.TC_01_Login" /> -->
 
 <!-- 			<class name="com.nopcommerce.common.Common_01_Login_User" /> -->
@@ -38,7 +38,7 @@
 <!-- 			<class name="com.nopcommerce.order.TC_02_Update_Shopping_Cart" /> -->
 <!-- 			<class name="com.nopcommerce.order.TC_05_Checkout_Order_Payment_Method_Card" /> -->
 <!-- 			<class name="com.nopcommerce.order.TC_06_Checkout_Order_Payment_Method_Cheque" /> -->
-			<class name="com.nopcommerce.order.TC_07_Re_Order" />
+<!-- 			<class name="com.nopcommerce.order.TC_07_Re_Order" /> -->
 
 		</classes>
 	</test>
