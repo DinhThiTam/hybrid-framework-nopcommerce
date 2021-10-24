@@ -30,8 +30,6 @@ public class TC_01_Catalog_Products extends BaseTest {
 		
 		productName = "Lenovo IdeaCentre 600 All-in-One PC";
 		catagory = "All";
-		
-		
 		parentCatagory = "Computers";
 		childCatagory = "Computers >> Desktops";
 		manufacturer = "Apple";
@@ -55,6 +53,7 @@ public class TC_01_Catalog_Products extends BaseTest {
 		
 		log.info("TC_01 - Step 02: Expand Panel 'Search'");
 		productSearchPage.clickToExpandPanelSearch();
+		productSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_01 - Step 03: Enter to 'Product name' textbox");
 		productSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchProductName", productName);

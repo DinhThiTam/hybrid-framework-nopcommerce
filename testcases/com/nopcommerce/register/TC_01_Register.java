@@ -61,7 +61,7 @@ public class TC_01_Register extends BaseTest {
 		registerPage.clickToButtonByName(driver, "Register");
 		
 		log.info("Register_01 - Step 07: Verify all error messages are displayed in mandantory fields");
-		verifyFalse(registerPage.isFirstnameEmptyInvalidMessageDisplayed());
+		verifyTrue(registerPage.isFirstnameEmptyInvalidMessageDisplayed());
 		verifyTrue(registerPage.isLastnameEmptyInvalidMessageDisplayed());
 		verifyTrue(registerPage.isEmailEmptyMessageDisplayed());
 		verifyTrue(registerPage.isPasswordEmptyInvalidMessageDisplayed());

@@ -758,6 +758,11 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.CLOSE_ICON_IN_MESSAGE);
 	}
 	
+	public void clickToCloseIcon(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.CLOSE_ICON);
+		clickToElement(driver, BasePageUI.CLOSE_ICON);
+	}
+	
 	public void clickToButtonAddToSomethingByProductTitleAndButtonTitle(WebDriver driver, String productTitle,String buttonTitle) {
 		waitForElementClickable(driver, BasePageUI.BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE, productTitle,buttonTitle);
 		clickToElement(driver, BasePageUI.BUTTON_ADD_TO_SOMETHING_BY_PRODUCT_TITLE_AND_BUTTON_TITLE, productTitle,buttonTitle);
@@ -873,7 +878,8 @@ public class BasePage {
 	
 	public void clickToExpandPanelByName(WebDriver driver, String panelName) {
 		//1 - get tag i attibute
-		waitForElementVisible(driver,AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
+		//waitForElementVisible(driver,AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
+		scrollToElement(driver,AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, panelName);
 		String toogleIconStatus = getElementAttribute(driver, AdminBasePageUI.TOOGLE_ICON_BY_CARD_NAME, "class", panelName);
 		//2 - if not contains (fa-plus)
 		if (toogleIconStatus.contains("fa-plus")) {
@@ -916,7 +922,8 @@ public class BasePage {
 
 	public void clickToEditButtonInTableAtSearchPage(WebDriver driver, String emailAddress, String fullName, String customerRole,
 			String companyName) {
-		waitForElementClickable(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+		scrollToElement(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
+		//waitForElementClickable(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
 		clickToElement(driver, AdminBasePageUI.ROW_VALUE_BY_EMAIL_NAME_CUSTOMERROLES_COMPANYNAME, emailAddress,fullName,customerRole,companyName);
 	}
 	
@@ -938,6 +945,7 @@ public class BasePage {
 	
 	public void clickToButtonByContainsText(WebDriver driver, String buttonText) {
 		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
+		scrollToElement(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
 		clickToElement(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
 		
 	}
@@ -949,7 +957,7 @@ public class BasePage {
 	
 
 	public void clickToBackToCustomerListButton(WebDriver driver, String messageText) {
-		waitForElementClickable(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
+		scrollToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 	}
 	

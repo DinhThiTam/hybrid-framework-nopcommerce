@@ -61,6 +61,7 @@ public class TC_02_Customers extends BaseTest {
 		dashboardPage.openSubMenuPageByName(driver, "Customers", "Customers");
 		dashboardPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 
 		log.info("TC_01 - Step 02: Click to 'Add new' button");
 		customersSearchPage.clickToButtonInHeaderOnSubMenuPageByText(driver, "Customers", "Add new");
@@ -68,6 +69,7 @@ public class TC_02_Customers extends BaseTest {
 		addNewCustomersPage = PageGenerator.getAddNewCustomersPage(driver);
 		
 		log.info("TC_01 - Step 03: Enter to 'Email' textbox");
+		addNewCustomersPage.isJQueryAjaxLoadedSuccess(driver);
 		addNewCustomersPage.enterToTextboxByIDAtAdminSite(driver, "Email", emailAddress);
 		
 		log.info("TC_01 - Step 04: Enter to 'Password' textbox");
@@ -110,23 +112,26 @@ public class TC_02_Customers extends BaseTest {
 				"Save and Continue Edit");
 		addNewCustomersPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		customerDetailsPage.sleepInsecond(3);
 		
 		log.info("TC_01 - Step 16: Verify success mesage");
 		customerDetailsPage.isMessageSuccessDisplayed(driver,"The new customer has been added successfully.");
+		customerDetailsPage.clickToCloseIcon(driver);
 		
 		log.info("TC_01 - Step 17: Click to expand panel");
 		customerDetailsPage.clickToExpandPanelByName(driver, "Customer info");
 		
 		log.info("TC_01 - Step 18: Verify customers info are displayed ");
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Email"), emailAddress);
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "FirstName"), firstName);
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "LastName"), lastName);
+		verifyEquals(customerDetailsPage.getValueTextboxInForm(driver, "value", "Email"), emailAddress);
+		verifyEquals(customerDetailsPage.getValueTextboxInForm(driver, "value", "FirstName"), firstName);
+		verifyEquals(customerDetailsPage.getValueTextboxInForm(driver, "value", "LastName"), lastName);
 		verifyTrue(customerDetailsPage.isSelectedItemInRadioAtAdminSite(driver, "Gender_Male"));
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "DateOfBirth"), NewAddress.DATE_OF_BIRTH);
-		verifyEquals(addNewCustomersPage.getValueTextboxInForm(driver, "value", "Company"), NewAddress.COMPANY_NAME);
+		verifyEquals(customerDetailsPage.getValueTextboxInForm(driver, "value", "DateOfBirth"), NewAddress.DATE_OF_BIRTH);
+		verifyEquals(customerDetailsPage.getValueTextboxInForm(driver, "value", "Company"), NewAddress.COMPANY_NAME);
 		verifyTrue(customerDetailsPage.isSelectedItemInRadioAtAdminSite(driver, "Active"));
 		
 		log.info("TC_01 - Step 19: Click to 'Back to customer list' button");
+		customerDetailsPage.sleepInsecond(3);
 		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
@@ -141,7 +146,7 @@ public class TC_02_Customers extends BaseTest {
 		
 		log.info("TC_01 - Step 22: Click to 'Search' button");
 		customersSearchPage.clickToButtonByID(driver, "search-customers");
-		customersSearchPage.sleepInsecond(3);
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 
 		log.info("TC_01 - Step 23: Verify customer info in table is displayed");
 		customersSearchPage.isRowValueInRowDisplayed(driver, "Guest", fullName, NewAddress.CUSTOMER_ROLE, NewAddress.COMPANY_NAME);
@@ -329,8 +334,8 @@ public class TC_02_Customers extends BaseTest {
 	public void TC_06_Edit_Customer() {
 		log.info("TC_06 - Step 01: Click to 'Edit' button in table");
 		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", fullName, NewAddress.CUSTOMER_ROLE, NewAddress.COMPANY_NAME);
-		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		customerDetailsPage.sleepInsecond(5);
 		
 		log.info("TC_06 - Step 02: Enter to 'Email' textbox");
 		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Email", editEmailAddress);
@@ -346,17 +351,20 @@ public class TC_02_Customers extends BaseTest {
 		
 		log.info("TC_06 - Step 06: Enter to 'Company Name' textbox");
 		customerDetailsPage.enterToTextboxByIDAtAdminSite(driver, "Company", EditAddress.EDIT_COMPANYNAME);
+		
+		log.info("TC_06 - Step 06: Enter to 'Comment Admin' textbox");
 		customerDetailsPage.enterToAdminCommentTextArea(driver, EditAddress.EDIT_COMMENTADMIN);
 		
 		log.info("TC_06 - Step 07: Click to 'Save' button");
 		customerDetailsPage.clickToButtonByNameAttribute(driver, "save");
-		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
+		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
 		
 		log.info("TC_06 - Step 08: Verify success message is displayed");
 		customersSearchPage.isMessageSuccessDisplayed(driver, "The customer has been updated successfully.");
 	
 		log.info("TC_06 - Step 09: Enter to 'Email' textbox");
+		customersSearchPage.sleepInsecond(3);
 		customersSearchPage.enterToTextboxByIDAtAdminSite(driver, "SearchEmail", editEmailAddress);
 		
 		log.info("TC_06 - Step 10: Enter to 'First Name' textbox");
@@ -407,13 +415,13 @@ public class TC_02_Customers extends BaseTest {
 	@Test
 	public void TC_07_Add_New_Address() {
 		log.info("TC_07 - Step 01: Click to 'Edit' button in table");
-		customersSearchPage.scrollToBottomPage(driver);
 		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", EditAddress.EDIT_FULLNAME, NewAddress.CUSTOMER_ROLE, EditAddress.EDIT_COMPANYNAME);
-		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
 	
 		log.info("TC_07 - Step 02: Click to Expand panel in 'Addresses' form");
+		customerDetailsPage.sleepInsecond(3);
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
+		customerDetailsPage.sleepInsecond(3);
 		 
 		log.info("TC_07 - Step 3: Click to 'Add new Address' button");
 		customerDetailsPage.clickToButtonByContainsText(driver, "Add new address");
@@ -516,6 +524,7 @@ public class TC_02_Customers extends BaseTest {
 	@Test
 	public void TC_08_Edit_Address() {
 		log.info("TC_08 - Step 01: Click to 'Back to customer list' button");
+		customerDetailsPage.sleepInsecond(3);
 		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
 		customerDetailsPage.sleepInsecond(3);
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
@@ -552,13 +561,13 @@ public class TC_02_Customers extends BaseTest {
 		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_08 - Step 11: Click to 'Edit' button in table");
-		customersSearchPage.scrollToBottomPage(driver);
 		customersSearchPage.clickToEditButtonInTableAtSearchPage(driver, "Guest", EditAddress.EDIT_FULLNAME, NewAddress.CUSTOMER_ROLE, EditAddress.EDIT_COMPANYNAME);
-		customersSearchPage.isJQueryAjaxLoadedSuccess(driver);
 		customerDetailsPage = PageGenerator.getCustomerDetailsPage(driver);
+		customerDetailsPage.isJQueryAjaxLoadedSuccess(driver);
 		
 		log.info("TC_08 - Step 12: Click to Expand panel in 'Addresses' form");
 		customerDetailsPage.clickToExpandPanelByName(driver, "Addresses");
+		customerDetailsPage.sleepInsecond(3);
 		
 		log.info("TC_08 - Step 13: Click to 'Edit' button in table");
 		customerDetailsPage.clickToButtonInTableAtCustomerDetailPage("Addresses", "Edit");
@@ -658,6 +667,7 @@ public class TC_02_Customers extends BaseTest {
 	@Test
 	public void TC_09_Delete_Address() {
 		log.info("TC_09 - Step 01: Click to 'back to customer list' button");
+		customerDetailsPage.sleepInsecond(3);
 		customerDetailsPage.clickToBackToCustomerListButton(driver, "back to customer list");
 		customerDetailsPage.sleepInsecond(3);
 		customersSearchPage = PageGenerator.getCustomersSearchPage(driver);
