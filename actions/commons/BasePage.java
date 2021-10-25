@@ -894,6 +894,7 @@ public class BasePage {
 	}
 	
 	public void selectCustomerRoleInDropdown(WebDriver driver, String dropdownLabel, String itemText) {
+		scrollToElement(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		waitForElementClickable(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		clickToElement(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		sleepInsecond(3);
