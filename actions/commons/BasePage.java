@@ -945,7 +945,6 @@ public class BasePage {
 	}
 	
 	public void clickToButtonByContainsText(WebDriver driver, String buttonText) {
-		waitForElementClickable(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
 		scrollToElement(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
 		clickToElement(driver, AdminBasePageUI.BUTTON_BY_CONTAINS_TEXT, buttonText);
 		

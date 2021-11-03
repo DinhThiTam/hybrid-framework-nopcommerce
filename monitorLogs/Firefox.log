@@ -1,14 +1,10 @@
-1635147133400	geckodriver	INFO	Listening on 127.0.0.1:27467
-1635147133929	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofile4KN6xe"
-1635147134176	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofile4KN6xe\\search.json.mozlz4", (void 0)))
-1635147135693	Marionette	INFO	Listening on port 2104
-1635147135980	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-1635147252563	Marionette	INFO	Stopped listening on port 2104
+1635851414395	geckodriver	INFO	Listening on 127.0.0.1:2983
+1635851414901	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofilemJoFQ8"
+1635851415216	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofilemJoFQ8\\search.json.mozlz4", (void 0)))
+1635851416924	Marionette	INFO	Listening on port 33855
+1635851416966	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1635851619427	Marionette	INFO	Stopped listening on port 33855
 JavaScript error: resource:///modules/Interactions.jsm, line 201: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
-
-###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
-
-
-###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
-
+[Parent 19968, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+[Parent 19968, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167

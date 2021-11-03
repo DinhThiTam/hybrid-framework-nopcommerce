@@ -23219,3 +23219,296 @@ Session ID: 48d93fc6-399e-44e0-b5a9-2bfca4961f9b
 [INFO ] [2021-10-25 14:34:12,278] TC_01 - Step 73:Click to 'Continue' button' in 'Payment information' title
 [INFO ] [2021-10-25 14:34:12,540] Post-Condition - Close Browser - firefox
 [INFO ] [2021-10-25 14:34:12,540] OS name = windows 10
+[INFO ] [2021-11-02 18:09:27,153] --------START delete file in folder---------
+[INFO ] [2021-11-02 18:09:27,154] --------END delete file in folder---------
+[INFO ] [2021-11-02 18:09:27,160] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/'
+[INFO ] [2021-11-02 18:09:32,007]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:32,009] Pre-Condition - Step 03: Open homepage
+[INFO ] [2021-11-02 18:09:35,078] TC_01 - Step 01: Open sub menu 'Product'
+[INFO ] [2021-11-02 18:09:37,142] TC_01 - Step 02: Expand Panel 'Search'
+[INFO ] [2021-11-02 18:09:37,220] TC_01 - Step 03: Enter to 'Product name' textbox
+[INFO ] [2021-11-02 18:09:37,369] TC_01 - Step 04: Click to 'Search' button
+[INFO ] [2021-11-02 18:09:38,204] TC_01 - Step 05: Verify only one item is displayed in table
+[INFO ] [2021-11-02 18:09:38,304]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:38,365]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:38,442]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:38,534]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:38,659]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:38,661] TC_02 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:09:43,549] TC_02 - Step 02: Enter to 'Product name' textbox
+[INFO ] [2021-11-02 18:09:43,671] TC_02 - Step 03: Select item in dropdown
+[INFO ] [2021-11-02 18:09:43,983] TC_02 - Step 03: Uncheck to checkbox
+[INFO ] [2021-11-02 18:09:44,044] TC_02 - Step 04: Click to 'Search' button
+[INFO ] [2021-11-02 18:09:44,323] TC_02 - Step 05: Verify 'No data available in table' message is dispayed 
+[INFO ] [2021-11-02 18:09:45,468]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:45,469] TC_03 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:09:49,631] TC_03 - Step 02: Enter to 'Product name' textbox
+[INFO ] [2021-11-02 18:09:49,750] TC_03 - Step 03: Select item in dropdown
+[INFO ] [2021-11-02 18:09:50,062] TC_03 - Step 04: Check to 'Search subcategories' checkbox
+[INFO ] [2021-11-02 18:09:50,406] TC_03 - Step 05: Click to 'Search' button
+[INFO ] [2021-11-02 18:09:51,247] TC_03 - Step 06: Verify only one item is displayed in table
+[INFO ] [2021-11-02 18:09:51,306]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:51,367]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:51,430]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:51,490]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:51,615]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:51,617] TC_04 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:09:55,931] TC_04 - Step 02: Enter to 'Product name' textbox
+[INFO ] [2021-11-02 18:09:56,052] TC_04 - Step 03: Select to Child Category in dropdown
+[INFO ] [2021-11-02 18:09:56,393] TC_04 - Step 04: Uncheck to 'Search subcategories' checkbox
+[INFO ] [2021-11-02 18:09:56,473] TC_04 - Step 05: Click to 'Search' button
+[INFO ] [2021-11-02 18:09:57,323] TC_04 - Step 06: Verify only one item is displayed in table
+[INFO ] [2021-11-02 18:09:57,383]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:57,445]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:57,506]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:57,620]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:57,741]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:09:57,743] TC_05 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:10:00,193] TC_05 - Step 02: Enter to 'Product name' textbox
+[INFO ] [2021-11-02 18:10:00,317] TC_05 - Step 03: Select to Category in dropdown
+[INFO ] [2021-11-02 18:10:00,396] TC_05 - Step 04: Uncheck to 'Search subcategories' checkbox
+[INFO ] [2021-11-02 18:10:00,458] TC_05 - Step 05: Select to Manufacturer dropdown
+[INFO ] [2021-11-02 18:10:00,781] TC_05 - Step 06: Click to 'Search' button
+[INFO ] [2021-11-02 18:10:02,663] TC_05 - Step 07: Verify only one item is displayed in table
+[INFO ] [2021-11-02 18:10:02,732]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:02,733] TC_06 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:10:07,023] TC_06 - Step 02: Enter to 'Go directly to product' textbox
+[INFO ] [2021-11-02 18:10:07,131] TC_06 - Step 03: Click to 'Go' button
+[INFO ] [2021-11-02 18:10:13,378] TC_06 - Step 04: Verify Title product details page is displayed
+[INFO ] [2021-11-02 18:10:13,472]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:13,472] TC_06 - Step 05: Verify product info is displayed
+[INFO ] [2021-11-02 18:10:13,529]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:13,530] Post-Condition - Close Browser - firefox
+[INFO ] [2021-11-02 18:10:13,530] OS name = windows 10
+[INFO ] [2021-11-02 18:10:14,352] Pre-Condition - Step 01: Open browser 'firefox' and navigate 'https://admin-demo.nopcommerce.com/login?ReturnUrl=/admin/'
+[INFO ] [2021-11-02 18:10:18,398] Pre-Condition - Step 02: Verify Login Page is displayed
+[INFO ] [2021-11-02 18:10:18,455]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:18,455] Pre-Condition - Step 03: Open homepage
+[INFO ] [2021-11-02 18:10:23,147] TC_01 - Step 01: Open sub menu 'Customers'
+[INFO ] [2021-11-02 18:10:26,735] TC_01 - Step 02: Click to 'Add new' button
+[INFO ] [2021-11-02 18:10:27,936] TC_01 - Step 03: Enter to 'Email' textbox
+[INFO ] [2021-11-02 18:10:28,065] TC_01 - Step 04: Enter to 'Password' textbox
+[INFO ] [2021-11-02 18:10:28,164] TC_01 - Step 05: Enter to 'Firstname' textbox
+[INFO ] [2021-11-02 18:10:28,265] TC_01 - Step 06: Enter to 'Lastname' textbox
+[INFO ] [2021-11-02 18:10:28,375] TC_01 - Step 07: Click to 'Male' radio button
+[INFO ] [2021-11-02 18:10:28,660] TC_01 - Step 08: Enter to 'Date of birth' textbox
+[INFO ] [2021-11-02 18:10:28,785] TC_01 - Step 09: Enter to 'Company name' textbox
+[INFO ] [2021-11-02 18:10:30,881] TC_01 - Step 10: Clear text in dropdown
+[INFO ] [2021-11-02 18:10:33,220] TC_01 - Step 11: Select 'Guest' role in dropdown
+[INFO ] [2021-11-02 18:10:36,823] TC_01 - Step 12: Click to 'Active' checkbox
+[INFO ] [2021-11-02 18:10:36,867] TC_01 - Step 13: Verify 'Guests' role is selected
+[INFO ] [2021-11-02 18:10:36,925]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:36,925] TC_01 - Step 14: Enter to 'Admin comment' textbox
+[INFO ] [2021-11-02 18:10:37,037] TC_01 - Step 15: Click to 'Save and Continue Edit' button
+[INFO ] [2021-11-02 18:10:46,935] TC_01 - Step 16: Verify success mesage
+[INFO ] [2021-11-02 18:10:47,288] TC_01 - Step 17: Click to expand panel
+[INFO ] [2021-11-02 18:10:47,343] TC_01 - Step 18: Verify customers info are displayed 
+[INFO ] [2021-11-02 18:10:47,413]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,467]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,531]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,581]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,638]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,722]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,786]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:10:47,786] TC_01 - Step 19: Click to 'Back to customer list' button
+[INFO ] [2021-11-02 18:10:52,446] TC_01 - Step 20: Clear 'Customer roles' droplist
+[INFO ] [2021-11-02 18:10:54,718] TC_01 - Step 21: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:11:01,319] TC_01 - Step 22: Click to 'Search' button
+[INFO ] [2021-11-02 18:11:02,166] TC_01 - Step 23: Verify customer info in table is displayed
+[INFO ] [2021-11-02 18:11:02,278] TC_02 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:11:06,663] TC_02 - Step 02: Enter to 'Email' textbox
+[INFO ] [2021-11-02 18:11:06,802] TC_02 - Step 03: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:11:09,093] TC_02 - Step 04: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:11:15,698] TC_02 - Step 05: Click to 'Search' button
+[INFO ] [2021-11-02 18:11:16,533] TC_02 - Step 06: Verify 'Email' info in table is displayed
+[INFO ] [2021-11-02 18:11:16,598]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:16,598] TC_02 - Step 07: Verify 'Name' info in table is displayed
+[INFO ] [2021-11-02 18:11:16,659]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:16,660] TC_02 - Step 08: Verify 'Guests' info in table is displayed
+[INFO ] [2021-11-02 18:11:16,723]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:16,723] TC_02 - Step 09: Verify 'Company' info in table is displayed
+[INFO ] [2021-11-02 18:11:16,781]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:16,782] TC_03 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:11:19,328] TC_03 - Step 02: Enter to 'First Name' textbox
+[INFO ] [2021-11-02 18:11:19,428] TC_03 - Step 03: Enter to 'Last Name' textbox
+[INFO ] [2021-11-02 18:11:19,529] TC_03 - Step 04: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:11:21,842] TC_03 - Step 05: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:11:28,507] TC_03 - Step 06: Click to 'Search' button
+[INFO ] [2021-11-02 18:11:29,364] TC_03 - Step 07: Verify 'Email' info in table is displayed
+[INFO ] [2021-11-02 18:11:29,446]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:29,446] TC_03 - Step 08: Verify 'Name' info in table is displayed
+[INFO ] [2021-11-02 18:11:29,506]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:29,506] TC_03 - Step 09: Verify 'Customer roles' info in table is displayed
+[INFO ] [2021-11-02 18:11:29,571]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:29,571] TC_03 - Step 10: Verify 'Company name' info in table is displayed
+[INFO ] [2021-11-02 18:11:29,629]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:29,629] TC_04 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:11:32,147] TC_04 - Step 02: Enter to 'Company Name' textbox
+[INFO ] [2021-11-02 18:11:32,271] TC_04 - Step 03: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:11:34,559] TC_04 - Step 04: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:11:41,161] TC_04 - Step 05: Click to 'Search' button
+[INFO ] [2021-11-02 18:11:42,000] TC_04 - Step 06: Verify 'Email' info in table is displayed
+[INFO ] [2021-11-02 18:11:42,066]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:42,066] TC_04 - Step 07: Verify 'Name' info in table is displayed
+[INFO ] [2021-11-02 18:11:42,126]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:42,126] TC_04 - Step 08: Verify 'Customer rolesl' info in table is displayed
+[INFO ] [2021-11-02 18:11:42,187]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:42,187] TC_04 - Step 09: Verify 'Company name'' info in table is displayed
+[INFO ] [2021-11-02 18:11:42,247]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:42,248] TC_05 - Step 01: Refresh page
+[INFO ] [2021-11-02 18:11:44,812] TC_05 - Step 02: Enter to 'Email' textbox
+[INFO ] [2021-11-02 18:11:44,918] TC_05 - Step 03: Enter to 'First Name' textbox
+[INFO ] [2021-11-02 18:11:45,003] TC_05 - Step 04: Enter to 'Last Name' textbox
+[INFO ] [2021-11-02 18:11:45,102] TC_05 - Step 05: Enter to 'Month of Birth' textbox
+[INFO ] [2021-11-02 18:11:45,464] TC_05 - Step 06: Enter to 'Day of Birth' textbox
+[INFO ] [2021-11-02 18:11:45,820] TC_05 - Step 07: Enter to 'Company Name' textbox
+[INFO ] [2021-11-02 18:11:45,930] TC_05 - Step 08: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:11:48,225] TC_05 - Step 09: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:11:54,858] TC_05 - Step 10: Click to 'Search' button
+[INFO ] [2021-11-02 18:11:55,713] TC_05 - Step 11: Verify 'Email' info in table is displayed
+[INFO ] [2021-11-02 18:11:55,776]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:55,777] TC_05 - Step 12: Verify 'Name' info in table is displayed
+[INFO ] [2021-11-02 18:11:55,835]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:55,835] TC_05 - Step 13: Verify 'Customer roles' info in table is displayed
+[INFO ] [2021-11-02 18:11:55,899]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:55,899] TC_05 - Step 14: Verify 'Company name' info in table is displayed
+[INFO ] [2021-11-02 18:11:55,960]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:11:55,961] TC_06 - Step 01: Click to 'Edit' button in table
+[INFO ] [2021-11-02 18:12:01,568] TC_06 - Step 02: Enter to 'Email' textbox
+[INFO ] [2021-11-02 18:12:01,684] TC_06 - Step 03: Enter to 'First Name' textbox
+[INFO ] [2021-11-02 18:12:01,777] TC_06 - Step 04: Enter to 'Last Name' textbox
+[INFO ] [2021-11-02 18:12:01,867] TC_06 - Step 05: Enter to 'Date of Birth' textbox
+[INFO ] [2021-11-02 18:12:01,970] TC_06 - Step 06: Enter to 'Company Name' textbox
+[INFO ] [2021-11-02 18:12:02,107] TC_06 - Step 06: Enter to 'Comment Admin' textbox
+[INFO ] [2021-11-02 18:12:02,201] TC_06 - Step 07: Click to 'Save' button
+[INFO ] [2021-11-02 18:12:04,362] TC_06 - Step 08: Verify success message is displayed
+[INFO ] [2021-11-02 18:12:04,503] TC_06 - Step 09: Enter to 'Email' textbox
+[INFO ] [2021-11-02 18:12:07,636] TC_06 - Step 10: Enter to 'First Name' textbox
+[INFO ] [2021-11-02 18:12:07,721] TC_06 - Step 11: Enter to 'Last Name' textbox
+[INFO ] [2021-11-02 18:12:07,819] TC_06 - Step 12: Enter to 'Month of Birth' textbox
+[INFO ] [2021-11-02 18:12:08,136] TC_06 - Step 13: Enter to 'Day of Birth' textbox
+[INFO ] [2021-11-02 18:12:08,445] TC_06 - Step 14: Enter to 'Company Name' textbox
+[INFO ] [2021-11-02 18:12:08,593] TC_06 - Step 15: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:12:10,882] TC_06 - Step 16: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:12:17,505] TC_06 - Step 17: Click to 'Search' button
+[INFO ] [2021-11-02 18:12:18,374] TC_06 - Step 18: Verify 'Email' info in table is displayed
+[INFO ] [2021-11-02 18:12:18,440]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:18,440] TC_06 - Step 19: Verify 'Name' info in table is displayed
+[INFO ] [2021-11-02 18:12:18,502]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:18,503] TC_06 - Step 20: Verify 'Guests' info in table is displayed
+[INFO ] [2021-11-02 18:12:18,564]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:18,564] TC_06 - Step 21: Verify 'Company name' info in table is displayed
+[INFO ] [2021-11-02 18:12:18,643]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:18,644] TC_07 - Step 01: Click to 'Edit' button in table
+[INFO ] [2021-11-02 18:12:19,258] TC_07 - Step 02: Click to Expand panel in 'Addresses' form
+[INFO ] [2021-11-02 18:12:25,624] TC_07 - Step 3: Click to 'Add new Address' button
+[INFO ] [2021-11-02 18:12:28,165] TC_07 - Step 04: Update First name information to textbox
+[INFO ] [2021-11-02 18:12:28,278] TC_07 - Step 05: Update Last name information to textbox
+[INFO ] [2021-11-02 18:12:28,381] TC_07 - Step 06: Update Email information to textbox
+[INFO ] [2021-11-02 18:12:28,492] TC_07 - Step 07: Update Company name information to textbox
+[INFO ] [2021-11-02 18:12:28,589] TC_07 - Step 08: Update Country name information to dropdown
+[INFO ] [2021-11-02 18:12:28,889] TC_07 - Step 09: Update State province information to dropdown
+[INFO ] [2021-11-02 18:12:28,967] TC_07 - Step 10: Update Company City name information to textbox
+[INFO ] [2021-11-02 18:12:29,066] TC_07 - Step 11: Update Address 1 information to textbox
+[INFO ] [2021-11-02 18:12:29,163] TC_07 - Step 12: Update Address 2 information to textbox
+[INFO ] [2021-11-02 18:12:29,261] TC_07 - Step 13: Update Zip code information to textbox
+[INFO ] [2021-11-02 18:12:29,367] TC_07 - Step 14: Update Phone number information to textbox
+[INFO ] [2021-11-02 18:12:29,461] TC_07 - Step 15: Update Phone number information to textbox
+[INFO ] [2021-11-02 18:12:29,553] TC_07 - Step 16: Click to 'Save' button
+[INFO ] [2021-11-02 18:12:32,447] TC_07 - Step 17: Verify success mesage
+[INFO ] [2021-11-02 18:12:35,565] TC_07 - Step 18: Verify Firstname infomation is updated successfully
+[INFO ] [2021-11-02 18:12:35,645]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:35,646] ATC_07 - Step 19: Verify Lastname infomation is updated successfully
+[INFO ] [2021-11-02 18:12:35,708]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:35,708] TC_07 - Step 20: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:12:35,769]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:35,769] TC_07 - Step 21: Verify company name infomation is updated successfully
+[INFO ] [2021-11-02 18:12:35,832]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:35,832] TC_07 - Step 22: Verify country name infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,276]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,276] TC_07 - Step 23: Update State province information to dropdown
+[INFO ] [2021-11-02 18:12:36,355]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,355] TC_07 - Step 24: Verify city name infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,408]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,408] TC_07 - Step 25: Verify address1 infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,470]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,470] TC_07 - Step 26: Verify address2 infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,531]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,531] TC_07 - Step 27: Verify zip code infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,602]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,602] TC_07 - Step 28: Verify phone number infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,673]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:36,673] TC_07 - Step 29: Verify fax number infomation is updated successfully
+[INFO ] [2021-11-02 18:12:36,734]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:12:39,736] TC_07 - Step 30: Click to 'Back to customer details' button
+[INFO ] [2021-11-02 18:12:40,357] TC_07 - Step 31: Click to Expand panel in 'Addresses' form
+[INFO ] [2021-11-02 18:12:40,423] TC_07 - Step 32: Verify  displayed customer info in table
+[INFO ] [2021-11-02 18:12:41,169] TC_08 - Step 01: Click to 'Back to customer list' button
+[INFO ] [2021-11-02 18:12:47,777] TC_08 - Step 02: Edit 'Email address' textbox
+[INFO ] [2021-11-02 18:12:47,912] TC_08 - Step 03: Edit 'First name' textbox
+[INFO ] [2021-11-02 18:12:48,005] TC_08 - Step 04: Edit 'Last name' textbox
+[INFO ] [2021-11-02 18:12:48,099] TC_08 - Step 05: Select 'Month of birth' item in dropdown
+[INFO ] [2021-11-02 18:12:48,421] TC_08 - Step 06: Select 'Day of birth' item in dropdown
+[INFO ] [2021-11-02 18:12:48,734] TC_08 - Step 07: Edit 'Company name' textbox
+[INFO ] [2021-11-02 18:12:48,845] TC_08 - Step 08: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:12:51,138] TC_08 - Step 09: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:12:57,732] TC_08 - Step 10: Click to 'Search' button
+[INFO ] [2021-11-02 18:12:58,573] TC_08 - Step 11: Click to 'Edit' button in table
+[INFO ] [2021-11-02 18:12:59,164] TC_08 - Step 12: Click to Expand panel in 'Addresses' form
+[INFO ] [2021-11-02 18:13:02,242] TC_08 - Step 13: Click to 'Edit' button in table
+[INFO ] [2021-11-02 18:13:05,981] TC_08 - Step 14: Update First name information to textbox
+[INFO ] [2021-11-02 18:13:06,082] TC_08 - Step 15: Update Last name information to textbox
+[INFO ] [2021-11-02 18:13:06,172] TC_08 - Step 16: Update Email information to textbox
+[INFO ] [2021-11-02 18:13:06,336] TC_08 - Step 17: Update Company name information to textbox
+[INFO ] [2021-11-02 18:13:06,429] TC_08 - Step 18: Update Country name information to dropdown
+[INFO ] [2021-11-02 18:13:06,744] TC_08 - Step 19: Update Company City name information to textbox
+[INFO ] [2021-11-02 18:13:06,844] TC_08 - Step 20: Update Address 1 information to textbox
+[INFO ] [2021-11-02 18:13:06,939] TC_08 - Step 21: Update Address 2 information to textbox
+[INFO ] [2021-11-02 18:13:07,038] TC_08 - Step 22: Update Zip code information to textbox
+[INFO ] [2021-11-02 18:13:07,143] TC_08 - Step 23: Update Phone number information to textbox
+[INFO ] [2021-11-02 18:13:07,238] TC_08 - Step 24: Update Phone number information to textbox
+[INFO ] [2021-11-02 18:13:07,348] TC_08 - Step 25: Click to 'Save' button
+[INFO ] [2021-11-02 18:13:08,866] TC_08 - Step 26: Verify success message is displayed
+[INFO ] [2021-11-02 18:13:11,937] TC_08 - Step 27: Verify Firstname infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,002]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,002] TC_08 - Step 28: Verify Lastname infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,064]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,064] TC_08 - Step 29: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,124]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,124] TC_08 - Step 30: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,187]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,187] TC_08 - Step 31: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,290]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,290] TC_08 - Step 32: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,368]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,368] TC_08 - Step 33: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,421]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,421] TC_08 - Step 34: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,484]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,484] TC_08 - Step 35: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,546]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,546] TC_08 - Step 36: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,627]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,627] TC_08 - Step 37: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,703]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:12,703] TC_08 - Step 39: Verify email infomation is updated successfully
+[INFO ] [2021-11-02 18:13:12,779]  -------------------------- PASSED -------------------------- 
+[INFO ] [2021-11-02 18:13:15,786] TC_08 - Step 40: Click 'back to customer details' button
+[INFO ] [2021-11-02 18:13:17,993] TC_08 - Step 41: Click to Expand panel in 'Addresses' form
+[INFO ] [2021-11-02 18:13:18,057] TC_08 - Step 42: Verify success message is displayed
+[INFO ] [2021-11-02 18:13:18,127] TC_09 - Step 01: Click to 'back to customer list' button
+[INFO ] [2021-11-02 18:13:24,652] TC_09 - Step 02: Update email information to textbox
+[INFO ] [2021-11-02 18:13:24,764] TC_09 - Step 03: Update first name information to textbox
+[INFO ] [2021-11-02 18:13:24,864] TC_09 - Step 04: Update lastname information to textbox
+[INFO ] [2021-11-02 18:13:24,954] TC_09 - Step 05: Update month of birth information to textbox
+[INFO ] [2021-11-02 18:13:25,262] TC_09 - Step 06: Update day of birth information to textbox
+[INFO ] [2021-11-02 18:13:25,573] TC_09 - Step 07: Update company name information to textbox
+[INFO ] [2021-11-02 18:13:25,676] TC_06 - Step 08: Clear 'Customer roles' list
+[INFO ] [2021-11-02 18:13:27,972] TC_09 - Step 09: Select 'Guests' item in dropdown
+[INFO ] [2021-11-02 18:13:34,570] TC_09 - Step 10: Click to 'Search' button
+[INFO ] [2021-11-02 18:13:35,414] TC_09 - Step 11: Click to 'Edit' button in table
+[INFO ] [2021-11-02 18:13:37,111] TC_09 - Step 12: Click to Expand panel in 'Addresses' form
+[INFO ] [2021-11-02 18:13:37,280] TC_09 - Step 13: Accept alert
+[INFO ] [2021-11-02 18:13:39,316] TC_09 - Step 14: Verify message in table is displayed
+[INFO ] [2021-11-02 18:13:39,404] Post-Condition - Close Browser - firefox
+[INFO ] [2021-11-02 18:13:39,404] OS name = windows 10
