@@ -429,6 +429,7 @@ public class TC_02_Customers extends BaseTest {
 		
 		log.info("TC_07 - Step 04: Update First name information to textbox");
 		addNewAddressPage = PageGenerator.getAddNewAddressPage(driver);
+		addNewAddressPage.sleepInsecond(3);
 		addNewAddressPage.enterToTextboxByIDAtAdminSite(driver, "Address_FirstName", firstName);
 		
 		log.info("TC_07 - Step 05: Update Last name information to textbox");

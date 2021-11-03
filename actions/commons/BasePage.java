@@ -19,16 +19,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import pageObject.admin.nopCommerce.CustomersSearchPO;
-import pageUIs.admin.nopCommerce.AddNewAddressPageUI;
-import pageUIs.admin.nopCommerce.AddNewCustomersPageUI;
 import pageUIs.admin.nopCommerce.AdminBasePageUI;
-import pageUIs.admin.nopCommerce.CustomersDetailsPageUI;
 import pageUIs.nopCommerce.BasePageUI;
-import pageUIs.nopCommerce.CheckoutPageUI;
-import pageUIs.nopCommerce.MyAccountUI;
-import pageUIs.nopCommerce.ShoppingCartUI;
 
 
 
@@ -894,7 +886,6 @@ public class BasePage {
 	}
 	
 	public void selectCustomerRoleInDropdown(WebDriver driver, String dropdownLabel, String itemText) {
-		scrollToElement(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		waitForElementClickable(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		clickToElement(driver, AdminBasePageUI.DYNAMIC_DROPDOWN_BY_LABEL, dropdownLabel);
 		sleepInsecond(3);
@@ -958,6 +949,7 @@ public class BasePage {
 
 	public void clickToBackToCustomerListButton(WebDriver driver, String messageText) {
 		scrollToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
+		waitForElementVisible(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 		clickToElement(driver, AdminBasePageUI.BACK_BUTTON_BY_NAME, messageText);
 	}
 	

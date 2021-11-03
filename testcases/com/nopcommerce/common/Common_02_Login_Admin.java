@@ -31,7 +31,6 @@ public class Common_02_Login_Admin extends BaseTest{
 
 		log.info("Common_01 - Step 01: Verify Home Page is displayed");
 		loginPage =PageGenerator.getLoginPage(driver);
-		//verifyTrue(loginPage.isLoginPageTitleAdminDisplayed());
 	
 		log.info("Login_06 - Step 01: Enter valid email to 'Email' textbox");
 		loginPage.enterToTextboxByID(driver,"Email", emailAddress);
